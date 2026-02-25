@@ -1,0 +1,964 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% GOTPM-CPL (PSC3) Technical Reference Manual
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%    PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,fleqn]{book}
+
+\usepackage[top=3cm,bottom=3cm,left=3.2cm,right=3.2cm,headsep=10pt,headheight=14pt,a4paper]{geometry}
+
+\usepackage{xcolor}
+\definecolor{ocre}{RGB}{52,177,201}
+
+% Font Settings
+\usepackage{avant}
+\usepackage{mathptmx}
+\usepackage{microtype}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\input{structure}
+
+%----------------------------------------------------------------------------------------
+%    Definitions of new commands
+%----------------------------------------------------------------------------------------
+
+\def\R{\mathbb{R}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{#1}}
+\newcommand{\flag}[1]{\texttt{-D#1}}
+
+%------------------------------------------------------
+% Document
+%------------------------------------------------------
+\begin{document}
+
+%------------------------------------------------------
+% Title page
+%------------------------------------------------------
+\begin{titlepage}
+\begin{tikzpicture}[remember picture,overlay]
+  % Top colored area
+  \fill[ocre] (current page.north west) rectangle ([yshift=-9cm]current page.north east);
+  % Bottom accent strip
+  \fill[ocre!10] (current page.south west) rectangle ([yshift=2.5cm]current page.south east);
+  \draw[ocre,line width=1.5pt] ([yshift=2.5cm]current page.south west) -- ([yshift=2.5cm]current page.south east);
+\end{tikzpicture}
+
+\vspace*{1cm}
+
+\begin{center}
+{\fontsize{42}{50}\selectfont\sffamily\bfseries\color{white}GOTPM-CPL}\\[0.5cm]
+{\fontsize{22}{26}\selectfont\sffamily\color{white!90}(PSC3)}\\[1cm]
+{\fontsize{20}{24}\selectfont\sffamily\color{white!80}Technical Reference Manual}
+\end{center}
+
+\vspace{5cm}
+
+\begin{center}
+{\Large\sffamily
+Hybrid PM + Tree Cosmological\\[8pt]
+N-Body Simulation Code with\\[8pt]
+CPL Dark Energy Support}
+
+\vspace{3cm}
+
+{\large\sffamily Juhan~Kim}\\[0.5cm]
+{\sffamily 2026}
+\end{center}
+
+\vfill
+
+\begin{center}
+{\small\sffamily
+Based on the GOTPM algorithm (Dubinski et al.~2004)\\[3pt]
+\texttt{https://github.com/kjhan0606/GOTPM-CPL}}
+\end{center}
+\vspace{1cm}
+\end{titlepage}
+
+%------------------------------------------------------
+% Table of Contents
+%------------------------------------------------------
+
+\pagestyle{empty}
+\tableofcontents
+\pagestyle{fancy}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PART I: Getting Started
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Getting Started}
+
+%======================================================
+\chapter{Introduction}
+\label{ch:intro}
+%======================================================
+
+GOTPM-CPL (Grid-of-Oct-Tree Particle Mesh), also referred to as PSC3 (Parallel Simulation Code~3), is a massively parallel cosmological N-body simulation code that computes the gravitational evolution of dark matter particles in an expanding universe.  The code implements the hybrid TreePM algorithm: long-range forces are computed on a uniform mesh using FFT-based Poisson solvers (PM), while short-range corrections are applied through a Barnes--Hut-type tree walk.
+
+\section{Key Features}
+
+\begin{itemize}[leftmargin=2em]
+  \item \textbf{Hybrid TreePM force calculation} --- PM for long-range + Tree for short-range correction
+  \item \textbf{CPL dark energy models} --- Full support for the Chevallier--Polarski--Linder parameterization $w(a) = w_0 + w_a(1-a)$, including Poisson correction factors
+  \item \textbf{2LPT initial conditions} --- Built-in 2nd-order Lagrangian perturbation theory for accurate IC generation
+  \item \textbf{MPI + OpenMP parallelization} --- Slab domain decomposition with hybrid parallelism
+  \item \textbf{Variable PM grid (VarPM)} --- Adaptive z-domain boundaries for load balancing
+  \item \textbf{Index-based position encoding} --- High-precision particle positions via displacement + Lagrangian index
+  \item \textbf{Custom memory allocator} --- Stack-based pool allocator for deterministic memory management
+  \item \textbf{Friends-of-Friends (FoF)} --- Built-in parallel group finder
+  \item \textbf{Power spectrum measurement} --- On-the-fly $P(k)$ computation with TSC deconvolution
+\end{itemize}
+
+\section{Algorithm Overview}
+
+The simulation proceeds through the following steps at each time step:
+
+\begin{enumerate}[leftmargin=2em]
+  \item \textbf{PM force} --- Assign particle mass to grid via TSC, solve Poisson equation in Fourier space, interpolate forces back to particles (4th-order FDA).
+  \item \textbf{Tree correction} --- Build cell-linked-list, compute short-range force corrections using spline-softened gravity with opening angle $\theta$.
+  \item \textbf{Velocity kick} --- Update velocities using leap-frog integration.
+  \item \textbf{Position drift} --- Advance particle positions.
+  \item \textbf{Migration} --- Exchange particles between MPI domains if they have crossed slab boundaries.
+  \item \textbf{Domain rebalancing} --- Adjust slab boundaries if load imbalance exceeds threshold.
+\end{enumerate}
+
+\begin{important}
+The code uses a \emph{split-step} (leap-frog) integrator where velocities and positions are offset by half a time step.  The \code{halfstep} structure controls the synchronization of positions and velocities for output.
+\end{important}
+
+
+%======================================================
+\chapter{Quick Start Guide}
+\label{ch:quickstart}
+%======================================================
+
+This chapter provides a step-by-step guide to building and running the code.
+
+\section{Prerequisites}
+
+\begin{itemize}[leftmargin=2em]
+  \item \textbf{Intel C/Fortran Compilers} --- \code{mpiicx} and \code{mpiifx} (or \code{mpiicc}/\code{mpiifort})
+  \item \textbf{FFTW3} --- Single-precision with MPI and OpenMP thread support (\code{libfftw3f}, \code{libfftw3f\_mpi}, \code{libfftw3f\_omp})
+  \item \textbf{MPI} --- Intel MPI or OpenMPI
+  \item \textbf{OpenMP} --- Enabled via \code{-qopenmp}
+\end{itemize}
+
+\section{Building the Code}
+
+\begin{codebox}[Build Commands]
+\begin{lstlisting}[style=bash,numbers=none]
+cd PSC3_CPL_mv_new
+# Edit Rules.make for your system (compiler, FFTW path, NMEG)
+make clean
+make this
+# Produces: namu.exe
+\end{lstlisting}
+\end{codebox}
+
+The build system consists of two files:
+\begin{itemize}[leftmargin=2em]
+  \item \file{Rules.make} --- System-specific compiler settings, library paths, and compile flags.
+  \item \file{Makefile} --- Object file list and build targets.
+\end{itemize}
+
+\begin{remark}[Compiler Selection]
+The primary target compiler is Intel \code{mpiicx}/\code{mpiifx}.  For PGI or GCC compilers, use the corresponding \file{Rules.make.*} variant (e.g., \file{Rules.make.pgcc}).
+\end{remark}
+
+\section{Setting Up a Run}
+
+\subsection{Directory Structure}
+
+Create a separate run directory:
+
+\begin{codebox}[Run Directory Setup]
+\begin{lstlisting}[style=bash,numbers=none]
+mkdir MV_Om0.31_-1.2_-2.4
+cd MV_Om0.31_-1.2_-2.4
+ln -s ../PSC3_CPL_mv_new/namu.exe .
+cp ../PSC3_CPL_mv_new/params.dat .
+# Edit params.dat for your cosmological model
+\end{lstlisting}
+\end{codebox}
+
+\subsection{Parameter File}
+
+Edit \file{params.dat} to specify cosmological parameters, grid resolution, and run settings.  See Chapter~\ref{ch:params} for the full parameter reference.
+
+\subsection{Input Power Spectrum}
+
+Prepare an ASCII power spectrum file (e.g., from CAMB) with two columns: $k$ [$h$/Mpc] and $P(k)$ [$({\rm Mpc}/h)^3$].  Set \code{Powerflag = 2} and provide the filename in \code{Ascii Powerfile}.
+
+\subsection{Job Submission (SLURM)}
+
+\begin{codebox}[Example SLURM Job Script]
+\begin{lstlisting}[style=bash,numbers=none]
+#!/bin/bash
+#SBATCH --job-name=MV311224
+#SBATCH --ntasks=16
+#SBATCH --cpus-per-task=4
+#SBATCH --time=1000000:00
+#SBATCH --output outfile.o%j.grammar
+#SBATCH --error errfile.e%j.grammar
+#SBATCH -p normal
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+srun ./namu.exe params.dat
+\end{lstlisting}
+\end{codebox}
+
+\begin{infobox}[Choosing MPI Ranks and Threads]
+The number of MPI ranks (\code{ntasks}) determines the z-slab decomposition.  The FFTW3 domain decomposition requires that $N_z$ is divisible by the number of MPI ranks.  Each rank spawns \code{cpus-per-task} OpenMP threads for shared-memory parallelism within the tree correction and TSC assignment.
+\end{infobox}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PART II: Code Architecture
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Code Architecture}
+
+%======================================================
+\chapter{Parameter Reference}
+\label{ch:params}
+%======================================================
+
+The simulation is controlled by the ASCII parameter file \file{params.dat}, which is read by rank~0 and broadcast to all MPI processes.
+
+\section{Cosmological Parameters}
+
+\begin{longtable}{L{5cm} C{2cm} L{6.5cm}}
+\toprule
+\textbf{Parameter} & \textbf{Default} & \textbf{Description} \\
+\midrule
+\endhead
+\code{OmegaMatter0} & --- & Present-day matter density $\Omega_m$ \\
+\code{OmegaBaryon0} & --- & Present-day baryon density $\Omega_b$ \\
+\code{OmegaLambda0} & --- & Present-day dark energy density $\Omega_\Lambda$ \\
+\code{Hubble} & --- & Hubble parameter $h = H_0/(100\;\text{km/s/Mpc})$ \\
+\code{nPS} & --- & Scalar spectral index $n_s$ \\
+\code{w0 of DE (CPL)} & $-1$ & CPL equation of state $w_0$ \\
+\code{wa of DE (CPL)} & $0$ & CPL evolution parameter $w_a$ \\
+\code{Sound Speed of DE} & $0$ & Dark energy sound speed ($c_s^2 = 0$: clustering, $1$: smooth) \\
+\code{fNL} & $0$ & Local non-Gaussianity amplitude \\
+\code{gNL} & $0$ & Higher-order non-Gaussianity \\
+\bottomrule
+\end{longtable}
+
+\section{Simulation Control}
+
+\begin{longtable}{L{5cm} C{2cm} L{6.5cm}}
+\toprule
+\textbf{Parameter} & \textbf{Default} & \textbf{Description} \\
+\midrule
+\endhead
+\code{INITIAL CONDITION} & --- & 1 = Zeldovich approximation, 2 = 2LPT \\
+\code{Amax} & --- & Maximum scale factor $a_\text{max}$ (typically 48 for $z_i = 47$) \\
+\code{Anow} & 1 & Starting scale factor \\
+\code{Astep} & --- & Scale factor increment per time step $\Delta a$ \\
+\code{Nstep} & --- & Total number of time steps \\
+\code{Stepcount} & 1 & Starting step count (for restart) \\
+\code{Stepnum} & 1 & Step number to begin integration \\
+\code{Theta} & 0.3 & Tree opening angle (overridden adaptively) \\
+\code{Iseed} & --- & Random seed for IC generation \\
+\bottomrule
+\end{longtable}
+
+\section{Grid and Particle Setup}
+
+\begin{longtable}{L{5cm} C{2cm} L{6.5cm}}
+\toprule
+\textbf{Parameter} & \textbf{Default} & \textbf{Description} \\
+\midrule
+\endhead
+\code{Nx, Ny, Nz} & --- & PM grid dimensions (must be equal: $N_x = N_y = N_z$) \\
+\code{Nspace} & 1 & Grid spacing in index units \\
+\code{Boxsize(Mpc/h)} & --- & Comoving box size in Mpc/$h$ \\
+\bottomrule
+\end{longtable}
+
+\section{Power Spectrum and Normalization}
+
+\begin{longtable}{L{5cm} C{2cm} L{6.5cm}}
+\toprule
+\textbf{Parameter} & \textbf{Default} & \textbf{Description} \\
+\midrule
+\endhead
+\code{Powerflag} & --- & 0: generate on run, 1: CAMB binary, 2: ASCII file \\
+\code{Ascii Powerfile} & --- & Filename of input power spectrum \\
+\code{ampRescaling flag} & 0 & 0: none, 1: rescale to $\sigma_8$ at $z=0$, 2: at $z_\text{CMB}$ \\
+\code{bias8} & 1 & Inverse of $\sigma_8$ for $R = 8\;\text{Mpc}/h$ \\
+\bottomrule
+\end{longtable}
+
+\section{I/O Parameters}
+
+\begin{longtable}{L{5cm} C{2cm} L{6.5cm}}
+\toprule
+\textbf{Parameter} & \textbf{Default} & \textbf{Description} \\
+\midrule
+\endhead
+\code{rvfilename} & --- & Input RV data filename (for restart) \\
+\code{rvprefix} & --- & Output file prefix \\
+\bottomrule
+\end{longtable}
+
+
+%======================================================
+\chapter{Compile-Time Flags}
+\label{ch:flags}
+%======================================================
+
+The code behavior is controlled by preprocessor flags set in \file{Rules.make}.
+
+\section{Required Flags}
+
+\begin{longtable}{L{4.5cm} L{9cm}}
+\toprule
+\textbf{Flag} & \textbf{Description} \\
+\midrule
+\endhead
+\flag{INTEL} & Select Intel compiler conventions (main function name). Required for \code{mpiicx}. \\
+\flag{INDEX} & Enable particle index tracking. Each particle stores its Lagrangian grid index for high-precision position reconstruction. \\
+\flag{XYZDBL} & Use double-precision position reconstruction via $X = \text{fmod}(x_\text{disp} + x_\text{index}, N_x)$. Must be paired with \flag{INDEX}. \\
+\flag{INCLUDE\_TREE\_FORCE} & Enable tree force corrections on top of PM forces. \\
+\bottomrule
+\end{longtable}
+
+\section{Optional Flags}
+
+\begin{longtable}{L{4.5cm} L{9cm}}
+\toprule
+\textbf{Flag} & \textbf{Description} \\
+\midrule
+\endhead
+\flag{NMEG=\textit{N}L} & Memory pool size per MPI rank in megabytes (default: 100). Example: \code{-DNMEG=8000L} allocates 8~GB per rank. \\
+\flag{WGROUPSIZE=\textit{N}} & I/O write group size for parallel output (default: 80). \\
+\flag{VarPM} & Enable variable-width PM domain decomposition. Allows non-uniform z-slab widths for load balancing. \\
+\flag{SAVESLICE} & Save x-z density slices at each time step. \\
+\flag{PMSEEDFORCE} & Use PM seed force for initial force evaluation. \\
+\flag{MPI\_SLOW} & Use slower but more reliable MPI communication patterns. \\
+\flag{DEMODEL=0} & Constant Poisson correction factor (default). \\
+\flag{DEMODEL=1} & Scale-dependent Poisson correction (for k-dependent DE). \\
+\flag{MULTIMASS} & Support for multi-mass particles (adds \code{mass} field). \\
+\flag{INDTIME} & Individual time-stepping support (adds \code{tflag} field). \\
+\flag{\_LARGE\_FILES} & Enable large file support for I/O. \\
+\bottomrule
+\end{longtable}
+
+\begin{example}[Standard Compilation]
+A typical compilation command (via \file{Rules.make}):
+\begin{lstlisting}[style=bash,numbers=none]
+CDFLAGS = -DWGROUPSIZE=80 -DNMEG=8000L -DINCLUDE_TREE_FORCE \
+          -D_LARGE_FILES -DSAVESLICE -DPMSEEDFORCE
+COMFLAGS = -DINDEX -DVarPM -DXYZDBL -DMPI_SLOW
+OPT = -DINTEL -O2 -qopenmp
+\end{lstlisting}
+\end{example}
+
+
+%======================================================
+\chapter{Data Structures}
+\label{ch:datastruct}
+%======================================================
+
+\section{Particle Types}
+
+The code uses two particle structures that share the same memory through pointer casting.  This is the core of the hybrid PM+Tree design.
+
+\subsection{PM Particle (\code{pmparticletype})}
+
+\begin{definition}[pmparticletype --- 32 bytes]
+\begin{lstlisting}[style=ccode,numbers=none]
+typedef struct pmparticletype {
+    float x, y, z;         /* displacement from index position */
+    float vx, vy, vz;      /* peculiar velocity */
+    long long indx;        /* Lagrangian grid index */
+} pmparticletype;
+\end{lstlisting}
+The PM particle stores only displacement and velocity.  The true position is reconstructed via:
+\[
+  X = \text{fmod}\!\Big(x_\text{disp} + (\text{indx} \bmod m_x) + N_x,\; N_x\Big)
+\]
+where $m_x = N_x / N_\text{space}$.  This encoding preserves sub-grid precision even for $N \geq 1024^3$.
+\end{definition}
+
+\subsection{Tree Particle (\code{treeparticletype})}
+
+\begin{definition}[treeparticletype --- 40 bytes]
+\begin{lstlisting}[style=ccode,numbers=none]
+typedef struct treeparticletype {
+    float x, y, z;
+    float vx, vy, vz;
+    long long indx;
+    struct treeparticletype *next;  /* linked-list pointer */
+} treeparticletype;
+\end{lstlisting}
+Extends \code{pmparticletype} with a \code{next} pointer for the cell-linked-list tree structure.  The conversion between the two types is done in-place via backward copy (\code{pm2treetype}) and forward copy (\code{tree2pmtype}).
+\end{definition}
+
+\begin{important}
+The in-place conversion between \code{pmparticletype} and \code{treeparticletype} requires careful handling because both pointers alias the same memory.  The code uses \code{memmove} through \code{char*} pointers to avoid strict-aliasing violations that can cause data corruption at \code{-O2} optimization.
+\end{important}
+
+\subsection{Position Reconstruction Macros}
+
+\begin{lstlisting}[style=ccode,numbers=none]
+/* With -DXYZDBL -DINDEX: */
+#define XofP(p) fmod((double)((p)->x) + (double)(((p)->indx % simpar.mx)) + simpar.nx, simpar.nx)
+#define YofP(p) fmod((double)((p)->y) + (double)((((p)->indx % simpar.mxmy) / simpar.mx)) + simpar.ny, simpar.ny)
+#define ZofP(p) fmod((double)((p)->z) + (double)(((p)->indx / simpar.mxmy)) + simpar.nz, simpar.nz)
+\end{lstlisting}
+
+\section{Simulation Parameters (\code{SimParameters})}
+
+\begin{definition}[SimParameters struct]
+The global \code{simpar} structure holds all runtime parameters:
+\begin{itemize}[leftmargin=2em]
+  \item \textbf{MPI identity}: \code{myid}, \code{nid}
+  \item \textbf{Cosmology}: \code{omep} ($\Omega_m$), \code{omeplam} ($\Omega_\Lambda$), \code{wlam0} ($w_0$), \code{wlam1} ($w_a$), \code{CsDE} (sound speed)
+  \item \textbf{Grid}: \code{nx}, \code{ny}, \code{nz}, \code{mx}, \code{my}, \code{mz}, \code{mxmy}
+  \item \textbf{Scale factors}: \code{amax}, \code{anow}, \code{astep}
+  \item \textbf{Force}: \code{theta} (opening angle), \code{pcorr} (Poisson correction)
+  \item \textbf{Domain}: \code{local\_nz}, \code{local\_z\_start}, \code{zmin}, \code{zmax}
+\end{itemize}
+\end{definition}
+
+\section{Memory Management}
+
+\begin{definition}[Stack-Based Memory Pool]
+The code allocates a single large memory block at startup (\code{NMEG} megabytes) and manages sub-allocations through a stack-based allocator defined in \file{Memory2.c}:
+\begin{itemize}[leftmargin=2em]
+  \item \code{Malloc(size, PPTR(var))} --- Push allocation onto stack
+  \item \code{Free(ptr)} --- Pop or compact stack
+  \item \code{Realloc(ptr, size)} --- Resize with automatic compaction of subsequent allocations
+  \item \code{freespace()} --- Query available memory
+\end{itemize}
+The allocator tracks each allocation's size, starting address, and a pointer-to-pointer back-reference, enabling automatic pointer updates when memory is compacted.
+\end{definition}
+
+\begin{remark}[Realloc Macro]
+The header \file{Memory.h} defines:
+\begin{lstlisting}[style=ccode,numbers=none]
+#define Realloc(A,B) Realloc(A,B,PPTR(A))
+\end{lstlisting}
+This macro automatically supplies the third argument (pointer-to-pointer), so user code simply calls \code{Realloc(ptr, newsize)}.
+\end{remark}
+
+
+%======================================================
+\chapter{Source File Reference}
+\label{ch:sourcefiles}
+%======================================================
+
+\section{Core Simulation Loop}
+
+\begin{longtable}{L{5cm} L{8.5cm}}
+\toprule
+\textbf{File} & \textbf{Description} \\
+\midrule
+\endhead
+\file{main.c} & Entry point.  Initializes MPI/FFTW, reads \file{params.dat}, dispatches to \code{Zeldovich()} or \code{SecondOrderLPT()}. \\
+\file{namu.zeldovich.c} & Main simulation driver for Zeldovich IC.  Defines global variables (\code{DEFINE\_SIM\_PARA}, \code{DEFINE\_PM\_COMMON}, etc.), time integration loop, and type conversion functions (\code{pm2treetype}, \code{tree2pmtype}). \\
+\file{namu.2lpt.c} & Main simulation driver for 2LPT IC.  Similar structure to \file{namu.zeldovich.c} with 2nd-order displacement fields. \\
+\file{treemain.c} & Tree correction driver.  Calls \code{pm2treetype}, \code{treecorrection}, \code{PreFoF}, then \code{tree2pmtype}. \\
+\file{pmmain.c} & PM force driver.  TSC density assignment, forward FFT, Poisson solve, backward FFT, 4th-order FDA force interpolation. \\
+\file{dumpmain.c} & Output controller.  Triggers snapshot writes when positions and velocities are synchronized. \\
+\bottomrule
+\end{longtable}
+
+\section{Initial Conditions}
+
+\begin{longtable}{L{5cm} L{8.5cm}}
+\toprule
+\textbf{File} & \textbf{Description} \\
+\midrule
+\endhead
+\file{TwoLPT.F} & 2nd-order LPT potential computation in Fourier space.  Computes the $\phi^{(2)}$ kernel terms. \\
+\file{TwoOrderLPT.F} & Converts LPT potentials to particle displacements and velocities. \\
+\file{addTwoOrderLPT.c} & Applies 2nd-order displacement to particle positions. \\
+\file{ZeldovichInit.F} & 1st-order (Zeldovich) displacement and velocity fields. \\
+\file{addZeldovichInit.c} & Applies Zeldovich displacement to particles. \\
+\file{FindSeed.F} & Parallel random number seed initialization. \\
+\file{sub.lynx.camb.F} & CAMB power spectrum reader and interpolator.  Handles fNL non-Gaussianity. \\
+\bottomrule
+\end{longtable}
+
+\section{Force Calculation}
+
+\begin{longtable}{L{5.5cm} L{8cm}}
+\toprule
+\textbf{File} & \textbf{Description} \\
+\midrule
+\endhead
+\file{tsc.c} / \file{tsc\_omp2.c} & Triangular Shaped Cloud (TSC) mass assignment with OpenMP. \\
+\file{fft.c} & FFTW3-MPI wrapper for forward/backward transforms. Thread-safe initialization. \\
+\file{pm\_main\_sub\_fftw3.F} & Low-level FFTW3 workspace management routines. \\
+\file{p\_solver.F} & Poisson solver in Fourier space.  Applies $\tilde\phi(k) = -\tilde\rho(k)/k^2$. \\
+\file{fda4.c} & 4th-order Finite Difference Approximation for force interpolation from grid to particles. \\
+\file{VarPM.c} & Variable-resolution PM: TSC and FDA with non-uniform z-slab widths. \\
+\file{Treewalk.c} & Barnes--Hut tree construction and traversal.  Builds linked-list octree with opening angle criterion. \\
+\file{kjhtpm.mod1.gpu.omp.c} & Tree force correction with OpenMP.  Cell-linked-list construction (\code{ParticleCellLinkedList}) and force evaluation (\code{treecorrection}). \\
+\file{force\_spline.c} & Spline-softened gravitational force kernel. \\
+\file{pcorr.c} & Poisson correction factor for CPL dark energy models. \\
+\bottomrule
+\end{longtable}
+
+\section{Domain Decomposition and Migration}
+
+\begin{longtable}{L{6cm} L{7.5cm}}
+\toprule
+\textbf{File} & \textbf{Description} \\
+\midrule
+\endhead
+\file{pmigrate.kisti.omp.c} & MPI particle migration between z-slabs.  Handles periodic boundaries and bulk transfer. \\
+\file{mydomaindecomposition.omp.c} & Adaptive load balancing.  Adjusts z-slab boundaries when load imbalance exceeds 1\%. \\
+\file{slicemigrate.c} & FFT data migration between non-uniform and uniform z-slab layouts. \\
+\file{determine\_mpi\_misc\_param.c} & Computes FFTW3 domain layout parameters (\code{local\_nz}, \code{local\_z\_start}). \\
+\bottomrule
+\end{longtable}
+
+\section{Cosmology and Analysis}
+
+\begin{longtable}{L{5cm} L{8.5cm}}
+\toprule
+\textbf{File} & \textbf{Description} \\
+\midrule
+\endhead
+\file{FLRW.F} & Friedmann equation solver.  Growth factors for $\Lambda$CDM, quintessence, and CPL models.  Functions: \code{growth()}, \code{growthcpl()}, \code{cplOmegaMatter()}, \code{HofEz()}, \code{PoissonCor()}. \\
+\file{NR.F} & Numerical Recipes: Simpson integration (\code{qsimp}), Romberg integration (\code{qromo}), ODE solver (\code{odeint}). \\
+\file{correl.F} & On-the-fly power spectrum measurement with TSC window deconvolution. \\
+\file{PreFoF.mod2.omp.c} & Parallel Friends-of-Friends group finder preparation (ghost exchange). \\
+\bottomrule
+\end{longtable}
+
+\section{I/O and Utilities}
+
+\begin{longtable}{L{5cm} L{8.5cm}}
+\toprule
+\textbf{File} & \textbf{Description} \\
+\midrule
+\endhead
+\file{kjhrw.c} & Parallel binary I/O for particle snapshots (read/write). \\
+\file{header.c} & ASCII parameter file reader/writer. \\
+\file{flagwriting.c} & Output scheduling: determines when to trigger data writes based on scale factor, step count, and flag files. \\
+\file{Memory2.c} & Stack-based memory pool allocator. \\
+\file{timerutil.c} & Wall-clock timer utilities. \\
+\file{indexing.c} & Particle-to-Lagrangian-grid index mapping. \\
+\bottomrule
+\end{longtable}
+
+\section{Header Files}
+
+\begin{longtable}{L{4.5cm} L{9cm}}
+\toprule
+\textbf{File} & \textbf{Description} \\
+\midrule
+\endhead
+\file{pmheader.h} & Particle structures (\code{pmparticletype}, \code{treeparticletype}), \code{SimParameters}, position macros (\code{XofP}, \code{YofP}, \code{ZofP}), timer macros. \\
+\file{pm\_common.h} & Global PM variables: \code{np}, \code{pmparticles}, \code{treeparticles}, \code{den}, \code{work}. \\
+\file{flow.h} & Evolution factors (\code{EvolFact}), half-step structure, output flag function declarations. \\
+\file{Memory.h} & Memory allocator API and the \code{Realloc} macro. \\
+\file{varpm.h} & Variable PM function declarations and \code{NZBound} structure. \\
+\file{common\_simparam.h} & Legacy common-block-style simulation parameters. \\
+\file{fortran.h} & C--Fortran interface macros and FFTW/MPI includes. \\
+\file{kjhtree.h} & Tree structure definitions. \\
+\file{force\_spline.h} & Spline kernel function declarations. \\
+\bottomrule
+\end{longtable}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PART III: Algorithms
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Algorithms}
+
+%======================================================
+\chapter{Initial Conditions}
+\label{ch:ic}
+%======================================================
+
+\section{Zel'dovich Approximation (1st-Order LPT)}
+
+The Zel'dovich approximation displaces particles from a uniform grid according to the linear displacement field:
+\begin{equation}
+  \mathbf{x}(\mathbf{q}, a) = \mathbf{q} - \frac{D_1(a)}{a}\,\nabla\phi^{(1)}(\mathbf{q})
+\end{equation}
+where $\mathbf{q}$ is the Lagrangian coordinate (stored as \code{indx}), $D_1(a)$ is the linear growth factor, and $\phi^{(1)}$ is the gravitational potential from the linear density field.
+
+The velocity is:
+\begin{equation}
+  \mathbf{v} = \dot{a}\,\mathbf{x} - a\,\dot{D}_1\,\nabla\phi^{(1)}
+\end{equation}
+
+\section{2nd-Order LPT}
+
+The 2LPT adds a second-order correction:
+\begin{equation}
+  \mathbf{x}(\mathbf{q}, a) = \mathbf{q} - D_1(a)\,\boldsymbol{\Psi}^{(1)}(\mathbf{q}) + D_2(a)\,\boldsymbol{\Psi}^{(2)}(\mathbf{q})
+\end{equation}
+where $D_2 \approx -\frac{3}{7}D_1^2$ for $\Omega_m = 1$, and
+\begin{equation}
+  \nabla^2\phi^{(2)} = \sum_{i>j}\left(\phi^{(1)}_{,ii}\,\phi^{(1)}_{,jj} - (\phi^{(1)}_{,ij})^2\right)
+\end{equation}
+
+The 2LPT initial conditions are significantly more accurate than Zel'dovich for moderate-to-high redshift starts ($z_i \sim 50$).
+
+\begin{algorithm}[IC Generation]
+\begin{enumerate}[leftmargin=2em]
+  \item Generate Gaussian random field $\delta(\mathbf{k})$ using input $P(k)$ and random seed.
+  \item Compute 1st-order potential: $\tilde\phi^{(1)}(\mathbf{k}) = -\tilde\delta(\mathbf{k})/k^2$.
+  \item (2LPT only) Compute 2nd-order source and potential $\phi^{(2)}$.
+  \item Assign displacements and velocities to particles on a uniform grid.
+  \item Migrate particles to their correct MPI domains.
+\end{enumerate}
+\end{algorithm}
+
+
+%======================================================
+\chapter{PM Force Calculation}
+\label{ch:pm}
+%======================================================
+
+\section{TSC Mass Assignment}
+
+The Triangular Shaped Cloud scheme assigns particle mass to the $3^3 = 27$ nearest grid points using a quadratic spline window:
+\begin{equation}
+  W_\text{TSC}(x) = \begin{cases}
+    \frac{3}{4} - x^2 & |x| \leq \frac{1}{2} \\[4pt]
+    \frac{1}{2}\left(\frac{3}{2} - |x|\right)^2 & \frac{1}{2} < |x| \leq \frac{3}{2} \\[4pt]
+    0 & |x| > \frac{3}{2}
+  \end{cases}
+\end{equation}
+
+The density field is:
+\begin{equation}
+  \rho(\mathbf{x}_g) = \frac{m_p}{\Delta x^3}\sum_p W_\text{TSC}(\mathbf{x}_g - \mathbf{x}_p)
+\end{equation}
+
+The implementation in \file{tsc\_omp2.c} uses OpenMP parallelization with thread-local density arrays to avoid race conditions.
+
+\section{FFT-Based Poisson Solver}
+
+\begin{algorithm}[PM Force Pipeline]
+\begin{enumerate}[leftmargin=2em]
+  \item \textbf{Density field} $\rho(\mathbf{x})$ computed via TSC.
+  \item \textbf{Forward FFT}: $\tilde\rho(\mathbf{k}) = \mathcal{F}[\rho]$ using FFTW3-MPI (\file{fft.c}).
+  \item \textbf{Poisson solve}: $\tilde\phi(\mathbf{k}) = -\tilde\rho(\mathbf{k})/k^2$ (\file{p\_solver.F}).
+  \item \textbf{Dark energy correction}: $\tilde\phi \to p_\text{corr}(a)\cdot\tilde\phi$ for CPL models.
+  \item \textbf{Backward FFT}: $\phi(\mathbf{x}) = \mathcal{F}^{-1}[\tilde\phi]$.
+  \item \textbf{Force interpolation}: 4th-order FDA gives $\mathbf{F} = -\nabla\phi$ at particle positions (\file{fda4.c}).
+\end{enumerate}
+\end{algorithm}
+
+\section{4th-Order FDA}
+
+The force at grid point $i$ is:
+\begin{equation}
+  F_i = \frac{1}{12\Delta x}\left(-\phi_{i+2} + 8\phi_{i+1} - 8\phi_{i-1} + \phi_{i-2}\right)
+\end{equation}
+This requires padding the potential mesh by 3 slices below and 4 slices above the local domain, handled by \code{paddingpotentialmesh()} in \file{VarPM.c}.
+
+\section{Variable PM (VarPM)}
+
+With \flag{VarPM} enabled, each MPI rank can own a non-uniform number of z-slabs.  The z-domain boundaries (\code{zmin}, \code{zmax}) adapt to balance particle counts.  The TSC and FDA routines accept variable z-boundaries and convert between the local variable-width domain and the global uniform FFTW layout via \code{tsc\_fftw\_mesh()} in \file{VarPM.c}.
+
+
+%======================================================
+\chapter{Tree Force Correction}
+\label{ch:tree}
+%======================================================
+
+\section{Cell-Linked-List Construction}
+
+The tree correction uses a cell-linked-list rather than a full octree.  In \code{ParticleCellLinkedList()} (\file{kjhtpm.mod1.gpu.omp.c}):
+
+\begin{enumerate}[leftmargin=2em]
+  \item Divide the local domain into cells of width $\sim 4$ grid spacings.
+  \item Assign each particle to its cell using integer truncation of position.
+  \item Build a linked list through the \code{next} pointer of \code{treeparticletype}.
+\end{enumerate}
+
+\begin{remark}[Index Clamping]
+Particle positions near domain boundaries can produce out-of-range cell indices.  The code clamps indices to valid range:
+\begin{lstlisting}[style=ccode,numbers=none]
+if(ix < 0) ix = 0;  if(ix >= mxm1) ix = mxm1;
+if(iy < 0) iy = 0;  if(iy >= mym1) iy = mym1;
+if(iz < 0) iz = 0;  if(iz >= mzm1) iz = mzm1;
+\end{lstlisting}
+\end{remark}
+
+\section{Force Evaluation}
+
+For each particle, the tree correction computes the short-range gravitational force from nearby particles using a spline-softened kernel.  The opening angle criterion $\theta$ determines whether to use a cell's center of mass or open it:
+
+\begin{equation}
+  \frac{\ell}{r} < \theta \quad\Rightarrow\quad \text{use cell monopole}
+\end{equation}
+
+where $\ell$ is the cell size and $r$ is the particle--cell distance.  The opening angle is adaptively adjusted during the simulation:
+
+\begin{lstlisting}[style=ccode,numbers=none]
+if(stepcount < 10)       theta = 0.3;
+else if(stepcount < 20)  theta = 0.35;
+else if(stepcount < 60)  theta = 0.4;
+else                     theta = 0.45;
+\end{lstlisting}
+
+\section{Type Conversion}
+
+Before tree correction, particles are expanded in-place from 32-byte \code{pmparticletype} to 40-byte \code{treeparticletype} (\code{pm2treetype}), and shrunk back afterward (\code{tree2pmtype}).
+
+\begin{algorithm}[pm2treetype --- In-Place Expansion]
+\begin{enumerate}[leftmargin=2em]
+  \item \code{Realloc} the particle array to $N_p \times 40$ bytes.
+  \item Copy backwards (from last particle to first) using \code{memmove} to avoid overwriting:
+\begin{lstlisting}[style=ccode,numbers=none]
+for(i = nplong-1; i >= 0; i--) {
+    memmove((char*)treeparticles + i*sizeof(treeparticletype),
+            (char*)pmparticles + i*sizeof(pmparticletype),
+            sizeof(pmparticletype));
+}
+\end{lstlisting}
+  \item The \code{next} pointer (last 8 bytes) is left uninitialized and set during linked-list construction.
+\end{enumerate}
+\end{algorithm}
+
+
+%======================================================
+\chapter{Time Integration}
+\label{ch:timeint}
+%======================================================
+
+\section{Leap-Frog Scheme}
+
+The code uses a kick-drift-kick leap-frog integrator where the scale factor $a$ advances by a fixed step $\Delta a$:
+
+\begin{align}
+  v_{n+1/2} &= v_n + \frac{\Delta a}{2}\,\dot{v}_n \quad \text{(kick)} \\
+  x_{n+1} &= x_n + \Delta a\,v_{n+1/2} \quad \text{(drift)} \\
+  v_{n+1} &= v_{n+1/2} + \frac{\Delta a}{2}\,\dot{v}_{n+1} \quad \text{(kick)}
+\end{align}
+
+The velocity factors \code{fact1} and \code{fact2} encode the cosmological dependence:
+\begin{equation}
+  \ddot{a} = -\frac{4\pi}{3}\left(\frac{1}{a^2} + (1+3w)\frac{\Omega_\Lambda}{\Omega_m}\,\frac{f_\text{DE}(a)}{a^3}\right)
+\end{equation}
+computed by \code{appapsq()} in \file{FLRW.F}.
+
+\section{Half-Step Synchronization}
+
+The \code{halfstep} structure controls when positions and velocities are synchronized (both at the same time level) for output:
+\begin{itemize}[leftmargin=2em]
+  \item \code{halfstep.first = 1, second = 0}: First half-step (velocity kick only).
+  \item \code{halfstep.first = 1, second = 1}: Second half-step (complete the full step).
+\end{itemize}
+
+This is triggered by output flags (\code{flagsyncpdata}) and the PreFoF group finder.
+
+
+%======================================================
+\chapter{Cosmology: CPL Dark Energy}
+\label{ch:cpl}
+%======================================================
+
+\section{CPL Parameterization}
+
+The equation of state for dark energy is parameterized as:
+\begin{equation}
+  w(a) = w_0 + w_a\,(1 - a/a_\text{max})
+\end{equation}
+where $a_\text{max}$ is the maximum scale factor.  The standard $\Lambda$CDM model corresponds to $w_0 = -1$, $w_a = 0$.
+
+\section{Expansion History}
+
+The Hubble parameter $H(a)$ in a flat universe:
+\begin{equation}
+  H^2(a) = H_0^2\left[\Omega_m\left(\frac{a_\text{max}}{a}\right)^3 + (1-\Omega_m-\Omega_\Lambda)\left(\frac{a_\text{max}}{a}\right)^2 + \Omega_\Lambda\,f_\text{DE}(a)\right]
+\end{equation}
+where
+\begin{equation}
+  f_\text{DE}(a) = \left(\frac{a}{a_\text{max}}\right)^{-3(1+w_0+w_a)}\exp\!\left[-3w_a\left(1 - \frac{a}{a_\text{max}}\right)\right]
+\end{equation}
+is the dark energy scaling function, implemented as \code{scaleDE()} in \file{FLRW.F}.
+
+\section{Growth Factor}
+
+The matter growth factor $D_+(a)$ satisfies:
+\begin{equation}
+  \ddot{D}_+ + 2H\dot{D}_+ = \frac{3}{2}\Omega_m(a)\,H^2\,C_w(a)\,D_+
+\end{equation}
+where $C_w(a) = 1 + (1+w)\,\Omega_\text{DE}(a)/\Omega_m(a)$ encodes the dark energy clustering.  This is solved numerically via the RK4 integrator in \code{growthcpl()} with the \code{odeint} driver from Numerical Recipes.
+
+\section{Poisson Correction}
+
+For dark energy models with clustering ($c_s = 0$), the Poisson equation is modified:
+\begin{equation}
+  \nabla^2\phi = 4\pi G\,\bar\rho_m\,\delta_m\,p_\text{corr}(a)
+\end{equation}
+where
+\begin{equation}
+  p_\text{corr}(a) = 1 + \frac{\Omega_\text{DE}(a)\,D_\text{DE}(a)}{\Omega_m(a)\,D_m(a)}
+\end{equation}
+This correction is computed at each time step by \code{PoissonCor()} in \file{FLRW.F} and applied in \code{pmmain.c}.
+
+For smooth dark energy ($c_s = 1$), $p_\text{corr} = 1$ (no clustering correction).
+
+
+%======================================================
+\chapter{Domain Decomposition and Migration}
+\label{ch:domain}
+%======================================================
+
+\section{Slab Decomposition}
+
+The simulation box is divided into $N_\text{rank}$ slabs along the z-axis.  Each MPI rank owns a contiguous range of z-coordinates $[z_\text{min}, z_\text{max})$.  This aligns with the FFTW3-MPI data layout, which distributes the first (z) dimension across ranks.
+
+\section{Particle Migration}
+
+After positions are updated, particles that have moved outside their domain are exchanged via \code{migrate()} in \file{pmigrate.kisti.omp.c}:
+
+\begin{algorithm}[Particle Migration]
+\begin{enumerate}[leftmargin=2em]
+  \item Scan all local particles; classify as staying, moving up, or moving down.
+  \item Send ``up'' particles to rank+1, receive from rank$-$1 (periodic).
+  \item Send ``down'' particles to rank$-$1, receive from rank+1 (periodic).
+  \item Compact local array and append received particles.
+  \item If multi-slab migration is needed, repeat for larger shifts.
+\end{enumerate}
+\end{algorithm}
+
+\section{Load Balancing}
+
+The domain rebalancer in \file{mydomaindecomposition.omp.c} monitors the particle count ratio:
+\begin{equation}
+  R = \frac{N_\text{max} - N_\text{min}}{N_\text{avg}} \times 100\%
+\end{equation}
+If $R > 1\%$ (the \code{MAXINHOMO} threshold), z-slab boundaries are adjusted so each rank holds approximately equal numbers of particles.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PART IV: Reference
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Reference}
+
+%======================================================
+\chapter{Troubleshooting}
+\label{ch:troubleshooting}
+%======================================================
+
+\section{Common Issues}
+
+\subsection{Segfault in Tree Correction}
+
+\textbf{Symptom}: Crash in \code{treecorrection()} or \code{ParticleCellLinkedList()}.
+
+\textbf{Possible causes}:
+\begin{enumerate}[leftmargin=2em]
+  \item \textbf{Strict aliasing violation in \code{pm2treetype}}: At \code{-O2}, the compiler may reorder reads/writes of \code{pmparticles[i]} and \code{treeparticles[i]} because they are different types.  The fix is to use \code{memmove} through \code{char*} pointers.
+  \item \textbf{Out-of-bounds cell index}: Particles near domain boundaries can produce negative or overly large cell indices.  Ensure clamping is applied.
+  \item \textbf{Insufficient memory}: If \code{NMEG} is too small, the \code{Realloc} in \code{pm2treetype} fails.
+\end{enumerate}
+
+\subsection{Malloc Error (Extremely Large Allocation)}
+
+\textbf{Symptom}: ``Error allocating memory \textit{N} bytes in Malloc()'' where \textit{N} is petabytes.
+
+\textbf{Cause}: OpenMP clamping bug.  Check that the y and z index limits use \code{mym1}/\code{mzm1} (not \code{mxm1}) in \code{ParticleCellLinkedList()}.
+
+\subsection{Power Spectrum File Not Found}
+
+Ensure the \code{Ascii Powerfile} path in \file{params.dat} is relative to the run directory, not the source directory.
+
+\section{Performance Tuning}
+
+\begin{itemize}[leftmargin=2em]
+  \item \textbf{NMEG}: Set large enough to hold all particles plus FFT workspace.  Rule of thumb: $\text{NMEG} \geq 40 \times N_p^{1/3}$ MB per rank for $N_p$ total particles.
+  \item \textbf{MPI vs OpenMP balance}: Use fewer MPI ranks with more threads per rank to reduce communication overhead.  Typically 4--8 threads per rank.
+  \item \textbf{Opening angle $\theta$}: Larger values are faster but less accurate.  The adaptive scheme (0.3--0.45) is a good default.
+\end{itemize}
+
+
+%======================================================
+\chapter{Example: CPL Dark Energy Simulation}
+\label{ch:example}
+%======================================================
+
+This chapter walks through a complete simulation with CPL parameters $\Omega_m = 0.31$, $w_0 = -1.2$, $w_a = -2.4$.
+
+\section{Parameter File}
+
+\begin{codebox}[params.dat]
+\begin{lstlisting}[style=paramstyle]
+#Start of the Ascii Header of the GOTPM Simulation
+define INITIAL CONDITION   = 2
+define OmegaMatter0        = 0.31
+define OmegaBaryon0        = 0.044
+define OmegaLambda0        = 0.69
+define Hubble              = 0.72
+define nPS                 = 0.96
+define Boxsize(Mpc/h)      = 1024
+define w0 of DE (CPL)      = -1.2
+define wa of DE (CPL)      = -2.4
+define Sound Speed of DE   = 0
+define Amax                = 48
+define Anow                = 1
+define Astep               = 0.025
+define Nx                  = 1024
+define Ny                  = 1024
+define Nz                  = 1024
+define Nspace              = 1
+define Theta               = 0.3
+define Nstep               = 1881
+define Stepcount           = 1
+define Stepnum             = 1
+define Iseed               = -56
+define Powerflag           = 2
+define Ascii Powerfile     = camb.z=47_0.31_-1.2_-2.4.ascii
+define rvfilename          = INITIAL
+define rvprefix            = INITIAL
+#End of Ascii Header
+\end{lstlisting}
+\end{codebox}
+
+\section{Compilation}
+
+\begin{codebox}[Rules.make Settings]
+\begin{lstlisting}[style=bash,numbers=none]
+CC = mpiicx
+FC = mpiifx
+OPT = -DINTEL -O2 -qopenmp
+CDFLAGS = -DWGROUPSIZE=80 -DNMEG=8000L -DINCLUDE_TREE_FORCE \
+          -D_LARGE_FILES -DSAVESLICE -DPMSEEDFORCE
+COMFLAGS = -DINDEX -DVarPM -DXYZDBL -DMPI_SLOW
+FFTWDIR = /home/kjhan/local/
+\end{lstlisting}
+\end{codebox}
+
+\section{Execution}
+
+With 16 MPI ranks and 4 OpenMP threads per rank (64 cores total):
+
+\begin{codebox}
+\begin{lstlisting}[style=bash,numbers=none]
+export OMP_NUM_THREADS=4
+srun --ntasks=16 --cpus-per-task=4 ./namu.exe params.dat
+\end{lstlisting}
+\end{codebox}
+
+\section{Expected Output}
+
+The simulation starts at $z = 47$ ($a = 1$) and evolves to $z = 0$ ($a = 48$) in 1881 steps.  Key output messages:
+\begin{itemize}[leftmargin=2em]
+  \item \code{Poisson Correction factor X at anow = Y} --- Dark energy correction at each step.
+  \item \code{CPU(F-FFTW3)} and \code{CPU(B-FFTW3)} --- Forward/backward FFT timing.
+  \item \code{Treecorrectingtime CPU= X} --- Tree force correction timing.
+  \item \code{Step N CPU= X} --- Total time per step.
+\end{itemize}
+
+
+\end{document}
