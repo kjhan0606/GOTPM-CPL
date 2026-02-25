@@ -1,0 +1,232 @@
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+CCCCC                                                            CCCCC
+CCCCC              GOTPM2 (Nov. 29, 2009)                        CCCCC
+CCCCC                                                            CCCCC
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+#####################################################################################################
+Version 1.3 
+    version note (July 17 2009):
+		(1) This version adopts a user-friendly input and output.
+		(2) Tree calculation adopts the double-precision accuracy.
+		(3) There is no limitation on the CPU number and one-dimensional 
+			grid number.
+		(4) A routine to find the best value of seed number which can 
+			generate the best simulated power spectrum. For this test, 
+			the iseed number should be set positive in the input parameter file.
+Version 1.2 
+	version note:
+		(1) This version adopts the double precision accuracy for 
+			the simulation particles (-DXYZDBL). It operates in a single 
+			precision but retains the double precision accuracy after all.
+		(2) The orginal particle type is
+			typedef struct pmparticletype {
+				float x,y,z,vx,vy,vz;
+				indextype indx;
+			}
+			where (x,y,z) is the position vector. But if XYZDBL option is set, 
+			(x,y,z) is the offset vector from its Lagrangian point.
+		(3) If XYZDBL compile option is set in, the output particle data 
+			adopt the offset vector (xoffset, yoffset, zoffset) rather than the 
+			typical position vector. In order to obtain the position of a 
+			particle from the offset vector p->(x,y,z),
+				x = fmod(p->x + (p->indx%( nx/nspace)            )*nspace+nx,nx)
+				y = fmod(p->y + (p->indx%((nx/nspace)*(ny/nspace))*nspace+ny,ny)
+				z = fmod(p->z + (p->indx/((nx/nspace)*(ny/nspace))*nspace+nz,nz)
+		where nx, ny, and nz is the mesh size in the x, y, and z direction.
+Version 1.1 
+	version note (April 19, 2009): 
+		(1) This version of GOTPM is utilizing the CAMB package to generate 
+			the initial power spectrum. A flag whether to read or generate 
+			power spectrum is in the 10'th line of the parameter file, 
+			"params.dat". - 14/Nov/08
+		(2) It still uses the single precision accuracy.
+		(3) Binary files of the power spectrum should have the same 
+			version of camb libraries, or it fails.
+		(4) External ascii file is read to input the inflation power 
+			while the transfer function should be provided by the CAMB (Source).
+
+##################################
+##################################
+Source Files : 
+##################################
+
+	Make-related FILES:
+		Makefile: main script for makefile
+		Rules.make: some compilation rules and options.
+
+	SOURCE CODES:
+		namu.c: main body of the code
+		ZeldovichInit.F: parallel PMSEED using force array 
+		mysub.f90: subroutines to use  camb packages to generate 
+			the power spectrum or read from outside
+		fda4.c: 4-point FDA force calculation in the PM part 
+		tsc.c: TSC density measures in PM part 
+		correl.F: Calculation of the correlation in PM part 
+		pmigrate.c: a routine for particle migration between parallel nodes.
+		p_solver.F: Poisson solver in PM part 
+		pm_main_sub.F: FFTW related subroutines 
+		Memory2.c: memory administration part
+		timerutil.c: time check routines 
+		VarPM.c: a mesh-communication routine for variable-height PM domains 
+		slicemigrate.c: for the migration of slices between parallel nodes 
+		savexzslice.c: a subroutine to save density slabs 
+		flagwriting.c: a subroutine to check when to dump whole particle 
+			data on disks
+		force_spline.c: generating the correction values that will be 
+			used by the tree jobs 
+		Treewalk.c: routines for tree build and walks  
+		mydomaindecomposition.c: an efficient domain-decomposition algorithm 
+		lightcone.c: a subroutine to save lightcone data 
+		kjhrw.c: a subroutine to dump whole particle data 
+		sub.lynx.camb.F: many subroutines used by the PMSEED 
+		kjhtpm.c: main body of the TREE jobs 
+		indexing.c: a routine to decide the particle index 
+		FindSeed.F: a routine to find the best seed number
+
+	Main Parameter File:
+		(1) Type "make misc" to generate "mkpfile.exe" which makes 
+			the default parameter file.
+	    (2) Generate default parameter file: use mkpfile.exe
+		(3) The simulation parameters can be set as 
+			"define [parameter] = [value]".
+				- A line starting with "#" is assumed to be a comment.
+				- rvfilename and rvprefix should be "INITIAL" at the 
+					starting of the simulation.
+				- Nx, Ny, and Nz should be same.
+				- Powerflag can have three values, 0, 1, and 2
+				  0: do not read power spectrum. Instead, generate 
+				  the power spectrum with CAMB Source
+				  1: read the power spectrum file whose name is written 
+				  right after this flag. In this case, "Powerfile" should be set.
+				  2: read the transfer file and use the input ascii power file.
+				     The ascii power file should consist of two columns, k and P(k).
+
+
+    How to generate the power spectrum by the stand-alone command.
+		(1) Type "make misc", then you can get viewpower.exe and 
+		mkpower.exe commands.
+		(2) Type "mkpower.exe params.dat", then you can get a power 
+			spectrum file of the same name as written in the "params.dat". 
+			The cosmological model of the generated power spectrum is 
+			also given by the "params.dat"
+		(3) Type "viewpower.exe input_PS_file" gives you the basic 
+			information of the model parameters and power spectrum (k and P(k)).
+
+	How to generate the path of the point of view of observers.
+		(1) Type "make misc", then you can get mktrack.exe command file.
+		(2) Create the "initial viewer file"
+		(3) Run mktrack.exe to generate the simulation readable file.
+
+	Flow-controlling FILES:
+		(1) "Suddenstop.flag": a flag file to indicate when to stop or 
+			to save backup files. The "\pm" sign after number
+			indicates whether to proceed further ("+") or stop 
+			("-", respectively). If another character is given, it stops 
+			without dumping any backup file.
+		(2) Generally the backup file names are "INITIAL.#####*****" 
+		    and "params.#####" where ##### is five digits of step 
+			number and ***** is five digits of parallel node number.
+		(3) "WriteSync&WholeDen.flag": a file containing redshifts numbers
+		    when to save whole synchronized, power spectrum, and density data.
+####################
+####################
+How to Run:
+####################
+    MANUAL STARTING:
+	(1) To begin the simulation:
+	    mpirun -np #_of_processors -machinefile $machinefilename -nolocal namu.exe params.dat
+
+	(2) To restart from backup file (ex. with step number "101". There should be params.00101 file): 
+		mpirun -np #_of_processors -machinefile $machinefilename -nolocal namu.exe params.00101 
+
+    SCRIPT STARTING:
+####################
+####################
+Compilers: mpif77, mpicc, and F90 are needed. F90 is for the CAMB package.
+####################
+
+####################
+####################
+Compilation options:
+####################
+
+	COMFLAGS:
+		-DINDEX: padding "index" to the particle structure (mandatory)
+		-DVarPM: admission of variable size of local domain slabs (mandatory)
+		
+	FDFLAGS:
+		-DINCLUDE_TREE_FORCE: including tree correction  (mandatory)
+		-DEH98: using power spectrum of Eisenstein & Hu (1998). If not set, then CAMB Source
+                        is used to derive the power spectrum
+
+	CDFLAGS:
+		-DNMEG=3720L: the maximum size of memory for each node (in Megabytes).
+			Here character "L" should be attached after digital number to declare 
+			the long integer type.
+		-DCORRELATION_FUNCTION: a flag to measure the correlation (optional ?)
+		-DINCLUDE_TREE_FORCE: for tree correction (mandatory)
+		-D_LARGE_FILES: to access large-size files (> 4GB) particularly in linux boxes
+		-DSAVESLICE: a flag for saving density slabs (optional but strongly recommended)
+			Usually the program saves x-z density slab (collective densities of three slabs
+			at y=0, 1, 2) for each time step.
+		-DPMSEEDFORCE: using the force array to measure velocities in the PMSEED part
+			(mandatory)
+		-DLAM: LAM-MPI option for the program argument issue (in quest it is not necessary)
+		-DDEBUG: a flag for printing out huge messages for foolish debugging (optional)
+		-DXYZDBL: a flag to use index for the double precision of the particle position.
+
+###################
+###################
+Notes on the source files:
+###################
+
+
+###################
+###################
+NOTES:
+###################
+
+	(1) The cell-opening criterion "theta" applied to measure the tree force should be smaller
+		at smaller "stepcount" because, at high redshift, the nearly homogeneous
+		distribution of particles sees the net force to particles to be much smaller and,
+		sometimes, the error in resulting force grows seriously. 
+	(2) To compile this code, you need fftw version 2 for full paralle usage.
+		Please install fftw with single precisions. You can obtain the
+		source code from http://www.fftw.org/
+	(3) Now, the OpenMP implementation is complete. But the speedup is somewhat poor
+		(10% slower than MPI-only version). Further improvement are needed.
+	(4) ...
+
+###################
+###################
+INSTALLATION:
+###################
+	(1) Modify the Rules.make for proper compilation options.
+	(2) Type make.
+
+	notes: 
+		(1) Some fortran compilers have an issue to hand over the program argument 
+		to the C main. In that case, you should use "-nofor-main" option when linking 
+		the precompiled C and Fotran object files.
+		(2) Please be careful when using the LAM mpi which do not permit the argc and
+		argv in the MPI_Init function.
+
+###################
+Running:
+	(1) Modify the "params.dat" and "machines" which has a list of parallel nodes.
+	(2) Submit a parallel job as
+		"mpirun -np 32 -nolocal -machinefile machines namu.exe params.dat"
+
+###################
+Restart:
+	(1) Check the "params.[timestep] where "[timestep]" means the number of 
+		time step to be started.  Inside the file, there should be "SyncINITIAL.[timestep]" 
+		rather than "INITIAL" that is written in the "params.dat". Then, the program 
+		checks those files "SyncINITIAL.[timestep]" whether they are existing properly.
+	(2) Restart the job as
+		"mpirun -np 32 -nolocal -machinefile machines namu.exe params.[timestep]"
+
+###################
+Performance:
+	namu.profile.ps: the profiling results
+	plot.eps: the performance plot

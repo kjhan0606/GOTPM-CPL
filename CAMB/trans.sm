@@ -1,0 +1,48 @@
+erase
+notation -2 2 -2 2
+ctype default
+ltype 0
+
+location 6000 27000 6000 27000
+expand 1.01
+lweight 3
+ticksize -1 10 -1 10
+limits -3.5 4 -9 0.1
+box
+expand 1.3
+xlabel k (Mpc/h)
+ylabel |T(k)|^2
+
+data wmap5_transfer_out_z=20.dat
+read { x 1 y 2 z 3 k 7}
+set lx = lg(x)
+set ly = lg(y/$(y[20]))
+set lz = lg(z/$(z[20]))
+set lk = lg(k/$(k[20]))
+#ctype default
+#connect lx ly
+
+ctype red
+connect lx lz
+
+#ctype green
+#connect lx lk
+
+
+lweight 2
+data wmap5_transfer_out_z=100.dat
+read { x 1 y 2 z 3 k 7}
+set lx = lg(x)
+set ly = lg(y/$(y[20]))
+set lz = lg(z/$(z[20]))
+set lk = lg(k/$(k[20]))
+#ctype default
+#connect lx ly
+
+ctype red
+connect lx lz
+
+#ctype green
+#connect lx lk
+
+

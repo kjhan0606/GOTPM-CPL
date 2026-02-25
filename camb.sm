@@ -1,0 +1,65 @@
+ctype = CTYPE() concat 255+256*(165+256*0)
+ctype = CTYPE(STRING) concat 'orange'
+ctype = CTYPE() concat 135+256*(206+256*235)
+ctype = CTYPE(STRING) concat 'skyblue'
+
+
+notation -2 2 -2 2
+erase
+ltype 0
+ctype default
+
+limits -4.2 0.1 -2 4.9
+ticksize -1 10 -1 10
+expand 1.1
+lweight 4
+box
+xlabel k [h/Mpc]
+ylabel P(k)
+
+data camb.z=0.dat
+lines 2  793
+read { x 1 y 2}
+set lx = lg(x)
+set ly = lg(y)
+ctype default
+connect lx ly
+
+data camb.less.z=0.dat
+lines 2  793
+read { x 1 y 2}
+set lx = lg(x)
+set ly = lg(y)
+ctype skyblue
+ltype 0
+connect lx ly
+
+data camb.cpl0.z=0.dat
+lines 2  793
+read { x 1 y 2}
+set lx = lg(x)
+set ly = lg(y)
+ctype red
+ltype 0
+connect lx ly
+
+data camb.more.z=0.dat
+lines 2  793
+read { x 1 y 2}
+set lx = lg(x)
+set ly = lg(y)
+ctype orange
+ltype 0
+connect lx ly
+
+
+
+
+data cambmatter.z=0.dat
+lines 2  793
+read { x 1 y 2}
+set lx = lg(x)
+set ly = lg(y)
+ctype green
+ltype 0
+connect lx ly

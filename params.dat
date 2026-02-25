@@ -1,0 +1,61 @@
+#Start of the Ascii Header of the GOTPM Simulation
+#------------------
+### INITIAL CONDITION: 1 (ZA)/ 2 (2'nd order LPT)
+define INITIAL CONDITION   = 2
+define OmegaMatter0        = 0.26
+define OmegaBaryon0        = 0.044
+define OmegaLambda0        = 0.74
+define fNL                 = 0
+define gNL                 = 0
+
+#------------------
+### Hubble parameter is in 100km/sec/Mpc.
+### nPS is the power spectral index.
+### Boxsize should be in unit of Mpc/h.
+define Hubble              = 0.72
+define nPS                 = 0.96
+define Boxsize(Mpc/h)      = 512
+
+#------------------
+### DE Model: PPF/FLUID/AXIONEFFECTIVEFLUID/EARLYQUINTESSENCE
+### As is the amplitude of P(k) at zi.
+define OmegaNeutrino       = 0.000331776
+define OmegaSterileNeutrino = 0
+define DarkEnergyModel     = PPF
+define w0 of DE (CPL)      = -1
+define wa of DE (CPL)      = 0
+define Sound Speed of DE   = 1
+define ampRescaling flag   = 0
+define As(CMB,LCDM =2.076e-9) = 2.154e-09
+### powerflag = 0/1/2 (0: generate on the run, 
+###  --> 1: read from camb file, 2: read from ascii file
+define Powerflag           = 2
+define Ascii Powerfile     = camb.z=0.ascii
+
+#------------------
+define Amax                = 48
+define Anow                = 48
+define Astep               = 0.25
+
+#------------------
+### Nx, Ny, and Nz should be same & nspace should be int.
+define Nx                  = 512
+define Ny                  = 512
+define Nz                  = 512
+define Nspace              = 1
+
+#------------------
+define Theta               = 0.3
+define Nstep               = 189
+define Stepcount           = 1
+define Stepnum             = 1
+
+#------------------
+define Iseed               = -56
+
+#------------------
+define rvfilename          = INITIAL
+define rvprefix            = INITIAL
+
+#------------------
+#End of Ascii Header

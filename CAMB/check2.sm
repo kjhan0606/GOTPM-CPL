@@ -1,0 +1,42 @@
+erase
+
+ctype default
+ltype 0
+notation -3 3 -3 3
+
+location 7000 27000 7000 27000
+limits -3.2 1.2 -5.2 -1.5
+ticksize -1 10 -1 10
+lweight 3
+expand 1.01
+box
+expand 1.3
+xlabel k (h/Mpc)
+ylabel k^2P(k)
+
+
+data my_matterpower.dat
+read { x 1 y 2}
+set lx = lg(x)
+set ly = lg(x**2*y)
+ctype blue
+connect lx ly
+
+
+data my.pk.dat
+read { x 1 y 2}
+set lx = lg(x)
+set ly = lg(x**2*y)
+
+ctype red
+connect lx ly
+ctype default
+
+data wmap5_linmatterpower_100.dat
+#data tmp.dat
+read { x 1 y 2}
+set lx = lg(x)
+set ly = lg(x**2*y)
+ctype green
+connect lx ly
+
