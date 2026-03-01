@@ -1236,4 +1236,367 @@ A null, zero, or negative value in the \code{mbp} field indicates that the MBP w
 The total mass before and after a merger event may differ due to mass loss during the merger process.  Analysis should account for this discrepancy.
 
 
+%======================================================
+\chapter{PSB Subhalo Finder}
+\label{ch:psb}
+%======================================================
+
+The PSB (Phase-Space Based) subhalo finder is a standalone MPI post-processing tool located in \file{SRC(FoF\_PSB\_Free)/}.  It identifies gravitationally bound substructures within FoF halos by combining density peak detection, contour-based region separation, and iterative energy unbinding.  The executable \code{hfind.exe} reads the FoF output produced in Chapter~\ref{ch:fof} and writes a subhalo catalog for each time step.
+
+\begin{remark}[Standalone Binary]
+\code{hfind.exe} is compiled and run independently from the main simulation.  It requires only the FoF halo catalog and member particle files as input.
+\end{remark}
+
+\section{Algorithm Overview}
+
+\begin{algorithm}[PSB Subhalo Identification Pipeline]
+The subhalo finder operates in six stages:
+\begin{enumerate}[leftmargin=2em]
+  \item \textbf{Density estimation}: Compute the SPH density at each particle position using an adaptive grid and the W4 cubic spline kernel.
+  \item \textbf{Peak detection}: Identify local density maxima using a 26-neighbor criterion.
+  \item \textbf{Density contour separation}: For each pair of neighboring peaks, perform a binary search in density to find the saddle-point contour that separates them.  Use depth-first-search (DFS) flood-fill to assign particles to each peak's region.
+  \item \textbf{Energy unbinding}: Remove kinetically unbound particles via iterative tidal-radius and total-energy checks.
+  \item \textbf{FoF substructure linking}: Apply tree-accelerated Friends-of-Friends linking to associate remaining shell particles with the nearest bound core.
+  \item \textbf{Output}: Write the subhalo catalog and background (unbound) particles.
+\end{enumerate}
+\end{algorithm}
+
+\section{Density Estimation}
+
+The density field is computed on a sub-grid using the SPH W4 cubic spline kernel.
+
+\begin{definition}[SPH W4 Cubic Spline Kernel]
+The smoothing kernel used for density estimation is:
+\begin{equation}
+  W(r,h) = \frac{1}{\pi h^3} \begin{cases}
+    1 - \tfrac{3}{2}q^2 + \tfrac{3}{4}q^3, & 0 \le q < 1 \\[4pt]
+    \tfrac{1}{4}(2-q)^3, & 1 \le q < 2 \\[4pt]
+    0, & q \ge 2
+  \end{cases}
+\end{equation}
+where $q = r/h$ and $h$ is the smoothing length.  The implementation is in \file{find\_density.f}.
+\end{definition}
+
+The density grid has a maximum size of \code{MAX\_BOX\_MEMORY} $= 421{,}875{,}000$ cells ($750^3$).  The grid dimensions are adapted to the bounding box of each FoF halo's member particles.  MPI-parallel density estimation exchanges boundary layers (\code{nbuff}${}=5$ cells) between adjacent ranks via \code{MPI\_Sendrecv}.
+
+\begin{algorithm}[Density Field Construction]
+\begin{enumerate}[leftmargin=2em]
+  \item Compute bounding box of all particles in the halo.
+  \item Determine sub-grid cell size $h$ and grid dimensions $(n_x, n_y, n_z)$.
+  \item Assign each particle to the nearest grid cell.
+  \item For each particle, deposit its contribution to neighboring cells using $W(r,h)$.
+  \item Exchange boundary layers between MPI ranks.
+  \item Interpolate the grid density back to particle positions.
+\end{enumerate}
+\end{algorithm}
+
+\section{Peak Detection}
+
+\begin{algorithm}[Density Peak Detection]
+\begin{enumerate}[leftmargin=2em]
+  \item For each particle $i$ with density $\rho_i > \code{peakthreshold}$, examine all 26 neighbors in the density grid (the $3^3 - 1$ surrounding cells).
+  \item If $\rho_i$ is strictly greater than all 26 neighbors, mark particle $i$ as a density peak and set the \code{WP\_PEAK} flag.
+  \item Peaks with fewer than \code{MIN\_HALO\_SEED\_NUM}${}=10$ particles in their immediate neighborhood are discarded.
+\end{enumerate}
+The maximum number of peaks per halo is \code{MAX\_PEAK\_NUM}${}=100{,}000$.
+\end{algorithm}
+
+\begin{infobox}[Peak Threshold]
+The parameter \code{peakthreshold}${}=1.5$ (set in \file{sub\_find\_dimension.inc}) controls the minimum overdensity required for a local maximum to be considered a density peak.  Lower values produce more candidate peaks but increase computation time.
+\end{infobox}
+
+\section{Density Contour Separation}
+
+Once density peaks are identified, the algorithm must separate overlapping regions.  For each pair of adjacent peaks, a binary search in density threshold locates the saddle-point contour.
+
+\begin{algorithm}[Contour Separation via Binary Search]
+\begin{enumerate}[leftmargin=2em]
+  \item For each peak, find the nearest neighboring peak.
+  \item Set the initial density search range: $[\rho_\text{low}, \rho_\text{high}] = [\code{downthreshold}, \min(\rho_{\text{peak},1}, \rho_{\text{peak},2})]$.
+  \item Bisect: set $\rho_\text{mid} = (\rho_\text{low} + \rho_\text{high})/2$.
+  \item Perform a DFS flood-fill from each peak, visiting only cells with $\rho > \rho_\text{mid}$.
+  \item If the two flood-fills meet (regions are connected), raise $\rho_\text{low} = \rho_\text{mid}$; otherwise lower $\rho_\text{high} = \rho_\text{mid}$.
+  \item Repeat until $|\rho_\text{high} - \rho_\text{low}| < \code{exactthreshold} = 0.2$.
+\end{enumerate}
+The converged $\rho_\text{mid}$ defines the core density threshold for each peak.
+\end{algorithm}
+
+\begin{definition}[DFS Flood-Fill]
+Starting from a density peak, the depth-first search visits neighboring cells on the packed 3D grid.  A cell is visited if its density exceeds the current threshold $\rho_\text{mid}$ and it has not been previously visited (checked via the \code{WP\_VISITED} flag).  The maximum recursion depth is \code{ndepth}${}=10{,}000{,}000$.
+\end{definition}
+
+\section{Energy Unbinding}
+
+Particles in each core and surrounding shell are tested for gravitational binding.  Unbound particles are iteratively removed.
+
+\begin{algorithm}[Iterative Energy Unbinding]
+\begin{enumerate}[leftmargin=2em]
+  \item Compute the tidal radius $R_\text{tidal}$ for each core from its mass and the background density.
+  \item For each particle within $R_\text{tidal}$, compute:
+    \begin{itemize}[leftmargin=2em]
+      \item Kinetic energy: $K = \frac{1}{2} m |\mathbf{v} - \mathbf{v}_\text{cm}|^2$
+      \item Gravitational potential: $\Phi = -G \sum_j m_j / \sqrt{r_{ij}^2 + \epsilon^2}$
+    \end{itemize}
+  \item Remove particles with $E = K + \Phi > 0$ (unbound).
+  \item Recompute the center of mass and tidal radius.
+  \item Repeat for \code{BOUND\_ITER}${}=4$ iterations.
+\end{enumerate}
+Cores are processed in order of increasing mass (smallest first).
+\end{algorithm}
+
+\begin{important}
+The ordering of cores during unbinding matters.  Processing smaller cores first prevents them from being absorbed into larger neighbors before their own binding state is evaluated.
+\end{important}
+
+The potential calculation uses the spline-softened force kernel initialized from \file{force\_spline.mod3.c}.  The number of integration sub-steps is \code{NSTEP}${}=5$, and the potential is averaged over \code{REPEAT\_POTENT\_NUM}${}=4$ evaluations.
+
+\section{FoF Substructure Linking}
+
+After unbinding, remaining shell particles are associated with cores via tree-accelerated Friends-of-Friends linking.
+
+\begin{algorithm}[Tree-Based FoF Linking]
+\begin{enumerate}[leftmargin=2em]
+  \item Build a spatial tree over all core and shell particles.
+  \item For each particle, walk the tree to find neighbors within the linking length $b = \code{FOF\_LINK} \times \bar{d}$, where $\bar{d}$ is the mean particle separation and $\code{FOF\_LINK} = 0.2$.
+  \item If two particles are linked, merge their group labels.
+  \item Iterate until no new links are formed.
+  \item Assign each FoF group to the core it contains (or the nearest core if none).
+\end{enumerate}
+The tree walk is implemented in \file{fof.mod8.F} using the tree structures from \file{Treewalk.hfind.mod2.c}.
+\end{algorithm}
+
+\section{MPI Parallelization}
+
+The code uses a master-worker pattern.  Rank~0 reads the FoF catalog and distributes individual halos to worker ranks for subhalo analysis.
+
+\begin{algorithm}[Master-Worker Communication Protocol]
+\begin{enumerate}[leftmargin=2em]
+  \item \textbf{Broadcast}: Rank~0 broadcasts cosmological parameters (box size, $h$, $\Omega_m$, $\Omega_\Lambda$, scale factor) to all ranks.
+  \item \textbf{Distribution}: For each halo in the catalog:
+    \begin{enumerate}
+      \item Rank~0 probes for a \code{READY} message from any worker.
+      \item Rank~0 sends the particle count (\code{NP\_TAG}), positions (\code{R\_TAG}), and indices (\code{INDX\_TAG}) to the ready worker.
+    \end{enumerate}
+  \item \textbf{Processing}: Each worker calls \code{subhalo\_den()} on the received halo data.
+  \item \textbf{Collection}: The worker sends back the particle-to-halo mapping (\code{PT2H\_TAG}) and the number of subhalos found (\code{MPEAK\_TAG}).
+  \item \textbf{Output}: Rank~0 writes the results for each halo to disk (\code{WRITING} tag signals write phase).
+\end{enumerate}
+\end{algorithm}
+
+The following MPI tags are used for inter-rank communication:
+
+\begin{longtable}{L{5cm} C{2cm} L{6.5cm}}
+\toprule
+\textbf{Tag Name} & \textbf{Value} & \textbf{Purpose} \\
+\midrule
+\endhead
+\code{READY}            & 1   & Worker signals readiness \\
+\code{WRITING}          & 3   & Write-phase synchronization \\
+\code{NP\_TAG}          & 17  & Number of particles in halo \\
+\code{INDX\_TAG}        & 24  & Particle index array \\
+\code{R\_TAG}           & 32  & Position data (double) \\
+\code{PT2H\_TAG}        & 55  & Particle-to-halo mapping \\
+\code{VR\_TAG}          & 83  & Velocity data (float) \\
+\code{MPEAK\_TAG}       & 96  & Number of subhalos (peaks) found \\
+\code{DEN\_TAG}         & 100 & Density data \\
+\code{PEAK\_DEN\_TAG}   & 108 & Peak density values \\
+\bottomrule
+\end{longtable}
+
+\section{Data Structures}
+
+\begin{definition}[basicparticletype --- 40 bytes]
+\begin{lstlisting}[style=ccode,numbers=none]
+typedef long indxtype;
+typedef struct basicparticletype {
+    double x, y, z;       /* position (double precision) */
+    float vx, vy, vz;     /* velocity (single precision) */
+    indxtype indx;         /* particle index */
+} basicparticletype;
+\end{lstlisting}
+Defined in \file{defs.h}.  This is the primary particle type used throughout the subhalo finder.  Positions are stored in double precision for accuracy; velocities in single precision to save memory.
+\end{definition}
+
+\begin{definition}[Halo]
+\begin{lstlisting}[style=ccode,numbers=none]
+typedef struct Halo {
+    size_t np;             /* number of particles */
+    double x, y, z;        /* center position */
+    float vx, vy, vz;      /* center velocity */
+} Halo;
+\end{lstlisting}
+Defined in \file{hfind.mod1.c}.  Stores the properties of each FoF halo read from the catalog.
+\end{definition}
+
+\begin{definition}[Coretype]
+\begin{lstlisting}[style=ccode,numbers=none]
+typedef struct Coretype {
+    int peak;              /* peak particle index */
+    int nummem;            /* number of member particles */
+    float coredensity;     /* core density threshold */
+    float cx, cy, cz;      /* center of mass position */
+    float cvx, cvy, cvz;   /* center of mass velocity */
+    float Rtidal;          /* tidal radius */
+    unsigned char flag;    /* status flags */
+} Coretype;
+\end{lstlisting}
+Defined in \file{subhaloden.mod3.c}.  Each density peak that survives the filtering stages becomes a \code{Coretype} entry.
+\end{definition}
+
+Key arrays used during processing:
+\begin{itemize}[leftmargin=2em]
+  \item \code{den[]} --- SPH density at each particle position.
+  \item \code{den2ptl[]} --- mapping from density-sorted index to particle index.
+  \item \code{ptl2halonum[]} --- final particle-to-subhalo assignment ($-9999$ if unbound).
+  \item \code{ppoint[]} --- linked-list pointers for region traversal.
+\end{itemize}
+
+Working particle flags (bit flags in \file{subhaloden.mod3.c}):
+\begin{longtable}{L{4.5cm} C{2cm} L{7cm}}
+\toprule
+\textbf{Flag} & \textbf{Value} & \textbf{Meaning} \\
+\midrule
+\endhead
+\code{WP\_RESET}     & \code{0x00} & No flags set \\
+\code{WP\_PEAK}      & \code{0x01} & Particle is a density peak \\
+\code{WP\_VISITED}   & \code{0x02} & Visited during DFS flood-fill \\
+\code{WP\_CORE}      & \code{0x04} & Assigned to a core region \\
+\code{WP\_SHELL}     & \code{0x08} & Assigned to a shell region \\
+\code{WP\_BOUND}     & \code{0x10} & Gravitationally bound to a core \\
+\code{WP\_REMAINING} & \code{0x20} & Unassigned after all stages \\
+\bottomrule
+\end{longtable}
+
+\section{Parameters}
+
+\subsection{Compile-Time Parameters (\file{header.h})}
+
+\begin{longtable}{L{5cm} C{2cm} L{6.5cm}}
+\toprule
+\textbf{Parameter} & \textbf{Default} & \textbf{Description} \\
+\midrule
+\endhead
+\code{MAX\_PEAK\_NUM}          & 100\,000     & Maximum density peaks per halo \\
+\code{MIN\_HALO\_SEED\_NUM}    & 10           & Minimum particles in a halo seed \\
+\code{FOF\_LINK}               & 0.2          & FoF linking length (mean separation units) \\
+\code{NSTEP}                   & 5            & Potential integration sub-steps \\
+\code{BOUND\_ITER}             & 4            & Energy unbinding iterations \\
+\code{REPEAT\_POTENT\_NUM}     & 4            & Potential averaging evaluations \\
+\code{TIDAL\_STRIDE\_NUM}      & 1000         & Stride for tidal radius sampling \\
+\code{MAX\_BOX\_MEMORY}        & 421\,875\,000 & Maximum density grid cells ($750^3$) \\
+\code{SNGL\_CPU\_PTL\_NUM\_MAX} & $10^8$      & Maximum particles per CPU \\
+\code{SERIAL\_MAXIMUM}         & 10\,000      & Threshold for serial processing \\
+\bottomrule
+\end{longtable}
+
+\subsection{Density Grid Parameters (\file{sub\_find\_dimension.inc})}
+
+\begin{longtable}{L{5cm} C{2cm} L{6.5cm}}
+\toprule
+\textbf{Parameter} & \textbf{Default} & \textbf{Description} \\
+\midrule
+\endhead
+\code{tthreshold}     & 1.5           & Density threshold for region growing \\
+\code{peakthreshold}  & 1.5           & Minimum density for peak candidacy \\
+\code{downthreshold}  & 20.0          & Lower bound for contour binary search \\
+\code{exactthreshold} & 0.2           & Convergence criterion for binary search \\
+\code{ndepth}         & 10\,000\,000  & Maximum DFS recursion depth \\
+\code{ndimension}     & 27            & 3D neighborhood size ($3^3$) \\
+\bottomrule
+\end{longtable}
+
+\subsection{Memory Configuration (\file{Rules.make})}
+
+\begin{longtable}{L{5cm} C{2cm} L{6.5cm}}
+\toprule
+\textbf{Parameter} & \textbf{Default} & \textbf{Description} \\
+\midrule
+\endhead
+\code{NMEG}             & 1700  & Memory pool per MPI rank (MB) \\
+\flag{\_LARGE\_FILES}   & ---   & Enable large file support \\
+\bottomrule
+\end{longtable}
+
+\section{Input and Output Formats}
+
+\subsection{Input Files}
+
+The subhalo finder reads two binary files produced by the FoF halo finder (Chapter~\ref{ch:fof}):
+\begin{itemize}[leftmargin=2em]
+  \item \file{FoF\_halo\_cat.NNNNN} --- FoF halo catalog header containing simulation parameters (box size, $h$, $\Omega_m$, $\Omega_b$, $\Omega_\Lambda$, $w_0$, $w_a$, grid size, scale factor) and the number of halos.
+  \item \file{FoF\_member\_particle.NNNNN} --- Binary dump of member particles for each FoF halo (positions, velocities, and indices as \code{basicparticletype}).
+\end{itemize}
+
+\begin{remark}[Unit Conventions]
+Positions in the input files are in grid units (integer grid index).  The code converts to physical units ($h^{-1}\,\text{Mpc}$, comoving) using the box size and grid dimensions read from the catalog header.  Velocities are stored as simulation-internal values and converted to km\,s$^{-1}$ via the scale-factor-dependent conversion factors \code{r1kineticfact} and \code{r2kineticfact}.
+\end{remark}
+
+\subsection{Output Files}
+
+\begin{itemize}[leftmargin=2em]
+  \item \file{HFIND.DAT.NNNNN} --- Binary subhalo catalog.  For each FoF halo, the file contains:
+    \begin{enumerate}[leftmargin=2em]
+      \item \code{int mpeak}: number of subhalos found.
+      \item For each subhalo $i = 0, \ldots, \code{mpeak}-1$:
+        \begin{itemize}[leftmargin=2em]
+          \item \code{int wnp}: number of member particles.
+          \item \code{double x,y,z} $\times$ \code{wnp}: positions (physical units).
+          \item \code{double vx,vy,vz} $\times$ \code{wnp}: velocities (km\,s$^{-1}$).
+          \item \code{indxtype indx} $\times$ \code{wnp}: particle indices.
+        \end{itemize}
+    \end{enumerate}
+  \item \file{background\_ptl.NNNNN} --- Particles not bound to any subhalo (same binary format as above, without subhalo grouping).
+\end{itemize}
+
+\section{Building and Running}
+
+\begin{codebox}[Compilation]
+\begin{lstlisting}[style=bash,numbers=none]
+cd SRC(FoF_PSB_Free)/
+# Edit Rules.make: set NMEG, compiler paths
+vi Rules.make
+make all
+\end{lstlisting}
+\end{codebox}
+
+\begin{codebox}[Execution]
+\begin{lstlisting}[style=bash,numbers=none]
+mpirun -np <N> ./hfind.exe <step_number>
+\end{lstlisting}
+\end{codebox}
+
+\begin{infobox}[Prerequisites]
+Before running \code{hfind.exe}, ensure that the FoF halo output files (\file{FoF\_halo\_cat.NNNNN} and \file{FoF\_member\_particle.NNNNN}) exist in the working directory.  These are produced by the FoF analysis described in Chapter~\ref{ch:fof}.
+\end{infobox}
+
+\begin{remark}[Compiler Selection]
+The default \file{Rules.make} uses \code{mpiifort} and \code{mpiicc} (Intel classic compilers).  For Intel oneAPI 2025+, change to \code{mpiifx} and \code{mpiicx}.  The \code{-mcmodel=medium} flag is required for large memory allocations.
+\end{remark}
+
+\section{Source File Reference}
+
+\begin{longtable}{L{5.5cm} L{8cm}}
+\toprule
+\textbf{File} & \textbf{Description} \\
+\midrule
+\endhead
+\file{hfind.mod1.c}           & Main driver: MPI setup, I/O, master-worker loop \\
+\file{subhaloden.mod3.c}      & Core subhalo algorithm: density peaks, cores, unbinding \\
+\file{find\_density.f}        & SPH density estimation (Fortran, W4 kernel) \\
+\file{hfind.sub.F}            & Halo seed finding, binary search separation \\
+\file{hfind.sub.mod3.F}       & Extended halo seed routines \\
+\file{fof.mod8.F}             & FoF substructure linking (Fortran) \\
+\file{find\_near.c}           & Near-neighbor search \\
+\file{Treewalk.near.c}        & Tree walk for neighbor finding \\
+\file{Treewalk.hfind.mod2.c}  & Tree walk for subhalo FoF linking \\
+\file{force\_spline.mod3.c}   & Spline-softened force kernel initialization \\
+\file{Memory2.c}              & Custom memory pool manager \\
+\file{header.h}               & Compile-time parameters and constants \\
+\file{defs.h}                 & Type definitions (\code{basicparticletype}, macros) \\
+\file{tree.h}                 & Tree node and particle structures \\
+\file{sub\_find\_dimension.inc} & Density grid parameters (Fortran include) \\
+\bottomrule
+\end{longtable}
+
+
 \end{document}

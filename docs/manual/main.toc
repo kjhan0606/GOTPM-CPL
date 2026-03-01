@@ -95,4 +95,22 @@
 \contentsline {subsection}{\numberline {16.6.2}Fluctuating Small Halos}{55}{subsection.16.6.2}%
 \contentsline {subsection}{\numberline {16.6.3}Null Values}{55}{subsection.16.6.3}%
 \contentsline {subsection}{\numberline {16.6.4}Mass Conservation}{55}{subsection.16.6.4}%
+\contentsline {chapter}{\numberline {17}PSB Subhalo Finder}{57}{chapter.17}%
+\contentsline {section}{\numberline {17.1}Algorithm Overview}{57}{section.17.1}%
+\contentsline {section}{\numberline {17.2}Density Estimation}{57}{section.17.2}%
+\contentsline {section}{\numberline {17.3}Peak Detection}{58}{section.17.3}%
+\contentsline {section}{\numberline {17.4}Density Contour Separation}{58}{section.17.4}%
+\contentsline {section}{\numberline {17.5}Energy Unbinding}{59}{section.17.5}%
+\contentsline {section}{\numberline {17.6}FoF Substructure Linking}{59}{section.17.6}%
+\contentsline {section}{\numberline {17.7}MPI Parallelization}{60}{section.17.7}%
+\contentsline {section}{\numberline {17.8}Data Structures}{61}{section.17.8}%
+\contentsline {section}{\numberline {17.9}Parameters}{62}{section.17.9}%
+\contentsline {subsection}{\numberline {17.9.1}Compile-Time Parameters (\texttt {header.h})}{62}{subsection.17.9.1}%
+\contentsline {subsection}{\numberline {17.9.2}Density Grid Parameters (\texttt {sub\_find\_dimension.inc})}{62}{subsection.17.9.2}%
+\contentsline {subsection}{\numberline {17.9.3}Memory Configuration (\texttt {Rules.make})}{62}{subsection.17.9.3}%
+\contentsline {section}{\numberline {17.10}Input and Output Formats}{63}{section.17.10}%
+\contentsline {subsection}{\numberline {17.10.1}Input Files}{63}{subsection.17.10.1}%
+\contentsline {subsection}{\numberline {17.10.2}Output Files}{63}{subsection.17.10.2}%
+\contentsline {section}{\numberline {17.11}Building and Running}{63}{section.17.11}%
+\contentsline {section}{\numberline {17.12}Source File Reference}{64}{section.17.12}%
 \contentsfinish 
