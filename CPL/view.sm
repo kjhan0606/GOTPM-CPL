@@ -1,0 +1,17 @@
+erase
+#data Viewer3.dat
+data a.dat
+
+lines 2 2001
+
+read { t 1 x 4 y 5 z 6 vx 8 vy 9 vz 10 vvx 14 vvy 15 vvz 16}
+#limits 1300 1400 -1 1
+#limits t vz
+limits 0 2200 -2 2
+ctype default
+box
+connect t vz
+ctype red
+connect t vvz
+
+

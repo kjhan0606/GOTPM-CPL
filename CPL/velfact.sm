@@ -1,0 +1,36 @@
+erase
+ltype 0
+
+
+define omem 0.26
+define omel 0.74
+define w     -1
+define w2    -1.5
+define w3    -0.5
+
+set red=0, 5., 0.01
+
+
+
+set apsq = ($omem*(1+red)**3 + $omel*(1+red)**(3*($w+1)))
+
+set apsq2 = ($omem*(1+red)**3 + $omel*(1+red)**(3*($w2+1)))
+
+set apsq3 = ($omem*(1+red)**3 + $omel*(1+red)**(3*($w3+1)))
+
+set apsq = lg(apsq)
+set apsq2 = lg(apsq2)
+set apsq3 = lg(apsq3)
+
+ticksize 0.2 1 -1 10
+limits 0 5 -0.4 1.9
+box
+xlabel z
+ylabel \dot{a}^2
+ltype 0
+connect red apsq
+ltype 2
+connect red apsq2
+
+ltype 1
+connect red apsq3

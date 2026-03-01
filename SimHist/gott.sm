@@ -1,0 +1,275 @@
+#
+ctype default
+ctype = CTYPE() concat 200+256*(200+256*200)
+ctype = CTYPE(STRING) concat 'gray1'
+ctype = CTYPE() concat 150+256*(150+256*150)
+ctype = CTYPE(STRING) concat 'gray2'
+ctype = CTYPE() concat 100+256*(100+256*100)
+ctype = CTYPE(STRING) concat 'gray3'
+ctype = CTYPE() concat 50+256*(50+256*50)
+ctype = CTYPE(STRING) concat 'gray4'
+ctype = CTYPE() concat 140+256*(140+256*10)
+ctype = CTYPE(STRING) concat 'brown'
+ctype = CTYPE() concat 200+256*(120+256*10)
+ctype = CTYPE(STRING) concat 'brown2'
+ctype = CTYPE() concat 200+256*(20+256*190)
+ctype = CTYPE(STRING) concat 'pink'
+ctype = CTYPE() concat 150+256*(200+256*90)
+ctype = CTYPE(STRING) concat 'dgreen'
+
+ctype = CTYPE() concat 40+256*(90+256*180)
+ctype = CTYPE(STRING) concat 'sky'
+
+ctype = CTYPE() concat 60+256*(60+256*190)
+ctype = CTYPE(STRING) concat 'bgray'
+
+#define factor (1.1)
+define factor (1.2)
+#define factor (1.4)
+notation -4 4 -2 2
+
+erase
+
+lweight 3
+expand 1.01
+location 5000 30000 5000 30000
+set a = (2010-1969)*$factor + 1969
+set b = (10.95-2)*$factor + 2
+limits 1969  $(a[0])   2 $(b[0])
+#set b = (10.95-2)*$factor + 2
+limits 1969  $(a[0])   2 $(b[0])
+ticksize 2 10 -1 10
+box
+xlabel year
+ylabel N
+
+set x = 1950, 2080, 0.1
+set y = 50*2**((x-1970)/1.375)
+#set y = 50*10**((x-1970)/4.55)
+set ly = lg(y)
+connect x ly
+
+
+#ltype 1
+#set y = 50*10**((x-1970)/4.55)
+#set ly = lg(y)
+#connect x ly
+
+
+ltype 0
+
+
+
+
+
+
+set a = (2010-1969)*$factor + 1969
+set b = (10.95-2)*$factor + 2
+limits 1969  $(a[0])   2 $(b[0])
+ptype 30 3
+#define m1 (lg(8589934592))
+#relocate 2004 $m1 dot
+#define y1 (lg(68719476736))
+#ptype 4 0
+#relocate 2007 $y1 dot
+
+ctype brown
+
+ptype 30 3
+
+ptype 6 3
+
+define m1 (lg(128**3))
+define y1 (1990.166666)
+expand 2 lweight 3
+relocate $y1 $m1 dot
+define y2 ($y1-10)
+define m2 ($m1-0.07)
+expand 0.9 lweight 3
+relocate $y2 $m2 label Park (1990)
+
+ptype 6 3
+define m1 (lg(1024*75**2))
+define y1 (1991+2.5/12.)
+expand 2 lweight 3
+relocate $y1 $m1 dot
+define y2 ($y1-15.0)
+define m2 ($m1-0.07)
+expand 0.9 lweight 3
+relocate $y2 $m2 label Park & Gott (1991)
+
+ptype 6 3
+define m1 (lg(240**3))
+define y1 (1992+4.5/12.)
+expand 2 lweight 3
+relocate $y1 $m1 dot
+define y2 ($y1-16.0)
+define m2 ($m1-0.06)
+expand 0.9 lweight 3
+relocate $y2 $m2 label Vogeley et al. (1992)
+
+ptype 6 3
+define m1 (lg(240**3))
+define m1 (lg(380**3))
+define y1 (1994+7.5/12.)
+expand 2 lweight 3
+relocate $y1 $m1 dot
+define y2 ($y1-14.5)
+define m2 ($m1-0.06)
+expand 0.9 lweight 3
+relocate $y2 $m2 label Park et al. (1994)
+
+ptype 6 3
+define m1 (lg(1024**3))
+define y1 (1997+9.5/12.)
+expand 2 lweight 3
+relocate $y1 $m1 dot
+define y2 ($y1-9.5)
+define m2 ($m1-0.07)
+expand 0.9 lweight 3
+relocate $y2 $m2 label Park (1997)
+
+
+ctype pink
+ptype 5 2
+define m1 (lg(1024**3))
+define y1 (2004.166666)
+expand 3 lweight 3
+relocate $y1 $m1 dot
+define y2 ($y1-2)
+define y3 ($y1+5.5)
+define m2 ($m1-0.50)
+define m3 ($m1-0.18)
+expand 0.9 lweight 3
+relocate $y2 $m2 label Dubinski et al. (2004)
+#relocate $y3 $m3 label (2004)
+
+ptype 5 2
+define m1 (lg(2048**3))
+define y1 (2005)
+expand 3 lweight 3
+relocate $y1 $m1 dot
+define y2 ($y1-14)
+define m2 ($m1-0.06)
+expand 0.9 lweight 3
+relocate $y2 $m2 label Park et al. (2005)
+
+#ctype gray3
+#ptype 30 3
+#define m1 (lg(4096**3))
+#define y1 (2009.+3.5/12.)
+#expand 2 lweight 3
+#relocate $y1 $m1 dot
+#define y2 ($y1-16)
+#define m2 ($m1-0.09)
+#expand 0.9 lweight 3
+#relocate $y2 $m2 label Teyssier et al. (2009)
+
+ctype pink
+ptype 5 2
+define m1 (lg(4120**3))
+define y1 (2009.+8.5/12.)
+expand 3 lweight 3
+relocate $y1 $m1 dot
+define y2 ($y1-17)
+define y3 ($y1+1)
+define m2 ($m1-0.06)
+define m3 ($m1-0.40)
+expand 0.9 lweight 3
+#relocate $y2 $m2 label Kim et al. (2009,HR1)
+relocate $y2 $m2 label Kim et al. (2009,HR1)
+#relocate $y3 $m3 label (2009,HR1)
+
+ptype 5 2
+define m1 (lg(7210**3))
+define y1 (2011.+11.5/12.)
+expand 3 lweight 3
+relocate $y1 $m1 dot
+define y2 ($y1-16)
+define m2 ($m1-0.06)
+expand 0.9 lweight 3
+relocate $y2 $m2 label Kim et al. (2011,HR3)
+
+
+ptype 5 2
+define m1 (lg(6000**3))
+define y1 (2011.+11.5/12.)
+expand 3 lweight 3
+relocate $y1 $m1 dot
+define y2 ($y1-16)
+define m2 ($m1-0.18)
+expand 0.9 lweight 3
+relocate $y2 $m2 label Kim et al. (2011,HR2)
+
+
+data data.txt
+read { x 3 y 2}
+ctype sky
+set a = (2010-1969)*$factor + 1969
+set b = (22-1067)*$factor + 1067
+
+limits 1969 $(a[0])   1067 $(b[0])
+
+expand 2.3
+ptype 50 0
+points x y
+
+
+expand 0.6
+lweight 1
+
+relocate 1969.7 1020 label 1
+relocate 1974.7 1006 label 2
+relocate 1975.7 977 label 3
+relocate 1978.7 890 label 4
+relocate 1980.7 810 label 5
+relocate 1984.7 784 label 6
+relocate 1986.7 687 label 7
+relocate 1988.7 643 label 8
+relocate 1990.7 574 label 9
+relocate 1991.4 612 label 10
+relocate 1993.4 556 label 11
+relocate 1993.4 467 label 12
+relocate 1997.4 469 label 13
+relocate 1998.4 418 label 14
+relocate 2000.4 364 label 16
+relocate 1999.4 263 label 15
+relocate 2003.4 259 label 17
+relocate 2004.4 144 label 18
+relocate 2004.4 144 label 18
+relocate 2008.6 45 label 19
+relocate 2012.0 -32 label 20
+
+
+
+
+limits 0 10 0 10
+ptype 50 0
+ctype sky
+lweight 1
+expand 2.0 relocate 1 9.5 dot relocate 0.94 9.43 expand 0.6 label 1  Peebles (1970)
+expand 2.0 relocate 1 9.25 dot relocate 0.94 9.18 expand 0.6 label 2  Miyoshi & Kihara (1975)
+expand 2.0 relocate 1 9. dot relocate 0.94 8.93 expand 0.6 label 3  White (1976)
+expand 2.0 relocate 1 8.75 dot relocate 0.94 8.68 expand 0.6 label 4  Aarseth et al. (1979)
+expand 2.0 relocate 1 8.5 dot relocate 0.94 8.43 expand 0.6 label 5  Efstathiou & Eastwood (1981)
+expand 2.0 relocate 1 8.25 dot relocate 0.94 8.18 expand 0.6 label 6  Davis et al. (1985)
+expand 2.0 relocate 1 8. dot relocate 0.94 7.93 expand 0.6 label 7  White et al. (1987)
+expand 2.0 relocate 1 7.75 dot relocate 0.94 7.68 expand 0.6 label 8  Carlberg & Couchman (1989)
+expand 2.0 relocate 1 7.5 dot relocate 0.94 7.43 expand 0.6 label 9  Suto & Guginohara (1991)
+expand 2.0 relocate 1 7.25 dot relocate 0.88 7.18 expand 0.6 label 10  Warren et al. (1992)
+
+expand 2.0 relocate 6 2.75 dot relocate 5.88  2.68 expand 0.6 label 11  Gelb & Bertschinger (1994)
+expand 2.0 relocate 6 2.5 dot relocate 5.88 2.43 expand 0.6 label 12  Zurek et al. (1994)
+expand 2.0 relocate 6 2.25 dot relocate 5.88   2.17 expand 0.6 label 13  Jenkins et al. (1998)
+expand 2.0 relocate 6 2.00 dot relocate 5.88 1.93 expand 0.6 label 14  Governato et al. (1999)
+expand 2.0 relocate 6 1.75 dot relocate 5.88  1.68 expand 0.6 label 15  Colberg et al. (2000)
+expand 2.0 relocate 6 1.5 dot relocate 5.88 1.43 expand 0.6 label 16  Bode et al. (2001)
+expand 2.0 relocate 6 1.25 dot relocate 5.88   1.17 expand 0.6 label 17  Wambsganss et al. (2004)
+expand 2.0 relocate 6 1.00 dot relocate 5.88 0.93 expand 0.6 label 18  Springel et al. (2005; Millennium)
+expand 2.0 relocate 6 0.75 dot relocate 5.88  0.68 expand 0.6 label 19  Teyssier et al. (2009; Horizon)
+expand 2.0 relocate 6 0.5 dot relocate 5.88  0.43 expand 0.6 label 20  Angulo et al. (2012; MXXL)
+
+
+#ptype 30 0
+#define m1 (lg(4096**3))
+#relocate 2008.58 $m1 dot

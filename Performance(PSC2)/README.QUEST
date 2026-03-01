@@ -1,0 +1,24 @@
+8:   noomp --> 256^3
+	CPU(TSC)   0.6800001
+	CPU(F-FFT)   0.1700001
+	CPU(Poisson)   6.9999933E-02
+	CPU(B-FFT)   0.1600001
+	CPU(force) =   2.720000
+	Treecorrectingtime CPU= 82.964737
+	Step 1 CPU= 87.372543
+8:8 :omp2 --> 256^3 
+	CPU(TSC)    0.6699998
+	CPU(F-FFT)     0.1799998
+	CPU(Poisson)   6.9999933E-02
+	CPU(B-FFT)   0.1500001
+	CPU(force) =   1.390000
+	Treecorrectingtime CPU= 48.333046
+	Step 1 CPU= 51.313454
+16:16 :omp2 --> 256^3 
+	CPU(TSC)    0.3399999
+	CPU(F-FFT)   8.9999914E-02
+	CPU(Poisson)   5.9999943E-02
+	CPU(B-FFT)   8.9999914E-02
+	CPU(force) =   0.7000000
+	Treecorrectingtime CPU= 42.284187
+	Step 1 CPU= 44.018402

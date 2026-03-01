@@ -1,0 +1,12 @@
+mkmerge.exe: to make 75 step files for merging tree
+makeone.exe : final command to make one single big file
+
+
+
+Makefile.addQ : To add additional quantity to the MergerTree.dat with a different file name.
+
+
+Makefile.SMG  : Sorting "MergerTree.dat" to regroup for the same-majorgid mbp's. "sigv" is added.
+Makefile.SSMG : Making one Single File for "SortByMajorGidMergingTree.dat.*" after final sort and
+        trim irrelevant mbp's.
+

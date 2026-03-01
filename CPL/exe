@@ -1,0 +1,23 @@
+#./cpl -1 -1 > cpl.out1
+#./cpl -1 -0.8 > cpl.out2
+#./cpl -1 -0.6 > cpl.out3
+#./cpl -1 -0.4 > cpl.out4
+#./cpl -1 -0.2 > cpl.out5
+#./cpl -1 -0.0 > cpl.out6
+#./cpl -1  0.2 > cpl.out7
+#./cpl -1  0.4 > cpl.out8
+#./cpl -1  0.6 > cpl.out9
+#./cpl -1  0.8 > cpl.out10
+#./cpl -1  1.0 > cpl.out11
+
+./cpl -0.5 -1 >   cpl.1out1
+./cpl -0.5 -0.8 > cpl.1out2
+./cpl -0.5 -0.6 > cpl.1out3
+./cpl -0.5 -0.4 > cpl.1out4
+./cpl -0.5 -0.2 > cpl.1out5
+./cpl -0.5 -0.0 > cpl.1out6
+./cpl -0.5  0.2 > cpl.1out7
+./cpl -0.5  0.4 > cpl.1out8
+./cpl -0.5  0.6 > cpl.1out9
+./cpl -0.5  0.8 > cpl.1out10
+./cpl -0.5  1.0 > cpl.1out11

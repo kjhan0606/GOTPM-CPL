@@ -1,0 +1,90 @@
+4:16 no omp --> 256^3
+	CPU(TSC)   0.4099202
+	CPU(F-FFT)   0.1883681
+	CPU(Poisson)   4.8799992E-02
+	CPU(B-FFT)   0.1844640
+	CPU(force) =   1.208287
+	Treecorrectingtime CPU= 82.966827
+	Step 1 CPU= 85.998039
+
+4:4 :omp4 --> 256^3 
+	CPU(TSC)    1.845616
+	CPU(F-FFT)   0.4811678
+	CPU(Poisson)   0.1912956
+	CPU(B-FFT)   0.4723845
+	CPU(force) =   4.730672
+	Treecorrectingtime CPU= 111.701355
+	Step 1 CPU= 116.768700
+
+6:6 :omp4 --> 256^3
+	CPU(TSC)    1.318576
+	CPU(F-FFT)   0.3503842
+	CPU(Poisson)   0.1327362
+	CPU(B-FFT)   0.3415999
+	CPU(force) =   3.232512
+	Treecorrectingtime CPU= 79.301254
+	Step 1 CPU= 82.787552
+
+8:8 :omp4 --> 256^3
+	CPU(TSC)    1.062864
+	CPU(F-FFT)   0.2674246
+	CPU(Poisson)   9.7599983E-02
+	CPU(B-FFT)   0.2635198
+	CPU(force) =   2.389248
+	Treecorrectingtime CPU= 60.448837
+	Step 1 CPU= 63.204674
+
+10:10 :omp4 --> 256^3
+	CPU(TSC)   0.8959682
+	CPU(F-FFT)   0.2371678
+	CPU(Poisson)   8.5887909E-02
+	CPU(B-FFT)   0.2332640
+	CPU(force) =   1.952000
+	Treecorrectingtime CPU= 50.996849
+	Step 1 CPU= 53.394299
+
+12:12 :omp4 --> 256^3
+	CPU(TSC)   0.7983680
+	CPU(F-FFT)   0.2156963
+	CPU(Poisson)   7.4175835E-02
+	CPU(B-FFT)   0.2098398
+	CPU(force) =   1.604544
+	Treecorrectingtime CPU= 43.710758
+	Step 1 CPU= 45.805470
+
+16:16 :omp4 --> 256^3
+	CPU(TSC)   0.6695359
+	CPU(F-FFT)   0.1776319
+	CPU(Poisson)   5.0752163E-02
+	CPU(B-FFT)   0.1688480
+	CPU(force) =   1.194624
+	Treecorrectingtime CPU= 33.771275
+	Step 1 CPU= 35.477318
+
+
+20:20 :omp4 --> 256^3
+	CPU(TSC)   0.5758400
+	CPU(F-FFT)   0.1629920
+	CPU(Poisson)   5.0751686E-02
+	CPU(B-FFT)   0.1512804
+	CPU(force) =   1.006256
+	Treecorrectingtime CPU= 29.560455
+	Step 1 CPU= 31.158104
+
+26:26 :omp4 --> 256^3
+	CPU(TSC)   0.5182562
+	CPU(F-FFT)   0.1493278
+	CPU(Poisson)   3.5135746E-02
+	CPU(B-FFT)   0.1473761
+	CPU(force) =   0.7573757
+	Treecorrectingtime CPU= 24.890173
+	Step 1 CPU= 26.369638
+
+32:32 :omp4 --> 256^3
+	CPU(TSC)   0.4499362
+	CPU(F-FFT)   0.1268799
+	CPU(Poisson)   2.3423910E-02
+	CPU(B-FFT)   0.1259041
+	CPU(force) =   0.6051197
+	Treecorrectingtime CPU= 20.741997
+	Step 1 CPU= 22.108192

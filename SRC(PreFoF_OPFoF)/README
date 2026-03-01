@@ -1,0 +1,5 @@
+Friend-of-Friend halo finder using MPI+OpenMP
+
+opfof.c : original MPI program
+opfof.omp.c : MPI+OpenMP program
+opfof.omp2.c : faster due to master rank

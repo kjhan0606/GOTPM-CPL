@@ -1,0 +1,143 @@
+erase
+
+location 6000 27000 20000 31000
+notation -2 2 -2 2
+ctype default
+lweight 3
+ticksize -1 2 500 2000
+limits  0.5 1.9 0 13900
+box
+xlabel <\Delta nz>
+ylabel N_p /sec/NCPU
+
+ctype blue
+
+ctype default
+ltype 0
+relocate 1.2 13000 draw 1.45 13000 relocate 1.5 12700 label 256^3 
+ltype 1
+relocate 1.2 12000 draw 1.45 12000 relocate 1.5 11700 label 512^3 
+ltype 2
+relocate 1.2 11000 draw 1.45 11000 relocate 1.5 10700 label 1024^3 
+ltype 3
+relocate 1.2 10000 draw 1.45 10000 relocate 1.5  9700 label 2048^3 
+ltype 0
+
+ctype default
+ptype 30 3
+data openmp.le
+lines 2 9
+read { x 1 y 2 n 3}
+set co = n**3/y/x
+set lx = lg(n/x*4)
+set ly = (co)
+points lx ly
+connect lx ly
+echo $lx
+
+ltype  1
+lines 10 12
+read { x 1 y 2 n 3}
+set co = n**3/y/x
+set lx = lg(n/x*4)
+set ly = (co)
+points lx ly
+connect lx ly
+
+ltype  2
+lines 13 16
+read { x 1 y 2 n 3}
+set co = n**3/y/x
+set lx = lg(n/x*4)
+set ly = (co)
+points lx ly
+connect lx ly
+
+ltype 0
+ptype 6 1
+lines 17 17
+read { x 1 y 2 n 3}
+set co = n**3/y/x
+set lx = lg(n/x*4)
+set ly = (co)
+#points lx ly
+#connect lx ly
+
+ltype 3
+ptype 6 3
+lines 18 19
+read { x 1 y 2 n 3}
+set co = n**3/y/x
+set lx = lg(n/x*4)
+set ly = (co)
+points lx ly
+connect lx ly
+
+
+
+location 6000 27000 6000 17000
+notation -2 2 -2 2
+ctype default
+lweight 3
+ticksize -1 5 500 2000
+limits 0.8 3.6 0 13900
+box
+xlabel NCPU(OpenMP+MPI)
+ylabel N_p /sec/NCPU
+
+ltype  0
+ctype default
+ptype 30 3
+data openmp.le
+lines 2 9
+read { x 1 y 2 n 3}
+set n = n**3
+set co = n/y/x
+set lx = lg(x)
+set ly = (co)
+points lx ly
+connect lx ly
+
+ltype  1
+lines 10 12
+read { x 1 y 2 n 3}
+set n = n**3
+set co = n/y/x
+set lx = lg(x)
+set ly = (co)
+points lx ly
+connect lx ly
+
+ltype  2
+lines 13 16
+read { x 1 y 2 n 3}
+set n = n**3
+set co = n/y/x
+set lx = lg(x)
+set ly = (co)
+points lx ly
+connect lx ly
+
+ltype 0
+ptype 6 1
+lines 17 17
+read { x 1 y 2 n 3}
+set n = n**3
+set co = n/y/x
+set lx = lg(x)
+set ly = (co)
+#points lx ly
+#connect lx ly
+
+ltype 3
+ptype 6 3
+lines 18 19
+read { x 1 y 2 n 3}
+set n = n**3
+set co = n/y/x
+set lx = lg(x)
+set ly = (co)
+points lx ly
+connect lx ly
+
+

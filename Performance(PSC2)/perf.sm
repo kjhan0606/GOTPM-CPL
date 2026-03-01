@@ -1,0 +1,121 @@
+erase
+
+location 6000 27000 6000 27000
+notation -3 3 -3 3
+ctype default
+lweight 3
+ticksize -1 5 -1. 2
+limits  0.7 3.5 0.8 3.3
+box
+xlabel N_{cpu}
+ylabel Wallclock (sec.)
+
+ctype blue
+ptype 4 0 
+#relocate 1.9 1.0 dot relocate 1.95 1.0 label MPI only (AMD)
+ptype 4 3
+#relocate 1.9 1.1 dot relocate 1.95 1.1 label MPI+OpenMP(AMD threads=2)
+ctype default
+expand 0.9
+relocate 1.0 1.0 label MPI+OpenMP(alpha threads=4)
+
+ltype 0
+ctype default
+relocate 1.2 3.11 draw 1.4 3.11 relocate 1.5 3.1 label 256^3 
+ltype 1
+relocate 1.2 3.01 draw 1.4 3.01 relocate 1.5 3.00 label 512^3
+ltype 2
+relocate 1.2 2.91 draw 1.4 2.91 relocate 1.5 2.9 label 1024^3
+ltype 3
+relocate 1.2 2.81 draw 1.4 2.81 relocate 1.5 2.8 label 2048^3
+ltype 0
+#relocate 3 2.9 label 1300^3
+#relocate 3 3.13 label 2048^3
+ltype 4
+relocate 0 4 draw 4 0
+relocate 0 5 draw 4 1
+relocate 0 3 draw 4 -1
+relocate 0 6 draw 4 2
+
+ltype 0
+ctype default
+ptype 30 3
+data openmp.le
+lines 2 9
+read { x 1 y 2 n 3}
+set co = n**3/y/x
+set lx = lg(x)
+set ly = lg(y)
+points lx ly
+connect lx ly
+echo $lx
+
+ltype  1
+lines 10 12
+read { x 1 y 2 n 3}
+set co = n**3/y/x
+set lx = lg(x)
+set ly = lg(y)
+points lx ly
+connect lx ly
+
+ltype  2
+lines 13 16
+read { x 1 y 2 n 3}
+set co = n**3/y/x
+set lx = lg(x)
+set ly = lg(y)
+points lx ly
+connect lx ly
+
+ltype 0
+ptype 6 1
+lines 17 17
+read { x 1 y 2 n 3}
+set co = n**3/y/x
+set lx = lg(x)
+set ly = lg(y)
+#points lx ly
+#connect lx ly
+
+ptype 6 1
+lines 18 19
+read { x 1 y 2 n 3}
+set co = n**3/y/x
+set lx = lg(x)
+set ly = lg(y)
+points lx ly
+ltype 3
+connect lx ly
+
+ctype default
+ptype 4 3
+
+#data openmp.qu
+#lines 1 4
+#read { x 1 y 2 n 3}
+#set co = n**3/y/x
+#set lx = lg(x)
+#set ly = lg(y)
+#points lx ly
+#connect lx ly
+#
+#ltype 1
+#lines 5 8
+#read { x 1 y 2 n 3}
+#set co = n**3/y/x
+#set lx = lg(x)
+#set ly = lg(y)
+#points lx ly
+#connect lx ly
+#
+#ltype 0
+#ptype 4 0
+#data mpi.qu
+#lines 1 4
+#read { x 1 y 2 n 3}
+#set co = n**3/y/x
+#set lx = lg(x)
+#set ly = lg(y)
+points lx ly
+connect lx ly

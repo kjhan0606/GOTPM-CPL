@@ -1,0 +1,117 @@
+erase
+
+
+ltype 0
+ctype default
+
+location 5000 30000 5000 30000
+limits 2 -1.5 0.92 1.15
+ticksize -1 10 0.01 0.05
+
+
+
+expand 1.1
+lweight 4
+box
+expand 1.4
+lweight 3
+xlabel redshift
+
+ylabel D^m_+(Q)/D^m_+(\Lambda CDM)
+
+
+lweight 4
+expand 1.2
+data cpl.out1
+lines 2 101
+read { x 2 y 5}
+ltype 3
+ctype default
+set x = lg(x)
+connect x y
+
+data cpl.out2
+lines 2 101
+read { x 2 y 5}
+ltype 1
+ctype magenta
+set x = lg(x)
+connect x y
+
+data cpl.out3
+lines 2 101
+read { x 2 y 5}
+ltype 2
+ctype blue
+set x = lg(x)
+connect x y
+
+data cpl.out4
+lines 2 101
+read { x 2 y 5}
+ltype 3
+ctype red
+set x = lg(x)
+connect x y
+
+data cpl.out5
+lines 2 101
+read { x 2 y 5}
+ltype 0
+ctype magenta
+set x = lg(x)
+connect x y
+
+data cpl.out6
+lines 2 101
+read { x 2 y 5}
+ltype 0
+ctype default
+set x = lg(x)
+connect x y
+
+data cpl.out7
+lines 2 101
+read { x 2 y 5}
+ltype 1
+ctype default
+set x = lg(x)
+connect x y
+
+data cpl.out8
+lines 2 101
+read { x 2 y 5}
+ltype 2
+ctype green
+set x = lg(x)
+connect x y
+
+data cpl.out9
+lines 2 101
+read { x 2 y 5}
+ltype 2
+ctype blue
+set x = lg(x)
+connect x y
+
+data cpl.out10
+lines 2 101
+read { x 2 y 5}
+ltype 2
+ctype red
+set x = lg(x)
+connect x y
+
+
+
+ctype default
+ltype 0
+limits 0 10 0 10
+expand 0.9
+lweight 4
+
+relocate 5 9 label w_0= -1
+relocate 3 8 label from bottom w_1= -1,..,0.8 with 0.2 spacing
+
+
+

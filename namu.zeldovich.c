@@ -867,6 +867,9 @@ int ReadSimulationParameters(FILE *simfile,int *icont) {
 	FILE *rvfile;
 	int abortflag;
 
+	MPI_Comm_rank(MPI_COMM_WORLD,&myid);
+	MPI_Comm_size(MPI_COMM_WORLD,&nid);
+
 	if(myid==0){
 		/*
 		fscanf(simfile,"%f %f\n",&(simpar.boxsize),&(simpar.hubble));

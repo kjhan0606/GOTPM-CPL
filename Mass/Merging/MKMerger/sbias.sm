@@ -1,0 +1,58 @@
+erase
+ctype default
+ltype 0
+
+
+location 5000 30000 5000 30000
+
+
+
+
+
+
+ticksize -1 10 -1 10
+limits 11.8 15.4 -1.4 0.2
+lweight 4
+expand 1.01
+box
+
+expand 1.3
+lweight 3
+xlabel M (h^{-1}M_\odot)
+ylabel (b_*/b_*^{12})
+set  lgM=12, 15, 0.01
+set M = 10**lgM
+
+
+
+ltype 0
+set y = (-0.3 - 1/(lgM-3.54))* (lgM-12)
+connect lgM y
+
+
+ltype 1
+set y = (-0.3*0.8 - 1/(lgM-3.54))* (lgM-12)
+connect lgM y
+
+ltype 2
+set y = (-0.3*0.5 - 1/(lgM-3.54))* (lgM-12)
+connect lgM y
+
+ltype 3
+set y = (-0.3*0.2 - 1/(lgM-3.54))* (lgM-12)
+connect lgM y
+
+
+ltype 4
+set y = (-0.3*0.1 - 1/(lgM-3.54))* (lgM-12)
+connect lgM y
+
+
+
+
+
+limits 3 13 4 14
+
+relocate 4 8 label \beta=0.3
+
+relocate 4 7 label \gamma=0.1, 0.2, 0.5, 0.8, 1

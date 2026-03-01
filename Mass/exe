@@ -1,0 +1,7 @@
+#pgcc -c Treewalk.mod6.c Memory2.c subshape.c MassFunc.mod1.c
+#pgf77 -o MassFunc.mod1.exe MassFunc.mod1.o subshape.o spin.f Memory2.o Treewalk.mod6.o force_spline.mod2.o
+#make -f Makefile new
+#make -f Makefile.mpimf new
+#make -f Makefile.mpimfkp new
+pgcc -c Treewalk.mod6.c Memory2.c subshape.c MassFunc.mod2.c subnear.c find_near.c Treewalk.near.c -DNMEG=3000L
+pgf77 -o MassFunc.mod2.exe MassFunc.mod2.o subshape.o spin.f Memory2.o Treewalk.mod6.o force_spline.mod2.o subnear.o find_near.o Treewalk.near.o

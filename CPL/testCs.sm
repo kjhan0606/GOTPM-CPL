@@ -1,0 +1,32 @@
+erase
+
+
+ctype default
+ltype 0
+ticksize 0.1 0.5 0.0025 0.01
+
+
+location 5000 30000 5000 30000
+limits 0 3 0.965 1.03
+expand 1.1
+lweight 3
+box
+
+data testCs-.9.dat
+read { z 1 y 2 yy 3}
+ctype red
+ltype 2
+lweight 2
+connect z y
+lweight 4
+connect z yy
+
+
+data testCs-1.1.dat
+read { z 1 y 2 yy 3}
+ctype blue
+ltype 2
+lweight 2
+connect z y
+lweight 4
+connect z yy

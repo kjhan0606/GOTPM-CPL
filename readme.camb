@@ -1,0 +1,27 @@
+The default value to get the matter power spectrum is "Transfer_tot" in "results.f90"
+> integer :: transfer_power_var = Transfer_tot
+
+
+subroutine CAMB_GetResults in "camb.f90"
+	[1] calculate the transfer functions by calling cmbmain()
+
+subroutine cmbmain in "cmbmain.f90"
+	[1] main routine in cmbmain. It calculates the transferfunciton by calling TransferOut()
+
+subroutine TransferOut in "cmbmain.f90"
+	[1] for each q_ix (a kind of k), it calculate the transfer function calling GetTransfer()
+
+subroutine GetTransfer in "cmbmain.f90"
+	[1] for each redshift, it calculate the transfer function calling outtransf()
+
+surbroutine outtransf in "equations.f90"
+	[1] for given informaton, it calculates the transfer function by calling derivs()
+	[2] Data are dumped to EV%OutputTransfer(Transfer_kh: Transfer_vel_baryon_cdm) in derivs()
+	[3] EV%OutputTransfer => State%MT%TransferData(:, EV%q_ix,iredshift)
+
+
+subroutine GaugeInterface_EvolveScal in "equations.f90"
+	[1] it calculates y(array) or the D(a,k) by calling GaugeInterface_ScalEv()
+
+subroutine GaugeInterface_ScalEv in "equations.f90"
+	[1] it uses dverk() to get ***

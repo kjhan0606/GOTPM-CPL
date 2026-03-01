@@ -31,7 +31,6 @@ int MAIN_(int argc, char *argv[]){
 	MPI_Comm_rank(MPI_COMM_WORLD,&myid);
 	MPI_Comm_size(MPI_COMM_WORLD,&nid);
 
-
 	if( argc == 2 ) {
 		int sflag=1;
 		if(myid==0) simfile = fopen(argv[1],"r");

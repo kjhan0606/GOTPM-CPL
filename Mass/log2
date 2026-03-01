@@ -1,0 +1,6 @@
+Warning: Command line arguments for program should be given
+after the program name.  Assuming that 3801 is a
+command line argument for the program.
+Missing: program name
+Program hfind.exe either does not exist, is not 
+executable, or is an erroneous argument to mpirun.

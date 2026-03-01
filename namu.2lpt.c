@@ -528,6 +528,11 @@ int SecondOrderLPT(int argc, char *argv[]){
 		}
 halfevolution:
 
+		{/* This is PM */
+			void pmmain(int *, int *);
+			pmmain(&nowflag,&now);
+		}
+
 		{/* Tree correction */
 			void TreeAndPreFoFmain(int );
 			TreeAndPreFoFmain(iflagPreFoF);

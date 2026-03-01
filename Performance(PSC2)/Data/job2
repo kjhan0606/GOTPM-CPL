@@ -1,0 +1,18 @@
+#!/bin/csh
+#PBS -l rmsnodes=256:256
+#PBS -l rmsrails=2
+#PBS -j oe
+#PBS -q res_1
+#PBS -M kjhan@kias.re.kr
+##PBS -m b
+#PBS -N testsim
+#PBS -l walltime=0:39:59
+setenv OMP_NUM_THREADS 4
+echo
+#cd $HOME/New/Run
+#cd $PBS_O_WORKDIR
+cd $SCRATCH/Run
+#cd /cluster/members/member2/local/kjhan/Run
+date
+time prun -vvv -s -N ${RMS_NODES} -n ${RMS_PROCS} $HOME/New/PSC2/namu.exe params1.dat 170000
+date

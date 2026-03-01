@@ -1,0 +1,20 @@
+134 	1013	1970	Peebles 1970
+273		999		1975	Miyoshi & Kihara 1975
+299		970		1976	White 1976
+383		883		1979	Aarseth, Turner & Gott 1979
+439 	803		1981	Efstathiou & Eastwood 1981
+547		777		1985	Davis, Efstathiou, Frenk, & White 1985
+603		680		1987	White, Frenk, Davis, & Efstathiou 1987
+657 	636		1989	Carlberg & Couchman 1989
+714 	567		1991	Suto & Guginohara 1991
+740		605		1992	Warren, Quinn, Salmon, & Zurek 1992
+797		549		1994	Gelb & Bertschinger 1994
+796		460		1994	Zurek, Quinn, Salmon, & Warren 1994
+905		462		1998	Jenkins et al. 1998
+931		411		1999	Governato et al. 1999
+987		357		2001	Bode, Bahcall, Ford, & Ostriker 2001
+961		256		2000	Colberg et al. 2000
+1072	252		2004	Wambsganss, Bode, & Ostriker 2004
+1100	137		2005	Springel et al. 2005
+1100	38		2009.3	Teyssier et al. 2009
+1100	-38		2012.3	Angulo et al. 2012

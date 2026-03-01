@@ -1,0 +1,142 @@
+#
+# Makefile for PM/Tree code pyul.exe - April 23, 2001 - JJD
+#
+
+#--- Executable
+FC = ifort
+CC = icc 
+OPT =  -mcmodel=medium -O3
+#OPT =  -g
+
+PROGS =  FoFhaloQ.exe
+#PROGS =  MassFunc.mod1.exe
+
+#--- Objects to build
+
+OBJS		=  FoFhaloQ.o Memory2.o Treewalk.mod6.o Time.o \
+			force_spline.mod2.o  spin.o subshape.o
+
+#OBJS		=  MassFunc.mod1.o Memory2.o Treewalk.mod6.o Time.o \
+
+#fda4_gridforce_c.o  \
+
+
+#############################################
+# List of compilation directives
+#############################################
+# 
+# -DNTREEMIN=nnn  - minimum number of particles in tree - default NTREEMIN=4
+# -DGROUPNUM=nnn  - tree grouping number - default GROUPNUM=10
+# -DEPSSQ=fff     - softening length squared for PM force correction 
+#                 - default=4.0e-8
+# -DNMEG=nnn      - number of megabytes of storage per processor - default=40
+# -DINCLUDE_TREE_FORCE - define if you want tree code corrections
+# -DTREE               - define if you want tree code corrections
+# -DGIGA               - run in single mass mode for maximum memory usage
+# -DTREEFIX            - correct treebuilding code for closely spaced particles
+# -DMOVIE              - include image rendering code
+# -DACCOUT             - test mode - read in file 'rvtmp' and dump accelerations
+# -DDEBUG              - output debugging information
+# -DVERBOSE            - output even more debugging information
+# -DBIT64              - use on machines using 64 bit addressing 
+#                       - i.e. Compaq alpha
+# -DAIX                - use on IBM SP3 machines
+# -DDYNAMIC_LOAD_BALANCE  - use on systems with heterogeneous processors
+######################################################
+# CURRENTLY NOT CHECKED - April 23, 2001 - jjd
+#############################################################
+# -DENOUGH_SPACE   : if there is enough space for memory
+#    -DFDA_FORCE_ARRAY_SWP  : force array + swap space
+#    -DTSC_SWAP : tsc swap
+#############################################################
+#
+#####################################
+# System specific definitions
+#####################################
+# IBM SP3 64bits
+#####################################
+#FC = f77
+#CC = cc 
+#OPT =  -q64 -qtune=pwr3 -qarch=pwr3 -O3 
+#INCLUDES = -I/usr/local/include
+#FFLAGS = $(OPT) $(FDFLAGS) -qextname
+#CFLAGS       = $(OPT) $(DFLAGS)  -DNMEG=3000 -D_LARGE_FILES
+#LDFLAGS =  $(OPT) 
+#LIBS         = -L/usr/local/lib -L/user/kjhan/local/lib -lm 
+##################################
+# IBM SP3
+##################################
+#FC = mpxlf
+#CC = mpcc
+#INCLUDES = -I/u/kjh2000/include
+#FDFLAGS = -WF,-DINCLUDE_TREE_FORCE -WF,-DAIX #-WF,-DACCOUT
+#DFLAGS = -DNMEG=950 -DCORRELATION_FUNCTION -DINCLUDE_TREE_FORCE -DTREE -DTREEFIX #-DGIGA -DACCOUT
+#FFLAGS = $(FDFLAGS) -O3 -qextname -q32 -qtune=pwr3 -qarch=pwr3 -bmaxdata:0x70000000 -bmaxstack:0x70000000
+#CFLAGS = -O3 $(DFLAGS)  -q32 -qtune=pwr3 -qarch=pwr3 -bmaxdata:0x70000000 -bmaxstack:0x70000000
+#LDFLAGS = -O3 -qextname -q32 -qtune=pwr3 -qarch=pwr3 -bmaxdata:0x70000000 -bmaxstack:0x70000000
+#LIBS = -L/u/kjh2000/lib -lsrfftw_mpi -lsfftw_mpi -lsrfftw -lsfftw -lmpi -lm
+#################################
+# Compaq Alpha
+#################################
+#FC = f77
+#CC = cc 
+#INCLUDES = -I/home/kjhan/dolphin/fftw/include
+#FDFLAGS = -DBIT64 -DINCLUDE_TREE_FORCE -DTREE
+#DFLAGS = -DBIT64 -DNMEG=256 -DINCLUDE_TREE_FORCE -DTREE -DGIGA -DTREEFIX
+#FFLAGS = $(FDFLAGS)  -fast -nofor_main
+#CFLAGS = $(DFLAGS)  -fast
+#LDFLAGS =  -fast -nofor_main
+#LIBS = -L/home/kjhan/dolphin/fftw/lib -lsrfftw_mpi -lsfftw_mpi -lsrfftw -lsfftw -lm -lz -lmpi -lm
+##################################
+#####################################
+# GCC
+#####################################
+INCLUDES = -I/usr/local/include
+FFLAGS = $(OPT) $(FDFLAGS) 
+CFLAGS       = $(OPT) $(DFLAGS)  -DNMEG=1400L -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
+LDFLAGS =  $(OPT)  -nofor-main
+LIBS         = -L/usr/local/lib -L/user/kjhan/local/lib -lm 
+
+#--- C Compiler information
+#  Leave the rest untouched
+
+
+#--- Suffix-based compilation rules
+.SUFFIXES:
+.SUFFIXES: .exe .o .c .f .F
+
+#rules to build binary from source
+
+
+.c.o :
+	$(CC) $(CFLAGS) $(INCLUDES) -c $<
+
+.f.o :
+	$(FC) $(FFLAGS) $(INCLUDES) -c $<
+
+.F.o :
+	$(FC) $(FFLAGS) $(INCLUDES) -c $<
+
+.c.exe :
+	$(FC) $(LDFLAGS) $(INCLUDES) -o $*.exe $(OBJS) $(MPI_LINKS) $(LIBS)
+
+.f.exe :
+	$(FC) $(LDFLAGS) $(INCLUDES) -o $*.exe $(OBJS) $(MPI_LINKS) $(LIBS) $(INCLUDES)
+
+.F.exe :
+	$(FC) $(LDFLAGS) $(INCLUDES) -o $*.exe $(OBJS) $(MPI_LINKS) $(LIBS) $(INCLUDES)
+
+#--- Targets
+
+
+
+all: $(OBJS) $(PROGS) 
+
+new: clean $(OBJS) $(PROGS)
+
+clean:
+	rm -f $(OBJS)
+	rm -f $(MPIOBJS)
+	rm -f $(PROGS)
+	rm -f mig.o migrate.o
+

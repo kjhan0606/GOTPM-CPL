@@ -1,0 +1,2170 @@
+CPU TIME for Pair N-body 0.00154495
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+CHECKING   .sd.f df
+GPU TIME for Pair N-body 0.049644
++P0 has GPU accel 0 but has CPU acc = 3.57734e-06 
++P1 has GPU accel 0 but has CPU acc = 2.93445e-06 
++P2 has GPU accel 0 but has CPU acc = 7.71427e-07 
++P3 has GPU accel 0 but has CPU acc = 7.23781e-06 
++P4 has GPU accel 0 but has CPU acc = 1.64299e-06 
++P5 has GPU accel 0 but has CPU acc = 6.82142e-07 
++P6 has GPU accel 0 but has CPU acc = 9.30587e-06 
++P7 has GPU accel 0 but has CPU acc = 1.68144e-06 
++P8 has GPU accel 0 but has CPU acc = 6.596e-06 
++P9 has GPU accel 0 but has CPU acc = 3.3764e-06 
++P10 has GPU accel 0 but has CPU acc = 1.91952e-06 
++P11 has GPU accel 0 but has CPU acc = 3.83218e-06 
++P12 has GPU accel 0 but has CPU acc = 1.01283e-06 
++P13 has GPU accel 0 but has CPU acc = 2.35386e-06 
++P14 has GPU accel 0 but has CPU acc = 3.66521e-06 
++P15 has GPU accel 0 but has CPU acc = 1.71549e-06 
++P16 has GPU accel 0 but has CPU acc = 3.37267e-06 
++P17 has GPU accel 0 but has CPU acc = 1.06305e-05 
++P18 has GPU accel 0 but has CPU acc = 6.53941e-06 
++P19 has GPU accel 0 but has CPU acc = 2.85103e-06 
++P20 has GPU accel 0 but has CPU acc = 2.76991e-06 
++P21 has GPU accel 0 but has CPU acc = 4.82583e-06 
++P22 has GPU accel 0 but has CPU acc = 3.69632e-06 
++P23 has GPU accel 0 but has CPU acc = 2.642e-06 
++P24 has GPU accel 0 but has CPU acc = 3.77613e-06 
++P25 has GPU accel 0 but has CPU acc = 1.95691e-06 
++P26 has GPU accel 0 but has CPU acc = 4.26076e-06 
++P27 has GPU accel 0 but has CPU acc = 6.6623e-07 
++P28 has GPU accel 0 but has CPU acc = 1.76301e-06 
++P29 has GPU accel 0 but has CPU acc = 1.65624e-06 
++P30 has GPU accel 0 but has CPU acc = 2.84971e-06 
++P31 has GPU accel 0 but has CPU acc = 1.20852e-06 
++P32 has GPU accel 0 but has CPU acc = 1.74879e-06 
++P33 has GPU accel 0 but has CPU acc = 1.45392e-06 
++P34 has GPU accel 0 but has CPU acc = 1.34134e-06 
++P35 has GPU accel 0 but has CPU acc = 1.30541e-07 
++P36 has GPU accel 0 but has CPU acc = 5.60075e-06 
++P37 has GPU accel 0 but has CPU acc = 1.25065e-06 
++P38 has GPU accel 0 but has CPU acc = 1.72896e-06 
++P39 has GPU accel 0 but has CPU acc = 7.37235e-06 
++P40 has GPU accel 0 but has CPU acc = 1.26067e-09 
++P41 has GPU accel 0 but has CPU acc = 0 
++P42 has GPU accel 0 but has CPU acc = 0 
++P43 has GPU accel 0 but has CPU acc = 7.58884e-11 
++P44 has GPU accel 0 but has CPU acc = 4.46112e-10 
++P45 has GPU accel 0 but has CPU acc = 6.92189e-10 
++P46 has GPU accel 0 but has CPU acc = 4.81601e-11 
++P47 has GPU accel 0 but has CPU acc = 0 
++P48 has GPU accel 0 but has CPU acc = 3.30934e-10 
++P49 has GPU accel 0 but has CPU acc = 4.81858e-10 
++P50 has GPU accel 0 but has CPU acc = 0 
++P51 has GPU accel 0 but has CPU acc = 0 
++P52 has GPU accel 0 but has CPU acc = 1.51121e-10 
++P53 has GPU accel 0 but has CPU acc = 7.51997e-10 
++P54 has GPU accel 0 but has CPU acc = 1.76817e-09 
++P55 has GPU accel 0 but has CPU acc = 3.39229e-10 
++P56 has GPU accel 0 but has CPU acc = 2.47294e-10 
++P57 has GPU accel 0 but has CPU acc = 1.0165e-09 
++P58 has GPU accel 0 but has CPU acc = 5.67385e-10 
++P59 has GPU accel 0 but has CPU acc = 2.23945e-10 
++P60 has GPU accel 0 but has CPU acc = 1.99187e-10 
++P61 has GPU accel 0 but has CPU acc = 4.91063e-10 
++P62 has GPU accel 0 but has CPU acc = 1.73677e-10 
++P63 has GPU accel 0 but has CPU acc = 0 
++P64 has GPU accel 0 but has CPU acc = 8.19659e-11 
++P65 has GPU accel 0 but has CPU acc = 4.09712e-10 
++P66 has GPU accel 0 but has CPU acc = 0 
++P67 has GPU accel 0 but has CPU acc = 0 
++P68 has GPU accel 0 but has CPU acc = 0 
++P69 has GPU accel 0 but has CPU acc = 0 
++P70 has GPU accel 0 but has CPU acc = 1.12151e-10 
++P71 has GPU accel 0 but has CPU acc = 1.23023e-09 
++P72 has GPU accel 0 but has CPU acc = 4.9128e-11 
++P73 has GPU accel 0 but has CPU acc = 9.69983e-10 
++P74 has GPU accel 0 but has CPU acc = 1.50726e-10 
++P75 has GPU accel 0 but has CPU acc = 1.29738e-09 
++P76 has GPU accel 0 but has CPU acc = 0 
++P77 has GPU accel 0 but has CPU acc = 0 
++P78 has GPU accel 0 but has CPU acc = 1.43749e-09 
++P79 has GPU accel 0 but has CPU acc = 1.34725e-10 
++P80 has GPU accel 0 but has CPU acc = 0 
++P81 has GPU accel 0 but has CPU acc = 4.81739e-10 
++P82 has GPU accel 0 but has CPU acc = 9.24867e-10 
++P83 has GPU accel 0 but has CPU acc = 9.78975e-10 
++P84 has GPU accel 0 but has CPU acc = 2.61942e-10 
++P85 has GPU accel 0 but has CPU acc = 0 
++P86 has GPU accel 0 but has CPU acc = 2.30764e-10 
++P87 has GPU accel 0 but has CPU acc = 4.60637e-10 
++P88 has GPU accel 0 but has CPU acc = 4.32264e-10 
++P89 has GPU accel 0 but has CPU acc = 1.54637e-10 
++P90 has GPU accel 0 but has CPU acc = 0 
++P91 has GPU accel 0 but has CPU acc = 5.45901e-10 
++P92 has GPU accel 0 but has CPU acc = 9.24421e-10 
++P93 has GPU accel 0 but has CPU acc = 4.63557e-10 
++P94 has GPU accel 0 but has CPU acc = 3.0548e-10 
++P95 has GPU accel 0 but has CPU acc = 0 
++P96 has GPU accel 0 but has CPU acc = 2.76636e-10 
++P97 has GPU accel 0 but has CPU acc = 1.47059e-10 
++P98 has GPU accel 0 but has CPU acc = 1.14792e-09 
++P99 has GPU accel 0 but has CPU acc = 1.75036e-09 
++P100 has GPU accel 0 but has CPU acc = 3.714e-11 
++P101 has GPU accel 0 but has CPU acc = 5.19711e-10 
++P102 has GPU accel 0 but has CPU acc = 0 
++P103 has GPU accel 0 but has CPU acc = 0 
++P104 has GPU accel 0 but has CPU acc = 2.54101e-10 
++P105 has GPU accel 0 but has CPU acc = 0 
++P106 has GPU accel 0 but has CPU acc = 0 
++P107 has GPU accel 0 but has CPU acc = 7.09023e-10 
++P108 has GPU accel 0 but has CPU acc = 1.85686e-10 
++P109 has GPU accel 0 but has CPU acc = 9.07103e-11 
++P110 has GPU accel 0 but has CPU acc = 3.34912e-11 
++P111 has GPU accel 0 but has CPU acc = 1.07262e-09 
++P112 has GPU accel 0 but has CPU acc = 2.95899e-10 
++P113 has GPU accel 0 but has CPU acc = 0 
++P114 has GPU accel 0 but has CPU acc = 0 
++P115 has GPU accel 0 but has CPU acc = 6.8685e-10 
++P116 has GPU accel 0 but has CPU acc = 4.10474e-10 
++P117 has GPU accel 0 but has CPU acc = 8.15567e-10 
++P118 has GPU accel 0 but has CPU acc = 2.38407e-10 
++P119 has GPU accel 0 but has CPU acc = 1.0562e-09 
++P120 has GPU accel 0 but has CPU acc = 0 
++P121 has GPU accel 0 but has CPU acc = 0 
++P122 has GPU accel 0 but has CPU acc = 3.13963e-10 
++P123 has GPU accel 0 but has CPU acc = 0 
++P124 has GPU accel 0 but has CPU acc = 2.89686e-10 
++P125 has GPU accel 0 but has CPU acc = 3.5409e-10 
++P126 has GPU accel 0 but has CPU acc = 0 
++P127 has GPU accel 0 but has CPU acc = 1.87468e-10 
++P128 has GPU accel 0 but has CPU acc = 5.91468e-10 
++P129 has GPU accel 0 but has CPU acc = 4.18028e-10 
++P130 has GPU accel 0 but has CPU acc = 0 
++P131 has GPU accel 0 but has CPU acc = 3.70698e-11 
++P132 has GPU accel 0 but has CPU acc = 0 
++P133 has GPU accel 0 but has CPU acc = 0 
++P134 has GPU accel 0 but has CPU acc = 5.00965e-10 
++P135 has GPU accel 0 but has CPU acc = 3.7749e-10 
++P136 has GPU accel 0 but has CPU acc = 3.47207e-11 
++P137 has GPU accel 0 but has CPU acc = 0 
++P138 has GPU accel 0 but has CPU acc = 7.30389e-11 
++P139 has GPU accel 0 but has CPU acc = 0 
++P140 has GPU accel 0 but has CPU acc = 4.84046e-10 
++P141 has GPU accel 0 but has CPU acc = 0 
++P142 has GPU accel 0 but has CPU acc = 9.28918e-10 
++P143 has GPU accel 0 but has CPU acc = 1.68042e-10 
++P144 has GPU accel 0 but has CPU acc = 0 
++P145 has GPU accel 0 but has CPU acc = 0 
++P146 has GPU accel 0 but has CPU acc = 9.56968e-10 
++P147 has GPU accel 0 but has CPU acc = 6.23575e-10 
++P148 has GPU accel 0 but has CPU acc = 1.1725e-09 
++P149 has GPU accel 0 but has CPU acc = 1.80885e-10 
++P150 has GPU accel 0 but has CPU acc = 6.48513e-10 
++P151 has GPU accel 0 but has CPU acc = 9.70758e-10 
++P152 has GPU accel 0 but has CPU acc = 2.97864e-10 
++P153 has GPU accel 0 but has CPU acc = 6.56359e-10 
++P154 has GPU accel 0 but has CPU acc = 0 
++P155 has GPU accel 0 but has CPU acc = 0 
++P156 has GPU accel 0 but has CPU acc = 0 
++P157 has GPU accel 0 but has CPU acc = 0 
++P158 has GPU accel 0 but has CPU acc = 1.79859e-10 
++P159 has GPU accel 0 but has CPU acc = 8.00054e-10 
++P160 has GPU accel 0 but has CPU acc = 0 
++P161 has GPU accel 0 but has CPU acc = 1.97851e-10 
++P162 has GPU accel 0 but has CPU acc = 4.1095e-10 
++P163 has GPU accel 0 but has CPU acc = 9.71954e-11 
++P164 has GPU accel 0 but has CPU acc = 8.94388e-10 
++P165 has GPU accel 0 but has CPU acc = 5.9423e-10 
++P166 has GPU accel 0 but has CPU acc = 2.09612e-10 
++P167 has GPU accel 0 but has CPU acc = 3.42488e-11 
++P168 has GPU accel 0 but has CPU acc = 3.42108e-11 
++P169 has GPU accel 0 but has CPU acc = 0 
++P170 has GPU accel 0 but has CPU acc = 7.679e-10 
++P171 has GPU accel 0 but has CPU acc = 0 
++P172 has GPU accel 0 but has CPU acc = 3.49865e-10 
++P173 has GPU accel 0 but has CPU acc = 1.56785e-10 
++P174 has GPU accel 0 but has CPU acc = 1.01803e-10 
++P175 has GPU accel 0 but has CPU acc = 0 
++P176 has GPU accel 0 but has CPU acc = 4.13994e-10 
++P177 has GPU accel 0 but has CPU acc = 1.06465e-09 
++P178 has GPU accel 0 but has CPU acc = 0 
++P179 has GPU accel 0 but has CPU acc = 3.91427e-11 
++P180 has GPU accel 0 but has CPU acc = 0 
++P181 has GPU accel 0 but has CPU acc = 0 
++P182 has GPU accel 0 but has CPU acc = 0 
++P183 has GPU accel 0 but has CPU acc = 3.86632e-10 
++P184 has GPU accel 0 but has CPU acc = 0 
++P185 has GPU accel 0 but has CPU acc = 6.63486e-10 
++P186 has GPU accel 0 but has CPU acc = 1.70599e-10 
++P187 has GPU accel 0 but has CPU acc = 0 
++P188 has GPU accel 0 but has CPU acc = 0 
++P189 has GPU accel 0 but has CPU acc = 0 
++P190 has GPU accel 0 but has CPU acc = 0 
++P191 has GPU accel 0 but has CPU acc = 0 
++P192 has GPU accel 0 but has CPU acc = 6.26202e-10 
++P193 has GPU accel 0 but has CPU acc = 1.50126e-09 
++P194 has GPU accel 0 but has CPU acc = 0 
++P195 has GPU accel 0 but has CPU acc = 0 
++P196 has GPU accel 0 but has CPU acc = 8.57641e-11 
++P197 has GPU accel 0 but has CPU acc = 1.15126e-09 
++P198 has GPU accel 0 but has CPU acc = 1.75161e-10 
++P199 has GPU accel 0 but has CPU acc = 9.17638e-10 
++P200 has GPU accel 0 but has CPU acc = 9.0447e-10 
++P201 has GPU accel 0 but has CPU acc = 9.66021e-10 
++P202 has GPU accel 0 but has CPU acc = 0 
++P203 has GPU accel 0 but has CPU acc = 9.24067e-11 
++P204 has GPU accel 0 but has CPU acc = 0 
++P205 has GPU accel 0 but has CPU acc = 1.85232e-10 
++P206 has GPU accel 0 but has CPU acc = 0 
++P207 has GPU accel 0 but has CPU acc = 1.6224e-10 
++P208 has GPU accel 0 but has CPU acc = 1.04601e-10 
++P209 has GPU accel 0 but has CPU acc = 1.28373e-10 
++P210 has GPU accel 0 but has CPU acc = 0 
++P211 has GPU accel 0 but has CPU acc = 3.80927e-10 
++P212 has GPU accel 0 but has CPU acc = 0 
++P213 has GPU accel 0 but has CPU acc = 0 
++P214 has GPU accel 0 but has CPU acc = 0 
++P215 has GPU accel 0 but has CPU acc = 9.98118e-10 
++P216 has GPU accel 0 but has CPU acc = 1.04402e-09 
++P217 has GPU accel 0 but has CPU acc = 0 
++P218 has GPU accel 0 but has CPU acc = 4.64823e-10 
++P219 has GPU accel 0 but has CPU acc = 0 
++P220 has GPU accel 0 but has CPU acc = 1.71081e-09 
++P221 has GPU accel 0 but has CPU acc = 1.10377e-09 
++P222 has GPU accel 0 but has CPU acc = 1.28518e-09 
++P223 has GPU accel 0 but has CPU acc = 0 
++P224 has GPU accel 0 but has CPU acc = 1.00424e-09 
++P225 has GPU accel 0 but has CPU acc = 8.12483e-10 
++P226 has GPU accel 0 but has CPU acc = 3.38185e-10 
++P227 has GPU accel 0 but has CPU acc = 0 
++P228 has GPU accel 0 but has CPU acc = 3.50195e-11 
++P229 has GPU accel 0 but has CPU acc = 4.15859e-10 
++P230 has GPU accel 0 but has CPU acc = 3.48792e-10 
++P231 has GPU accel 0 but has CPU acc = 0 
++P232 has GPU accel 0 but has CPU acc = 1.19298e-10 
++P233 has GPU accel 0 but has CPU acc = 1.04465e-09 
++P234 has GPU accel 0 but has CPU acc = 9.14226e-10 
++P235 has GPU accel 0 but has CPU acc = 3.06039e-10 
++P236 has GPU accel 0 but has CPU acc = 1.48715e-10 
++P237 has GPU accel 0 but has CPU acc = 9.77026e-11 
++P238 has GPU accel 0 but has CPU acc = 0 
++P239 has GPU accel 0 but has CPU acc = 0 
++P240 has GPU accel 0 but has CPU acc = 1.67832e-10 
++P241 has GPU accel 0 but has CPU acc = 1.02989e-09 
++P242 has GPU accel 0 but has CPU acc = 1.26642e-10 
++P243 has GPU accel 0 but has CPU acc = 7.19561e-10 
++P244 has GPU accel 0 but has CPU acc = 1.58637e-09 
++P245 has GPU accel 0 but has CPU acc = 8.09728e-10 
++P246 has GPU accel 0 but has CPU acc = 0 
++P247 has GPU accel 0 but has CPU acc = 1.17132e-09 
++P248 has GPU accel 0 but has CPU acc = 4.52209e-11 
++P249 has GPU accel 0 but has CPU acc = 0 
++P250 has GPU accel 0 but has CPU acc = 0 
++P251 has GPU accel 0 but has CPU acc = 5.56608e-10 
++P252 has GPU accel 0 but has CPU acc = 0 
++P253 has GPU accel 0 but has CPU acc = 0 
++P254 has GPU accel 0 but has CPU acc = 7.57368e-10 
++P255 has GPU accel 0 but has CPU acc = 7.71008e-10 
++P256 has GPU accel 0 but has CPU acc = 4.93786e-11 
++P257 has GPU accel 0 but has CPU acc = 0 
++P258 has GPU accel 0 but has CPU acc = 3.93983e-10 
++P259 has GPU accel 0 but has CPU acc = 1.01629e-10 
++P260 has GPU accel 0 but has CPU acc = 4.66712e-10 
++P261 has GPU accel 0 but has CPU acc = 3.29558e-10 
++P262 has GPU accel 0 but has CPU acc = 0 
++P263 has GPU accel 0 but has CPU acc = 0 
++P264 has GPU accel 0 but has CPU acc = 1.02042e-09 
++P265 has GPU accel 0 but has CPU acc = 1.13507e-09 
++P266 has GPU accel 0 but has CPU acc = 5.64534e-10 
++P267 has GPU accel 0 but has CPU acc = 8.46945e-11 
++P268 has GPU accel 0 but has CPU acc = 1.28724e-10 
++P269 has GPU accel 0 but has CPU acc = 0 
++P270 has GPU accel 0 but has CPU acc = 0 
++P271 has GPU accel 0 but has CPU acc = 0 
++P272 has GPU accel 0 but has CPU acc = 2.12552e-10 
++P273 has GPU accel 0 but has CPU acc = 0 
++P274 has GPU accel 0 but has CPU acc = 0 
++P275 has GPU accel 0 but has CPU acc = 1.21509e-09 
++P276 has GPU accel 0 but has CPU acc = 0 
++P277 has GPU accel 0 but has CPU acc = 5.32323e-10 
++P278 has GPU accel 0 but has CPU acc = 5.27242e-11 
++P279 has GPU accel 0 but has CPU acc = 6.66956e-11 
++P280 has GPU accel 0 but has CPU acc = 5.70066e-10 
++P281 has GPU accel 0 but has CPU acc = 6.91596e-10 
++P282 has GPU accel 0 but has CPU acc = 1.52456e-10 
++P283 has GPU accel 0 but has CPU acc = 4.98093e-10 
++P284 has GPU accel 0 but has CPU acc = 1.18719e-09 
++P285 has GPU accel 0 but has CPU acc = 3.81708e-10 
++P286 has GPU accel 0 but has CPU acc = 3.78379e-11 
++P287 has GPU accel 0 but has CPU acc = 1.26526e-09 
++P288 has GPU accel 0 but has CPU acc = 0 
++P289 has GPU accel 0 but has CPU acc = 0 
++P290 has GPU accel 0 but has CPU acc = 0 
++P291 has GPU accel 0 but has CPU acc = 0 
++P292 has GPU accel 0 but has CPU acc = 0 
++P293 has GPU accel 0 but has CPU acc = 0 
++P294 has GPU accel 0 but has CPU acc = 2.04781e-10 
++P295 has GPU accel 0 but has CPU acc = 1.97688e-10 
++P296 has GPU accel 0 but has CPU acc = 1.18111e-09 
++P297 has GPU accel 0 but has CPU acc = 5.6287e-10 
++P298 has GPU accel 0 but has CPU acc = 0 
++P299 has GPU accel 0 but has CPU acc = 0 
++P300 has GPU accel 0 but has CPU acc = 0 
++P301 has GPU accel 0 but has CPU acc = 5.39912e-10 
++P302 has GPU accel 0 but has CPU acc = 1.59595e-10 
++P303 has GPU accel 0 but has CPU acc = 0 
++P304 has GPU accel 0 but has CPU acc = 2.56071e-10 
++P305 has GPU accel 0 but has CPU acc = 5.42819e-10 
++P306 has GPU accel 0 but has CPU acc = 3.7308e-11 
++P307 has GPU accel 0 but has CPU acc = 0 
++P308 has GPU accel 0 but has CPU acc = 0 
++P309 has GPU accel 0 but has CPU acc = 0 
++P310 has GPU accel 0 but has CPU acc = 3.48239e-10 
++P311 has GPU accel 0 but has CPU acc = 1.23075e-10 
++P312 has GPU accel 0 but has CPU acc = 4.04844e-11 
++P313 has GPU accel 0 but has CPU acc = 9.64835e-10 
++P314 has GPU accel 0 but has CPU acc = 2.69779e-10 
++P315 has GPU accel 0 but has CPU acc = 0 
++P316 has GPU accel 0 but has CPU acc = 8.72026e-10 
++P317 has GPU accel 0 but has CPU acc = 0 
++P318 has GPU accel 0 but has CPU acc = 0 
++P319 has GPU accel 0 but has CPU acc = 8.63611e-10 
++P320 has GPU accel 0 but has CPU acc = 0 
++P321 has GPU accel 0 but has CPU acc = 7.50063e-11 
++P322 has GPU accel 0 but has CPU acc = 6.2728e-10 
++P323 has GPU accel 0 but has CPU acc = 0 
++P324 has GPU accel 0 but has CPU acc = 0 
++P325 has GPU accel 0 but has CPU acc = 0 
++P326 has GPU accel 0 but has CPU acc = 5.05238e-11 
++P327 has GPU accel 0 but has CPU acc = 5.85613e-10 
++P328 has GPU accel 0 but has CPU acc = 0 
++P329 has GPU accel 0 but has CPU acc = 0 
++P330 has GPU accel 0 but has CPU acc = 7.7426e-11 
++P331 has GPU accel 0 but has CPU acc = 8.0157e-10 
++P332 has GPU accel 0 but has CPU acc = 2.36011e-10 
++P333 has GPU accel 0 but has CPU acc = 0 
++P334 has GPU accel 0 but has CPU acc = 8.4961e-10 
++P335 has GPU accel 0 but has CPU acc = 0 
++P336 has GPU accel 0 but has CPU acc = 2.50324e-10 
++P337 has GPU accel 0 but has CPU acc = 4.49405e-10 
++P338 has GPU accel 0 but has CPU acc = 0 
++P339 has GPU accel 0 but has CPU acc = 1.32706e-09 
++P340 has GPU accel 0 but has CPU acc = 0 
++P341 has GPU accel 0 but has CPU acc = 2.37683e-10 
++P342 has GPU accel 0 but has CPU acc = 9.06065e-11 
++P343 has GPU accel 0 but has CPU acc = 1.32467e-10 
++P344 has GPU accel 0 but has CPU acc = 5.69839e-10 
++P345 has GPU accel 0 but has CPU acc = 0 
++P346 has GPU accel 0 but has CPU acc = 1.75343e-10 
++P347 has GPU accel 0 but has CPU acc = 7.78628e-10 
++P348 has GPU accel 0 but has CPU acc = 4.3415e-10 
++P349 has GPU accel 0 but has CPU acc = 9.83226e-10 
++P350 has GPU accel 0 but has CPU acc = 5.28374e-10 
++P351 has GPU accel 0 but has CPU acc = 1.75794e-09 
++P352 has GPU accel 0 but has CPU acc = 0 
++P353 has GPU accel 0 but has CPU acc = 1.56869e-09 
++P354 has GPU accel 0 but has CPU acc = 4.57333e-10 
++P355 has GPU accel 0 but has CPU acc = 1.80711e-10 
++P356 has GPU accel 0 but has CPU acc = 0 
++P357 has GPU accel 0 but has CPU acc = 0 
++P358 has GPU accel 0 but has CPU acc = 0 
++P359 has GPU accel 0 but has CPU acc = 0 
++P360 has GPU accel 0 but has CPU acc = 4.24154e-10 
++P361 has GPU accel 0 but has CPU acc = 0 
++P362 has GPU accel 0 but has CPU acc = 0 
++P363 has GPU accel 0 but has CPU acc = 1.04068e-09 
++P364 has GPU accel 0 but has CPU acc = 7.99138e-11 
++P365 has GPU accel 0 but has CPU acc = 2.77681e-10 
++P366 has GPU accel 0 but has CPU acc = 6.7015e-10 
++P367 has GPU accel 0 but has CPU acc = 0 
++P368 has GPU accel 0 but has CPU acc = 0 
++P369 has GPU accel 0 but has CPU acc = 0 
++P370 has GPU accel 0 but has CPU acc = 0 
++P371 has GPU accel 0 but has CPU acc = 3.31821e-11 
++P372 has GPU accel 0 but has CPU acc = 4.63645e-10 
++P373 has GPU accel 0 but has CPU acc = 0 
++P374 has GPU accel 0 but has CPU acc = 1.00286e-09 
++P375 has GPU accel 0 but has CPU acc = 5.66509e-10 
++P376 has GPU accel 0 but has CPU acc = 1.40391e-10 
++P377 has GPU accel 0 but has CPU acc = 5.60939e-10 
++P378 has GPU accel 0 but has CPU acc = 3.62276e-11 
++P379 has GPU accel 0 but has CPU acc = 0 
++P380 has GPU accel 0 but has CPU acc = 0 
++P381 has GPU accel 0 but has CPU acc = 1.20269e-09 
++P382 has GPU accel 0 but has CPU acc = 3.80553e-10 
++P383 has GPU accel 0 but has CPU acc = 1.08485e-09 
++P384 has GPU accel 0 but has CPU acc = 8.39126e-10 
++P385 has GPU accel 0 but has CPU acc = 5.43717e-10 
++P386 has GPU accel 0 but has CPU acc = 3.08633e-10 
++P387 has GPU accel 0 but has CPU acc = 0 
++P388 has GPU accel 0 but has CPU acc = 0 
++P389 has GPU accel 0 but has CPU acc = 0 
++P390 has GPU accel 0 but has CPU acc = 0 
++P391 has GPU accel 0 but has CPU acc = 8.12753e-11 
++P392 has GPU accel 0 but has CPU acc = 7.37491e-10 
++P393 has GPU accel 0 but has CPU acc = 3.16882e-11 
++P394 has GPU accel 0 but has CPU acc = 9.30421e-11 
++P395 has GPU accel 0 but has CPU acc = 6.34611e-10 
++P396 has GPU accel 0 but has CPU acc = 0 
++P397 has GPU accel 0 but has CPU acc = 1.56131e-10 
++P398 has GPU accel 0 but has CPU acc = 0 
++P399 has GPU accel 0 but has CPU acc = 0 
++P400 has GPU accel 0 but has CPU acc = 2.35386e-10 
++P401 has GPU accel 0 but has CPU acc = 0 
++P402 has GPU accel 0 but has CPU acc = 3.05783e-10 
++P403 has GPU accel 0 but has CPU acc = 8.16771e-10 
++P404 has GPU accel 0 but has CPU acc = 1.01951e-10 
++P405 has GPU accel 0 but has CPU acc = 0 
++P406 has GPU accel 0 but has CPU acc = 1.14786e-10 
++P407 has GPU accel 0 but has CPU acc = 3.69755e-10 
++P408 has GPU accel 0 but has CPU acc = 5.48004e-10 
++P409 has GPU accel 0 but has CPU acc = 0 
++P410 has GPU accel 0 but has CPU acc = 1.26775e-09 
++P411 has GPU accel 0 but has CPU acc = 0 
++P412 has GPU accel 0 but has CPU acc = 1.5511e-10 
++P413 has GPU accel 0 but has CPU acc = 7.16334e-10 
++P414 has GPU accel 0 but has CPU acc = 1.01556e-10 
++P415 has GPU accel 0 but has CPU acc = 3.03377e-10 
++P416 has GPU accel 0 but has CPU acc = 0 
++P417 has GPU accel 0 but has CPU acc = 4.59321e-10 
++P418 has GPU accel 0 but has CPU acc = 0 
++P419 has GPU accel 0 but has CPU acc = 6.129e-10 
++P420 has GPU accel 0 but has CPU acc = 1.29353e-10 
++P421 has GPU accel 0 but has CPU acc = 7.1066e-10 
++P422 has GPU accel 0 but has CPU acc = 0 
++P423 has GPU accel 0 but has CPU acc = 6.1988e-10 
++P424 has GPU accel 0 but has CPU acc = 4.78583e-10 
++P425 has GPU accel 0 but has CPU acc = 0 
++P426 has GPU accel 0 but has CPU acc = 1.6642e-09 
++P427 has GPU accel 0 but has CPU acc = 7.26943e-10 
++P428 has GPU accel 0 but has CPU acc = 3.47072e-11 
++P429 has GPU accel 0 but has CPU acc = 0 
++P430 has GPU accel 0 but has CPU acc = 8.04007e-10 
++P431 has GPU accel 0 but has CPU acc = 0 
++P432 has GPU accel 0 but has CPU acc = 0 
++P433 has GPU accel 0 but has CPU acc = 0 
++P434 has GPU accel 0 but has CPU acc = 1.36682e-10 
++P435 has GPU accel 0 but has CPU acc = 0 
++P436 has GPU accel 0 but has CPU acc = 5.06961e-10 
++P437 has GPU accel 0 but has CPU acc = 1.09814e-09 
++P438 has GPU accel 0 but has CPU acc = 1.21673e-09 
++P439 has GPU accel 0 but has CPU acc = 0 
++P440 has GPU accel 0 but has CPU acc = 3.34066e-10 
++P441 has GPU accel 0 but has CPU acc = 1.24052e-10 
++P442 has GPU accel 0 but has CPU acc = 5.20102e-10 
++P443 has GPU accel 0 but has CPU acc = 2.17844e-10 
++P444 has GPU accel 0 but has CPU acc = 0 
++P445 has GPU accel 0 but has CPU acc = 1.20892e-09 
++P446 has GPU accel 0 but has CPU acc = 1.63762e-10 
++P447 has GPU accel 0 but has CPU acc = 1.38567e-10 
++P448 has GPU accel 0 but has CPU acc = 0 
++P449 has GPU accel 0 but has CPU acc = 9.12268e-10 
++P450 has GPU accel 0 but has CPU acc = 8.55408e-11 
++P451 has GPU accel 0 but has CPU acc = 2.12448e-10 
++P452 has GPU accel 0 but has CPU acc = 1.14365e-10 
++P453 has GPU accel 0 but has CPU acc = 8.48271e-10 
++P454 has GPU accel 0 but has CPU acc = 1.34269e-09 
++P455 has GPU accel 0 but has CPU acc = 0 
++P456 has GPU accel 0 but has CPU acc = 1.14187e-09 
++P457 has GPU accel 0 but has CPU acc = 0 
++P458 has GPU accel 0 but has CPU acc = 0 
++P459 has GPU accel 0 but has CPU acc = 7.23831e-10 
++P460 has GPU accel 0 but has CPU acc = 0 
++P461 has GPU accel 0 but has CPU acc = 7.47791e-10 
++P462 has GPU accel 0 but has CPU acc = 3.17855e-10 
++P463 has GPU accel 0 but has CPU acc = 6.9162e-10 
++P464 has GPU accel 0 but has CPU acc = 3.92273e-11 
++P465 has GPU accel 0 but has CPU acc = 4.10491e-11 
++P466 has GPU accel 0 but has CPU acc = 9.27229e-10 
++P467 has GPU accel 0 but has CPU acc = 1.06137e-09 
++P468 has GPU accel 0 but has CPU acc = 0 
++P469 has GPU accel 0 but has CPU acc = 0 
++P470 has GPU accel 0 but has CPU acc = 5.82219e-10 
++P471 has GPU accel 0 but has CPU acc = 1.1495e-10 
++P472 has GPU accel 0 but has CPU acc = 0 
++P473 has GPU accel 0 but has CPU acc = 0 
++P474 has GPU accel 0 but has CPU acc = 0 
++P475 has GPU accel 0 but has CPU acc = 1.60814e-10 
++P476 has GPU accel 0 but has CPU acc = 5.81464e-10 
++P477 has GPU accel 0 but has CPU acc = 0 
++P478 has GPU accel 0 but has CPU acc = 1.14197e-10 
++P479 has GPU accel 0 but has CPU acc = 3.92289e-10 
++P480 has GPU accel 0 but has CPU acc = 3.34842e-11 
++P481 has GPU accel 0 but has CPU acc = 1.02406e-09 
++P482 has GPU accel 0 but has CPU acc = 3.41236e-10 
++P483 has GPU accel 0 but has CPU acc = 1.2175e-09 
++P484 has GPU accel 0 but has CPU acc = 1.22028e-09 
++P485 has GPU accel 0 but has CPU acc = 0 
++P486 has GPU accel 0 but has CPU acc = 7.59875e-10 
++P487 has GPU accel 0 but has CPU acc = 5.30639e-10 
++P488 has GPU accel 0 but has CPU acc = 1.1005e-09 
++P489 has GPU accel 0 but has CPU acc = 2.09924e-09 
++P490 has GPU accel 0 but has CPU acc = 0 
++P491 has GPU accel 0 but has CPU acc = 0 
++P492 has GPU accel 0 but has CPU acc = 9.57677e-10 
++P493 has GPU accel 0 but has CPU acc = 2.74453e-10 
++P494 has GPU accel 0 but has CPU acc = 4.16236e-11 
++P495 has GPU accel 0 but has CPU acc = 6.00948e-10 
++P496 has GPU accel 0 but has CPU acc = 1.01562e-09 
++P497 has GPU accel 0 but has CPU acc = 9.72194e-10 
++P498 has GPU accel 0 but has CPU acc = 8.60824e-10 
++P499 has GPU accel 0 but has CPU acc = 4.81961e-10 
++P500 has GPU accel 0 but has CPU acc = 1.01933e-09 
++P501 has GPU accel 0 but has CPU acc = 7.51748e-10 
++P502 has GPU accel 0 but has CPU acc = 7.80689e-11 
++P503 has GPU accel 0 but has CPU acc = 3.76041e-10 
++P504 has GPU accel 0 but has CPU acc = 2.33594e-10 
++P505 has GPU accel 0 but has CPU acc = 6.95717e-10 
++P506 has GPU accel 0 but has CPU acc = 9.96422e-10 
++P507 has GPU accel 0 but has CPU acc = 7.91611e-10 
++P508 has GPU accel 0 but has CPU acc = 1.66812e-10 
++P509 has GPU accel 0 but has CPU acc = 1.02938e-10 
++P510 has GPU accel 0 but has CPU acc = 5.96065e-10 
++P511 has GPU accel 0 but has CPU acc = 5.39534e-10 
++P512 has GPU accel 0 but has CPU acc = 4.91741e-10 
++P513 has GPU accel 0 but has CPU acc = 3.6466e-10 
++P514 has GPU accel 0 but has CPU acc = 2.11219e-10 
++P515 has GPU accel 0 but has CPU acc = 0 
++P516 has GPU accel 0 but has CPU acc = 6.79758e-11 
++P517 has GPU accel 0 but has CPU acc = 0 
++P518 has GPU accel 0 but has CPU acc = 3.26904e-10 
++P519 has GPU accel 0 but has CPU acc = 0 
++P520 has GPU accel 0 but has CPU acc = 1.93829e-10 
++P521 has GPU accel 0 but has CPU acc = 3.29471e-10 
++P522 has GPU accel 0 but has CPU acc = 6.6029e-10 
++P523 has GPU accel 0 but has CPU acc = 0 
++P524 has GPU accel 0 but has CPU acc = 9.36883e-10 
++P525 has GPU accel 0 but has CPU acc = 8.71109e-10 
++P526 has GPU accel 0 but has CPU acc = 5.32842e-10 
++P527 has GPU accel 0 but has CPU acc = 3.08716e-10 
++P528 has GPU accel 0 but has CPU acc = 1.44186e-10 
++P529 has GPU accel 0 but has CPU acc = 9.49503e-11 
++P530 has GPU accel 0 but has CPU acc = 1.32044e-10 
++P531 has GPU accel 0 but has CPU acc = 4.8001e-10 
++P532 has GPU accel 0 but has CPU acc = 1.11749e-09 
++P533 has GPU accel 0 but has CPU acc = 9.58314e-10 
++P534 has GPU accel 0 but has CPU acc = 1.22529e-09 
++P535 has GPU accel 0 but has CPU acc = 0 
++P536 has GPU accel 0 but has CPU acc = 3.65888e-10 
++P537 has GPU accel 0 but has CPU acc = 0 
++P538 has GPU accel 0 but has CPU acc = 5.29158e-10 
++P539 has GPU accel 0 but has CPU acc = 4.99352e-10 
++P540 has GPU accel 0 but has CPU acc = 3.52343e-10 
++P541 has GPU accel 0 but has CPU acc = 0 
++P542 has GPU accel 0 but has CPU acc = 0 
++P543 has GPU accel 0 but has CPU acc = 0 
++P544 has GPU accel 0 but has CPU acc = 5.41995e-11 
++P545 has GPU accel 0 but has CPU acc = 4.4716e-10 
++P546 has GPU accel 0 but has CPU acc = 0 
++P547 has GPU accel 0 but has CPU acc = 1.60821e-10 
++P548 has GPU accel 0 but has CPU acc = 0 
++P549 has GPU accel 0 but has CPU acc = 1.29498e-09 
++P550 has GPU accel 0 but has CPU acc = 0 
++P551 has GPU accel 0 but has CPU acc = 4.11102e-10 
++P552 has GPU accel 0 but has CPU acc = 1.79704e-10 
++P553 has GPU accel 0 but has CPU acc = 8.08114e-10 
++P554 has GPU accel 0 but has CPU acc = 0 
++P555 has GPU accel 0 but has CPU acc = 7.64124e-10 
++P556 has GPU accel 0 but has CPU acc = 0 
++P557 has GPU accel 0 but has CPU acc = 1.0475e-09 
++P558 has GPU accel 0 but has CPU acc = 1.55955e-09 
++P559 has GPU accel 0 but has CPU acc = 1.02045e-09 
++P560 has GPU accel 0 but has CPU acc = 0 
++P561 has GPU accel 0 but has CPU acc = 1.00883e-10 
++P562 has GPU accel 0 but has CPU acc = 1.22729e-10 
++P563 has GPU accel 0 but has CPU acc = 1.19693e-09 
++P564 has GPU accel 0 but has CPU acc = 1.02258e-09 
++P565 has GPU accel 0 but has CPU acc = 0 
++P566 has GPU accel 0 but has CPU acc = 8.92754e-10 
++P567 has GPU accel 0 but has CPU acc = 0 
++P568 has GPU accel 0 but has CPU acc = 5.17818e-11 
++P569 has GPU accel 0 but has CPU acc = 4.28498e-11 
++P570 has GPU accel 0 but has CPU acc = 3.0303e-10 
++P571 has GPU accel 0 but has CPU acc = 7.39894e-10 
++P572 has GPU accel 0 but has CPU acc = 1.38921e-09 
++P573 has GPU accel 0 but has CPU acc = 0 
++P574 has GPU accel 0 but has CPU acc = 4.09803e-11 
++P575 has GPU accel 0 but has CPU acc = 2.7396e-10 
++P576 has GPU accel 0 but has CPU acc = 4.71405e-11 
++P577 has GPU accel 0 but has CPU acc = 5.74943e-10 
++P578 has GPU accel 0 but has CPU acc = 0 
++P579 has GPU accel 0 but has CPU acc = 6.28182e-10 
++P580 has GPU accel 0 but has CPU acc = 7.16494e-10 
++P581 has GPU accel 0 but has CPU acc = 9.33406e-11 
++P582 has GPU accel 0 but has CPU acc = 1.12783e-09 
++P583 has GPU accel 0 but has CPU acc = 0 
++P584 has GPU accel 0 but has CPU acc = 7.72386e-11 
++P585 has GPU accel 0 but has CPU acc = 6.51972e-10 
++P586 has GPU accel 0 but has CPU acc = 9.76538e-10 
++P587 has GPU accel 0 but has CPU acc = 1.08308e-09 
++P588 has GPU accel 0 but has CPU acc = 0 
++P589 has GPU accel 0 but has CPU acc = 0 
++P590 has GPU accel 0 but has CPU acc = 0 
++P591 has GPU accel 0 but has CPU acc = 0 
++P592 has GPU accel 0 but has CPU acc = 7.79474e-10 
++P593 has GPU accel 0 but has CPU acc = 4.57668e-10 
++P594 has GPU accel 0 but has CPU acc = 1.32783e-09 
++P595 has GPU accel 0 but has CPU acc = 1.05463e-09 
++P596 has GPU accel 0 but has CPU acc = 4.34477e-10 
++P597 has GPU accel 0 but has CPU acc = 1.67135e-09 
++P598 has GPU accel 0 but has CPU acc = 4.54779e-10 
++P599 has GPU accel 0 but has CPU acc = 0 
++P600 has GPU accel 0 but has CPU acc = 2.24996e-10 
++P601 has GPU accel 0 but has CPU acc = 1.98054e-10 
++P602 has GPU accel 0 but has CPU acc = 1.20136e-10 
++P603 has GPU accel 0 but has CPU acc = 1.95152e-10 
++P604 has GPU accel 0 but has CPU acc = 1.23939e-09 
++P605 has GPU accel 0 but has CPU acc = 1.6223e-09 
++P606 has GPU accel 0 but has CPU acc = 0 
++P607 has GPU accel 0 but has CPU acc = 0 
++P608 has GPU accel 0 but has CPU acc = 0 
++P609 has GPU accel 0 but has CPU acc = 5.62431e-10 
++P610 has GPU accel 0 but has CPU acc = 3.72156e-10 
++P611 has GPU accel 0 but has CPU acc = 0 
++P612 has GPU accel 0 but has CPU acc = 2.706e-10 
++P613 has GPU accel 0 but has CPU acc = 1.02547e-09 
++P614 has GPU accel 0 but has CPU acc = 2.67112e-10 
++P615 has GPU accel 0 but has CPU acc = 5.72392e-09 
++P616 has GPU accel 0 but has CPU acc = 2.12233e-10 
++P617 has GPU accel 0 but has CPU acc = 5.85685e-10 
++P618 has GPU accel 0 but has CPU acc = 3.27061e-10 
++P619 has GPU accel 0 but has CPU acc = 0 
++P620 has GPU accel 0 but has CPU acc = 2.09981e-10 
++P621 has GPU accel 0 but has CPU acc = 0 
++P622 has GPU accel 0 but has CPU acc = 1.66105e-10 
++P623 has GPU accel 0 but has CPU acc = 0 
++P624 has GPU accel 0 but has CPU acc = 0 
++P625 has GPU accel 0 but has CPU acc = 6.69639e-10 
++P626 has GPU accel 0 but has CPU acc = 0 
++P627 has GPU accel 0 but has CPU acc = 0 
++P628 has GPU accel 0 but has CPU acc = 5.44021e-10 
++P629 has GPU accel 0 but has CPU acc = 7.78451e-10 
++P630 has GPU accel 0 but has CPU acc = 1.08149e-09 
++P631 has GPU accel 0 but has CPU acc = 1.24593e-10 
++P632 has GPU accel 0 but has CPU acc = 0 
++P633 has GPU accel 0 but has CPU acc = 0 
++P634 has GPU accel 0 but has CPU acc = 0 
++P635 has GPU accel 0 but has CPU acc = 0 
++P636 has GPU accel 0 but has CPU acc = 1.22748e-10 
++P637 has GPU accel 0 but has CPU acc = 3.81518e-11 
++P638 has GPU accel 0 but has CPU acc = 4.32058e-10 
++P639 has GPU accel 0 but has CPU acc = 0 
++P640 has GPU accel 0 but has CPU acc = 0 
++P641 has GPU accel 0 but has CPU acc = 3.09832e-10 
++P642 has GPU accel 0 but has CPU acc = 0 
++P643 has GPU accel 0 but has CPU acc = 4.81682e-11 
++P644 has GPU accel 0 but has CPU acc = 0 
++P645 has GPU accel 0 but has CPU acc = 1.3434e-09 
++P646 has GPU accel 0 but has CPU acc = 3.14478e-10 
++P647 has GPU accel 0 but has CPU acc = 0 
++P648 has GPU accel 0 but has CPU acc = 0 
++P649 has GPU accel 0 but has CPU acc = 0 
++P650 has GPU accel 0 but has CPU acc = 0 
++P651 has GPU accel 0 but has CPU acc = 0 
++P652 has GPU accel 0 but has CPU acc = 0 
++P653 has GPU accel 0 but has CPU acc = 7.94665e-10 
++P654 has GPU accel 0 but has CPU acc = 5.70267e-10 
++P655 has GPU accel 0 but has CPU acc = 5.58425e-10 
++P656 has GPU accel 0 but has CPU acc = 1.3065e-10 
++P657 has GPU accel 0 but has CPU acc = 0 
++P658 has GPU accel 0 but has CPU acc = 2.31723e-10 
++P659 has GPU accel 0 but has CPU acc = 5.55284e-10 
++P660 has GPU accel 0 but has CPU acc = 5.11715e-10 
++P661 has GPU accel 0 but has CPU acc = 0 
++P662 has GPU accel 0 but has CPU acc = 1.05329e-10 
++P663 has GPU accel 0 but has CPU acc = 5.72362e-10 
++P664 has GPU accel 0 but has CPU acc = 4.75477e-10 
++P665 has GPU accel 0 but has CPU acc = 0 
++P666 has GPU accel 0 but has CPU acc = 0 
++P667 has GPU accel 0 but has CPU acc = 0 
++P668 has GPU accel 0 but has CPU acc = 1.35505e-09 
++P669 has GPU accel 0 but has CPU acc = 0 
++P670 has GPU accel 0 but has CPU acc = 0 
++P671 has GPU accel 0 but has CPU acc = 3.06956e-10 
++P672 has GPU accel 0 but has CPU acc = 0 
++P673 has GPU accel 0 but has CPU acc = 0 
++P674 has GPU accel 0 but has CPU acc = 0 
++P675 has GPU accel 0 but has CPU acc = 0 
++P676 has GPU accel 0 but has CPU acc = 0 
++P677 has GPU accel 0 but has CPU acc = 0 
++P678 has GPU accel 0 but has CPU acc = 9.62286e-10 
++P679 has GPU accel 0 but has CPU acc = 1.07486e-10 
++P680 has GPU accel 0 but has CPU acc = 5.61549e-10 
++P681 has GPU accel 0 but has CPU acc = 0 
++P682 has GPU accel 0 but has CPU acc = 5.25168e-10 
++P683 has GPU accel 0 but has CPU acc = 3.29816e-11 
++P684 has GPU accel 0 but has CPU acc = 0 
++P685 has GPU accel 0 but has CPU acc = 1.11883e-09 
++P686 has GPU accel 0 but has CPU acc = 8.35964e-11 
++P687 has GPU accel 0 but has CPU acc = 2.23713e-10 
++P688 has GPU accel 0 but has CPU acc = 1.71117e-10 
++P689 has GPU accel 0 but has CPU acc = 0 
++P690 has GPU accel 0 but has CPU acc = 0 
++P691 has GPU accel 0 but has CPU acc = 1.17586e-10 
++P692 has GPU accel 0 but has CPU acc = 9.51876e-11 
++P693 has GPU accel 0 but has CPU acc = 3.41318e-10 
++P694 has GPU accel 0 but has CPU acc = 0 
++P695 has GPU accel 0 but has CPU acc = 2.00925e-10 
++P696 has GPU accel 0 but has CPU acc = 1.02246e-09 
++P697 has GPU accel 0 but has CPU acc = 5.71173e-10 
++P698 has GPU accel 0 but has CPU acc = 0 
++P699 has GPU accel 0 but has CPU acc = 0 
++P700 has GPU accel 0 but has CPU acc = 0 
++P701 has GPU accel 0 but has CPU acc = 6.06509e-10 
++P702 has GPU accel 0 but has CPU acc = 9.12807e-10 
++P703 has GPU accel 0 but has CPU acc = 1.34502e-09 
++P704 has GPU accel 0 but has CPU acc = 3.49217e-10 
++P705 has GPU accel 0 but has CPU acc = 1.29907e-09 
++P706 has GPU accel 0 but has CPU acc = 3.8566e-11 
++P707 has GPU accel 0 but has CPU acc = 0 
++P708 has GPU accel 0 but has CPU acc = 1.48475e-10 
++P709 has GPU accel 0 but has CPU acc = 9.54345e-10 
++P710 has GPU accel 0 but has CPU acc = 0 
++P711 has GPU accel 0 but has CPU acc = 1.06081e-08 
++P712 has GPU accel 0 but has CPU acc = 1.00642e-10 
++P713 has GPU accel 0 but has CPU acc = 6.92603e-10 
++P714 has GPU accel 0 but has CPU acc = 1.31376e-09 
++P715 has GPU accel 0 but has CPU acc = 9.83257e-10 
++P716 has GPU accel 0 but has CPU acc = 0 
++P717 has GPU accel 0 but has CPU acc = 0 
++P718 has GPU accel 0 but has CPU acc = 0 
++P719 has GPU accel 0 but has CPU acc = 6.6375e-10 
++P720 has GPU accel 0 but has CPU acc = 0 
++P721 has GPU accel 0 but has CPU acc = 0 
++P722 has GPU accel 0 but has CPU acc = 1.10901e-09 
++P723 has GPU accel 0 but has CPU acc = 4.27765e-10 
++P724 has GPU accel 0 but has CPU acc = 4.34694e-10 
++P725 has GPU accel 0 but has CPU acc = 8.93716e-10 
++P726 has GPU accel 0 but has CPU acc = 1.18194e-09 
++P727 has GPU accel 0 but has CPU acc = 5.30866e-10 
++P728 has GPU accel 0 but has CPU acc = 0 
++P729 has GPU accel 0 but has CPU acc = 1.19937e-09 
++P730 has GPU accel 0 but has CPU acc = 3.41967e-10 
++P731 has GPU accel 0 but has CPU acc = 1.41648e-10 
++P732 has GPU accel 0 but has CPU acc = 6.48475e-10 
++P733 has GPU accel 0 but has CPU acc = 0 
++P734 has GPU accel 0 but has CPU acc = 0 
++P735 has GPU accel 0 but has CPU acc = 9.3469e-10 
++P736 has GPU accel 0 but has CPU acc = 0 
++P737 has GPU accel 0 but has CPU acc = 3.52986e-11 
++P738 has GPU accel 0 but has CPU acc = 0 
++P739 has GPU accel 0 but has CPU acc = 3.33974e-10 
++P740 has GPU accel 0 but has CPU acc = 0 
++P741 has GPU accel 0 but has CPU acc = 0 
++P742 has GPU accel 0 but has CPU acc = 1.59484e-10 
++P743 has GPU accel 0 but has CPU acc = 3.82976e-10 
++P744 has GPU accel 0 but has CPU acc = 0 
++P745 has GPU accel 0 but has CPU acc = 9.66633e-10 
++P746 has GPU accel 0 but has CPU acc = 5.97079e-10 
++P747 has GPU accel 0 but has CPU acc = 1.56383e-10 
++P748 has GPU accel 0 but has CPU acc = 7.90057e-10 
++P749 has GPU accel 0 but has CPU acc = 3.04588e-10 
++P750 has GPU accel 0 but has CPU acc = 2.53506e-10 
++P751 has GPU accel 0 but has CPU acc = 0 
++P752 has GPU accel 0 but has CPU acc = 8.08197e-10 
++P753 has GPU accel 0 but has CPU acc = 1.11894e-10 
++P754 has GPU accel 0 but has CPU acc = 6.86723e-10 
++P755 has GPU accel 0 but has CPU acc = 9.46064e-10 
++P756 has GPU accel 0 but has CPU acc = 1.51854e-09 
++P757 has GPU accel 0 but has CPU acc = 5.4256e-10 
++P758 has GPU accel 0 but has CPU acc = 0 
++P759 has GPU accel 0 but has CPU acc = 7.43751e-11 
++P760 has GPU accel 0 but has CPU acc = 0 
++P761 has GPU accel 0 but has CPU acc = 1.20659e-10 
++P762 has GPU accel 0 but has CPU acc = 0 
++P763 has GPU accel 0 but has CPU acc = 1.76945e-08 
++P764 has GPU accel 0 but has CPU acc = 1.08932e-08 
++P765 has GPU accel 0 but has CPU acc = 1.77208e-10 
++P766 has GPU accel 0 but has CPU acc = 0 
++P767 has GPU accel 0 but has CPU acc = 2.25436e-10 
++P768 has GPU accel 0 but has CPU acc = 9.49722e-10 
++P769 has GPU accel 0 but has CPU acc = 3.29439e-10 
++P770 has GPU accel 0 but has CPU acc = 1.06936e-10 
++P771 has GPU accel 0 but has CPU acc = 3.71057e-10 
++P772 has GPU accel 0 but has CPU acc = 1.01491e-09 
++P773 has GPU accel 0 but has CPU acc = 0 
++P774 has GPU accel 0 but has CPU acc = 3.7258e-11 
++P775 has GPU accel 0 but has CPU acc = 1.08303e-10 
++P776 has GPU accel 0 but has CPU acc = 8.51851e-10 
++P777 has GPU accel 0 but has CPU acc = 1.45057e-10 
++P778 has GPU accel 0 but has CPU acc = 5.43681e-10 
++P779 has GPU accel 0 but has CPU acc = 4.6967e-11 
++P780 has GPU accel 0 but has CPU acc = 3.33371e-10 
++P781 has GPU accel 0 but has CPU acc = 5.03615e-10 
++P782 has GPU accel 0 but has CPU acc = 3.03149e-10 
++P783 has GPU accel 0 but has CPU acc = 3.40201e-10 
++P784 has GPU accel 0 but has CPU acc = 9.79661e-10 
++P785 has GPU accel 0 but has CPU acc = 7.65114e-10 
++P786 has GPU accel 0 but has CPU acc = 4.62113e-10 
++P787 has GPU accel 0 but has CPU acc = 6.18956e-10 
++P788 has GPU accel 0 but has CPU acc = 0 
++P789 has GPU accel 0 but has CPU acc = 1.1105e-09 
++P790 has GPU accel 0 but has CPU acc = 3.62737e-11 
++P791 has GPU accel 0 but has CPU acc = 9.4485e-11 
++P792 has GPU accel 0 but has CPU acc = 0 
++P793 has GPU accel 0 but has CPU acc = 4.72791e-10 
++P794 has GPU accel 0 but has CPU acc = 3.87284e-10 
++P795 has GPU accel 0 but has CPU acc = 3.17648e-11 
++P796 has GPU accel 0 but has CPU acc = 0 
++P797 has GPU accel 0 but has CPU acc = 3.85069e-10 
++P798 has GPU accel 0 but has CPU acc = 0 
++P799 has GPU accel 0 but has CPU acc = 0 
++P800 has GPU accel 0 but has CPU acc = 9.54432e-10 
++P801 has GPU accel 0 but has CPU acc = 3.97019e-10 
++P802 has GPU accel 0 but has CPU acc = 0 
++P803 has GPU accel 0 but has CPU acc = 8.33217e-11 
++P804 has GPU accel 0 but has CPU acc = 3.15159e-10 
++P805 has GPU accel 0 but has CPU acc = 4.21141e-10 
++P806 has GPU accel 0 but has CPU acc = 0 
++P807 has GPU accel 0 but has CPU acc = 1.05486e-10 
++P808 has GPU accel 0 but has CPU acc = 0 
++P809 has GPU accel 0 but has CPU acc = 0 
++P810 has GPU accel 0 but has CPU acc = 0 
++P811 has GPU accel 0 but has CPU acc = 5.84341e-10 
++P812 has GPU accel 0 but has CPU acc = 1.22209e-09 
++P813 has GPU accel 0 but has CPU acc = 4.31254e-09 
++P814 has GPU accel 0 but has CPU acc = 3.73683e-11 
++P815 has GPU accel 0 but has CPU acc = 0 
++P816 has GPU accel 0 but has CPU acc = 1.74371e-10 
++P817 has GPU accel 0 but has CPU acc = 4.36274e-10 
++P818 has GPU accel 0 but has CPU acc = 9.91521e-11 
++P819 has GPU accel 0 but has CPU acc = 3.63407e-10 
++P820 has GPU accel 0 but has CPU acc = 0 
++P821 has GPU accel 0 but has CPU acc = 0 
++P822 has GPU accel 0 but has CPU acc = 0 
++P823 has GPU accel 0 but has CPU acc = 1.01304e-09 
++P824 has GPU accel 0 but has CPU acc = 1.01454e-09 
++P825 has GPU accel 0 but has CPU acc = 1.80568e-10 
++P826 has GPU accel 0 but has CPU acc = 1.02732e-09 
++P827 has GPU accel 0 but has CPU acc = 9.43642e-10 
++P828 has GPU accel 0 but has CPU acc = 0 
++P829 has GPU accel 0 but has CPU acc = 0 
++P830 has GPU accel 0 but has CPU acc = 1.21678e-10 
++P831 has GPU accel 0 but has CPU acc = 0 
++P832 has GPU accel 0 but has CPU acc = 0 
++P833 has GPU accel 0 but has CPU acc = 0 
++P834 has GPU accel 0 but has CPU acc = 2.10722e-10 
++P835 has GPU accel 0 but has CPU acc = 2.58166e-10 
++P836 has GPU accel 0 but has CPU acc = 3.05678e-10 
++P837 has GPU accel 0 but has CPU acc = 0 
++P838 has GPU accel 0 but has CPU acc = 0 
++P839 has GPU accel 0 but has CPU acc = 1.07466e-09 
++P840 has GPU accel 0 but has CPU acc = 1.01332e-09 
++P841 has GPU accel 0 but has CPU acc = 3.61589e-10 
++P842 has GPU accel 0 but has CPU acc = 1.57383e-10 
++P843 has GPU accel 0 but has CPU acc = 0 
++P844 has GPU accel 0 but has CPU acc = 1.0108e-09 
++P845 has GPU accel 0 but has CPU acc = 0 
++P846 has GPU accel 0 but has CPU acc = 0 
++P847 has GPU accel 0 but has CPU acc = 5.14708e-11 
++P848 has GPU accel 0 but has CPU acc = 5.83125e-10 
++P849 has GPU accel 0 but has CPU acc = 0 
++P850 has GPU accel 0 but has CPU acc = 7.12088e-10 
++P851 has GPU accel 0 but has CPU acc = 3.90589e-11 
++P852 has GPU accel 0 but has CPU acc = 4.93313e-10 
++P853 has GPU accel 0 but has CPU acc = 1.79413e-10 
++P854 has GPU accel 0 but has CPU acc = 0 
++P855 has GPU accel 0 but has CPU acc = 7.08006e-10 
++P856 has GPU accel 0 but has CPU acc = 3.42277e-10 
++P857 has GPU accel 0 but has CPU acc = 0 
++P858 has GPU accel 0 but has CPU acc = 8.84241e-10 
++P859 has GPU accel 0 but has CPU acc = 0 
++P860 has GPU accel 0 but has CPU acc = 0 
++P861 has GPU accel 0 but has CPU acc = 3.80074e-10 
++P862 has GPU accel 0 but has CPU acc = 0 
++P863 has GPU accel 0 but has CPU acc = 9.60691e-11 
++P864 has GPU accel 0 but has CPU acc = 0 
++P865 has GPU accel 0 but has CPU acc = 5.62467e-11 
++P866 has GPU accel 0 but has CPU acc = 9.95865e-10 
++P867 has GPU accel 0 but has CPU acc = 9.09515e-11 
++P868 has GPU accel 0 but has CPU acc = 1.06563e-10 
++P869 has GPU accel 0 but has CPU acc = 0 
++P870 has GPU accel 0 but has CPU acc = 0 
++P871 has GPU accel 0 but has CPU acc = 3.6458e-10 
++P872 has GPU accel 0 but has CPU acc = 0 
++P873 has GPU accel 0 but has CPU acc = 0 
++P874 has GPU accel 0 but has CPU acc = 5.62288e-11 
++P875 has GPU accel 0 but has CPU acc = 5.80546e-10 
++P876 has GPU accel 0 but has CPU acc = 1.31351e-09 
++P877 has GPU accel 0 but has CPU acc = 6.72427e-10 
++P878 has GPU accel 0 but has CPU acc = 9.01089e-10 
++P879 has GPU accel 0 but has CPU acc = 0 
++P880 has GPU accel 0 but has CPU acc = 2.0642e-10 
++P881 has GPU accel 0 but has CPU acc = 0 
++P882 has GPU accel 0 but has CPU acc = 6.83373e-10 
++P883 has GPU accel 0 but has CPU acc = 9.48203e-11 
++P884 has GPU accel 0 but has CPU acc = 3.36877e-10 
++P885 has GPU accel 0 but has CPU acc = 5.17259e-10 
++P886 has GPU accel 0 but has CPU acc = 5.47986e-10 
++P887 has GPU accel 0 but has CPU acc = 0 
++P888 has GPU accel 0 but has CPU acc = 0 
++P889 has GPU accel 0 but has CPU acc = 0 
++P890 has GPU accel 0 but has CPU acc = 0 
++P891 has GPU accel 0 but has CPU acc = 0 
++P892 has GPU accel 0 but has CPU acc = 0 
++P893 has GPU accel 0 but has CPU acc = 5.9292e-10 
++P894 has GPU accel 0 but has CPU acc = 6.42579e-10 
++P895 has GPU accel 0 but has CPU acc = 9.69161e-10 
++P896 has GPU accel 0 but has CPU acc = 1.69457e-10 
++P897 has GPU accel 0 but has CPU acc = 1.25582e-09 
++P898 has GPU accel 0 but has CPU acc = 2.77845e-10 
++P899 has GPU accel 0 but has CPU acc = 8.22448e-10 
++P900 has GPU accel 0 but has CPU acc = 1.42611e-09 
++P901 has GPU accel 0 but has CPU acc = 3.26567e-11 
++P902 has GPU accel 0 but has CPU acc = 3.00585e-10 
++P903 has GPU accel 0 but has CPU acc = 9.72906e-10 
++P904 has GPU accel 0 but has CPU acc = 3.97166e-10 
++P905 has GPU accel 0 but has CPU acc = 9.11034e-10 
++P906 has GPU accel 0 but has CPU acc = 5.29045e-11 
++P907 has GPU accel 0 but has CPU acc = 5.60535e-11 
++P908 has GPU accel 0 but has CPU acc = 4.55997e-10 
++P909 has GPU accel 0 but has CPU acc = 0 
++P910 has GPU accel 0 but has CPU acc = 6.96988e-10 
++P911 has GPU accel 0 but has CPU acc = 9.45934e-10 
++P912 has GPU accel 0 but has CPU acc = 1.91408e-10 
++P913 has GPU accel 0 but has CPU acc = 1.21153e-09 
++P914 has GPU accel 0 but has CPU acc = 0 
++P915 has GPU accel 0 but has CPU acc = 0 
++P916 has GPU accel 0 but has CPU acc = 0 
++P917 has GPU accel 0 but has CPU acc = 1.10756e-09 
++P918 has GPU accel 0 but has CPU acc = 4.21487e-11 
++P919 has GPU accel 0 but has CPU acc = 4.28878e-11 
++P920 has GPU accel 0 but has CPU acc = 0 
++P921 has GPU accel 0 but has CPU acc = 1.39624e-10 
++P922 has GPU accel 0 but has CPU acc = 1.03775e-09 
++P923 has GPU accel 0 but has CPU acc = 4.80462e-10 
++P924 has GPU accel 0 but has CPU acc = 9.16701e-10 
++P925 has GPU accel 0 but has CPU acc = 0 
++P926 has GPU accel 0 but has CPU acc = 3.21635e-11 
++P927 has GPU accel 0 but has CPU acc = 0 
++P928 has GPU accel 0 but has CPU acc = 0 
++P929 has GPU accel 0 but has CPU acc = 0 
++P930 has GPU accel 0 but has CPU acc = 1.3312e-10 
++P931 has GPU accel 0 but has CPU acc = 0 
++P932 has GPU accel 0 but has CPU acc = 8.4397e-10 
++P933 has GPU accel 0 but has CPU acc = 0 
++P934 has GPU accel 0 but has CPU acc = 9.24155e-11 
++P935 has GPU accel 0 but has CPU acc = 6.14675e-10 
++P936 has GPU accel 0 but has CPU acc = 2.05946e-10 
++P937 has GPU accel 0 but has CPU acc = 1.78615e-10 
++P938 has GPU accel 0 but has CPU acc = 5.17177e-10 
++P939 has GPU accel 0 but has CPU acc = 0 
++P940 has GPU accel 0 but has CPU acc = 1.41163e-09 
++P941 has GPU accel 0 but has CPU acc = 2.21016e-10 
++P942 has GPU accel 0 but has CPU acc = 0 
++P943 has GPU accel 0 but has CPU acc = 0 
++P944 has GPU accel 0 but has CPU acc = 0 
++P945 has GPU accel 0 but has CPU acc = 0 
++P946 has GPU accel 0 but has CPU acc = 1.55103e-10 
++P947 has GPU accel 0 but has CPU acc = 0 
++P948 has GPU accel 0 but has CPU acc = 6.02162e-10 
++P949 has GPU accel 0 but has CPU acc = 0 
++P950 has GPU accel 0 but has CPU acc = 1.75306e-10 
++P951 has GPU accel 0 but has CPU acc = 0 
++P952 has GPU accel 0 but has CPU acc = 0 
++P953 has GPU accel 0 but has CPU acc = 0 
++P954 has GPU accel 0 but has CPU acc = 3.2838e-10 
++P955 has GPU accel 0 but has CPU acc = 0 
++P956 has GPU accel 0 but has CPU acc = 1.63958e-09 
++P957 has GPU accel 0 but has CPU acc = 5.29116e-10 
++P958 has GPU accel 0 but has CPU acc = 4.26384e-10 
++P959 has GPU accel 0 but has CPU acc = 1.22675e-10 
++P960 has GPU accel 0 but has CPU acc = 0 
++P961 has GPU accel 0 but has CPU acc = 7.7651e-10 
++P962 has GPU accel 0 but has CPU acc = 1.21221e-09 
++P963 has GPU accel 0 but has CPU acc = 0 
++P964 has GPU accel 0 but has CPU acc = 4.16685e-10 
++P965 has GPU accel 0 but has CPU acc = 2.49158e-10 
++P966 has GPU accel 0 but has CPU acc = 1.2405e-10 
++P967 has GPU accel 0 but has CPU acc = 0 
++P968 has GPU accel 0 but has CPU acc = 0 
++P969 has GPU accel 0 but has CPU acc = 0 
++P970 has GPU accel 0 but has CPU acc = 1.34194e-09 
++P971 has GPU accel 0 but has CPU acc = 0 
++P972 has GPU accel 0 but has CPU acc = 0 
++P973 has GPU accel 0 but has CPU acc = 0 
++P974 has GPU accel 0 but has CPU acc = 4.21485e-10 
++P975 has GPU accel 0 but has CPU acc = 1.11329e-09 
++P976 has GPU accel 0 but has CPU acc = 8.2696e-10 
++P977 has GPU accel 0 but has CPU acc = 1.01365e-09 
++P978 has GPU accel 0 but has CPU acc = 5.41916e-11 
++P979 has GPU accel 0 but has CPU acc = 1.45006e-09 
++P980 has GPU accel 0 but has CPU acc = 0 
++P981 has GPU accel 0 but has CPU acc = 0 
++P982 has GPU accel 0 but has CPU acc = 0 
++P983 has GPU accel 0 but has CPU acc = 8.4056e-11 
++P984 has GPU accel 0 but has CPU acc = 0 
++P985 has GPU accel 0 but has CPU acc = 3.28439e-10 
++P986 has GPU accel 0 but has CPU acc = 0 
++P987 has GPU accel 0 but has CPU acc = 1.39653e-10 
++P988 has GPU accel 0 but has CPU acc = 2.50887e-10 
++P989 has GPU accel 0 but has CPU acc = 0 
++P990 has GPU accel 0 but has CPU acc = 0 
++P991 has GPU accel 0 but has CPU acc = 3.88663e-10 
++P992 has GPU accel 0 but has CPU acc = 0 
++P993 has GPU accel 0 but has CPU acc = 0 
++P994 has GPU accel 0 but has CPU acc = 2.10129e-10 
++P995 has GPU accel 0 but has CPU acc = 0 
++P996 has GPU accel 0 but has CPU acc = 0 
++P997 has GPU accel 0 but has CPU acc = 4.56957e-10 
++P998 has GPU accel 0 but has CPU acc = 3.18107e-10 
++P999 has GPU accel 0 but has CPU acc = 0 
++P1000 has GPU accel 0 but has CPU acc = 1.39313e-09 
++P1001 has GPU accel 0 but has CPU acc = 8.69741e-10 
++P1002 has GPU accel 0 but has CPU acc = 4.57556e-11 
++P1003 has GPU accel 0 but has CPU acc = 1.22149e-09 
++P1004 has GPU accel 0 but has CPU acc = 0 
++P1005 has GPU accel 0 but has CPU acc = 1.21066e-09 
++P1006 has GPU accel 0 but has CPU acc = 0 
++P1007 has GPU accel 0 but has CPU acc = 3.82997e-10 
++P1008 has GPU accel 0 but has CPU acc = 4.32108e-11 
++P1009 has GPU accel 0 but has CPU acc = 0 
++P1010 has GPU accel 0 but has CPU acc = 0 
++P1011 has GPU accel 0 but has CPU acc = 3.45456e-11 
++P1012 has GPU accel 0 but has CPU acc = 0 
++P1013 has GPU accel 0 but has CPU acc = 4.96521e-10 
++P1014 has GPU accel 0 but has CPU acc = 3.50992e-11 
++P1015 has GPU accel 0 but has CPU acc = 4.11341e-10 
++P1016 has GPU accel 0 but has CPU acc = 0 
++P1017 has GPU accel 0 but has CPU acc = 1.07672e-09 
++P1018 has GPU accel 0 but has CPU acc = 1.27451e-10 
++P1019 has GPU accel 0 but has CPU acc = 1.36958e-09 
++P1020 has GPU accel 0 but has CPU acc = 7.44862e-11 
++P1021 has GPU accel 0 but has CPU acc = 0 
++P1022 has GPU accel 0 but has CPU acc = 0 
++P1023 has GPU accel 0 but has CPU acc = 0 
++P1024 has GPU accel 0 but has CPU acc = 0 
++P1025 has GPU accel 0 but has CPU acc = 6.16004e-10 
++P1026 has GPU accel 0 but has CPU acc = 1.48971e-10 
++P1027 has GPU accel 0 but has CPU acc = 4.76436e-10 
++P1028 has GPU accel 0 but has CPU acc = 8.8687e-11 
++P1029 has GPU accel 0 but has CPU acc = 4.09313e-11 
++P1030 has GPU accel 0 but has CPU acc = 0 
++P1031 has GPU accel 0 but has CPU acc = 7.19436e-10 
++P1032 has GPU accel 0 but has CPU acc = 0 
++P1033 has GPU accel 0 but has CPU acc = 1.11094e-10 
++P1034 has GPU accel 0 but has CPU acc = 0 
++P1035 has GPU accel 0 but has CPU acc = 0 
++P1036 has GPU accel 0 but has CPU acc = 5.36354e-10 
++P1037 has GPU accel 0 but has CPU acc = 0 
++P1038 has GPU accel 0 but has CPU acc = 1.22594e-09 
++P1039 has GPU accel 0 but has CPU acc = 1.00841e-09 
++P1040 has GPU accel 0 but has CPU acc = 8.0593e-10 
++P1041 has GPU accel 0 but has CPU acc = 0 
++P1042 has GPU accel 0 but has CPU acc = 0 
++P1043 has GPU accel 0 but has CPU acc = 0 
++P1044 has GPU accel 0 but has CPU acc = 0 
++P1045 has GPU accel 0 but has CPU acc = 0 
++P1046 has GPU accel 0 but has CPU acc = 4.67339e-10 
++P1047 has GPU accel 0 but has CPU acc = 8.41822e-10 
++P1048 has GPU accel 0 but has CPU acc = 1.17255e-10 
++P1049 has GPU accel 0 but has CPU acc = 4.86153e-10 
++P1050 has GPU accel 0 but has CPU acc = 0 
++P1051 has GPU accel 0 but has CPU acc = 1.15591e-09 
++P1052 has GPU accel 0 but has CPU acc = 1.02084e-09 
++P1053 has GPU accel 0 but has CPU acc = 9.72505e-11 
++P1054 has GPU accel 0 but has CPU acc = 4.96303e-10 
++P1055 has GPU accel 0 but has CPU acc = 1.94913e-10 
++P1056 has GPU accel 0 but has CPU acc = 0 
++P1057 has GPU accel 0 but has CPU acc = 0 
++P1058 has GPU accel 0 but has CPU acc = 2.52854e-10 
++P1059 has GPU accel 0 but has CPU acc = 0 
++P1060 has GPU accel 0 but has CPU acc = 0 
++P1061 has GPU accel 0 but has CPU acc = 0 
++P1062 has GPU accel 0 but has CPU acc = 0 
++P1063 has GPU accel 0 but has CPU acc = 3.92779e-11 
++P1064 has GPU accel 0 but has CPU acc = 0 
++P1065 has GPU accel 0 but has CPU acc = 1.33244e-09 
++P1066 has GPU accel 0 but has CPU acc = 0 
++P1067 has GPU accel 0 but has CPU acc = 0 
++P1068 has GPU accel 0 but has CPU acc = 1.46296e-10 
++P1069 has GPU accel 0 but has CPU acc = 0 
++P1070 has GPU accel 0 but has CPU acc = 6.53405e-10 
++P1071 has GPU accel 0 but has CPU acc = 9.13201e-11 
++P1072 has GPU accel 0 but has CPU acc = 0 
++P1073 has GPU accel 0 but has CPU acc = 8.31473e-10 
++P1074 has GPU accel 0 but has CPU acc = 9.69899e-11 
++P1075 has GPU accel 0 but has CPU acc = 6.59634e-10 
++P1076 has GPU accel 0 but has CPU acc = 0 
++P1077 has GPU accel 0 but has CPU acc = 3.63012e-10 
++P1078 has GPU accel 0 but has CPU acc = 0 
++P1079 has GPU accel 0 but has CPU acc = 3.27078e-11 

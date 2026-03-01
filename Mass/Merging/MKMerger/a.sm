@@ -1,0 +1,228 @@
+erase
+ctype = CTYPE() concat 200+256*(200+256*200)
+ctype = CTYPE(STRING) concat 'gray1'
+ctype = CTYPE() concat 150+256*(150+256*150)
+ctype = CTYPE(STRING) concat 'gray2'
+ctype = CTYPE() concat 100+256*(100+256*100)
+ctype = CTYPE(STRING) concat 'gray3'
+ctype = CTYPE() concat 50+256*(50+256*50)
+ctype = CTYPE(STRING) concat 'gray4'
+ctype = CTYPE() concat 150+256*(150+256*50)
+ctype = CTYPE(STRING) concat 'brown'
+
+
+ctype default
+
+
+location 5000 30000 22000 30000
+limits 0  5.5  0 2
+ticksize 0.5 1 0.2 1
+lweight 4
+expand 1.01
+box 0 2 0 0
+lweight 3
+expand 1.3
+ylabel \psi
+
+lweight 3
+expand 1.3
+data mergingdist.out
+lines 90 146
+read { z 1 x 3 dx1 2 dx2 4 y 6 dy1 5 dy2 7}
+set x = - ln(x)/z
+set dx1 = - ln(dx1)/z
+set dx2 = - ln(dx2)/z
+set lx = (y)
+ctype blue
+set zz = z concat reverse(z)
+set yy = (dy1) concat reverse((dy2))
+shade 0 zz yy
+ctype default
+ltype 0
+connect z lx
+
+lweight 3
+expand 1.3
+data mergingdist.out
+lines 162 223
+read { z 1 x 3 dx1 2 dx2 4 y 6 dy1 5 dy2 7}
+set x = - ln(x)/z
+set dx1 = - ln(dx1)/z
+set dx2 = - ln(dx2)/z
+set lx = (y)
+ctype gray1
+set zz = z concat reverse(z)
+set yy = (dy1) concat reverse((dy2))
+shade 0 zz yy
+ctype default
+ltype 1
+connect z lx
+
+
+lweight 3
+expand 1.3
+data mergingdist.out
+lines 236 300
+read { z 1 x 3 dx1 2 dx2 4 y 6 dy1 5 dy2 7}
+set x = - ln(x)/z
+set dx1 = - ln(dx1)/z
+set dx2 = - ln(dx2)/z
+set lx = (y)
+ctype brown
+set zz = z concat reverse(z)
+set yy = (dy1) concat reverse((dy2))
+shade 0 zz yy
+ctype default
+ltype 2
+connect z lx
+
+lweight 3
+expand 1.3
+data mergingdist.out
+lines 313 377
+read { z 1 x 3 dx1 2 dx2 4 y 6 dy1 5 dy2 7}
+set x = - ln(x)/z
+set dx1 = - ln(dx1)/z
+set dx2 = - ln(dx2)/z
+set lx = (y)
+ctype magenta
+set zz = z concat reverse(z)
+set yy = (dy1) concat reverse((dy2))
+shade 0 zz yy
+ctype default
+ltype 3
+connect z lx
+
+
+
+ctype default
+expand 0.7
+lweight 1
+ltype 0
+set x = 0.7, 10, 0.01
+set y = x+0.32*(lg(10**12.1)-12.)+0.56-x
+connect x y
+
+set y = x+0.32*(lg(10**13.3)-12.)+0.56-x
+connect x y
+
+set y = x+0.32*(lg(10**14.2)-12.)+0.56-x
+connect x y
+
+set y = x+0.32*(lg(10**15.0)-12.)+0.56-x
+connect x y
+
+
+#
+#
+#
+#
+
+location 5000 30000 5000 22000
+limits 0  5.5  -3.8 0
+ticksize 0.5 1 -1 10
+lweight 4
+expand 1.01
+box
+lweight 3
+expand 1.3
+xlabel z
+ylabel \Psi\equiv M(z)/M(0)
+
+
+
+
+lweight 3
+expand 1.3
+data mergingdist.out
+lines 90 146
+read { z 1 x 3 dx1 2 dx2 4}
+set lx = lg(x)
+ctype blue
+set zz = z concat reverse(z)
+set yy = lg(dx1) concat reverse(lg(dx2))
+shade 0 zz yy
+ctype default
+ltype 0
+connect z lx
+
+
+
+lines 162 223
+read { z 1 x 3 dx1 2 dx2 4}
+set lx = lg(x)
+ctype gray1
+set zz = z concat reverse(z)
+set yy = lg(dx1) concat reverse(lg(dx2))
+shade 0 zz yy
+ctype default
+ltype 1
+connect z lx
+
+
+lines 236 300
+read { z 1 x 3 dx1 2 dx2 4}
+set lx = lg(x)
+#ptype 5 2
+#points z lx
+ctype brown
+set zz = z concat reverse(z)
+set yy = lg(dx1) concat reverse(lg(dx2))
+shade 0 zz yy
+ctype default
+ltype 2
+connect z lx
+
+lines 313 377
+read { z 1 x 3 dx1 2 dx2 4}
+set lx = lg(x)
+#ptype 3 2
+#points z lx
+ctype magenta
+set zz = z concat reverse(z)
+set yy = lg(dx1) concat reverse(lg(dx2))
+shade 0 zz yy
+ctype default
+ltype 3
+connect z lx
+
+
+set x = 1.5, 10,0.01
+set y = -x + lg(2.7/10.) + x
+ltype 0
+lweight 1
+expand 1
+#connect x y
+
+
+set x = 2.5, 10,0.01
+set y = -x + lg(2.7/100.) + x
+ltype 1
+lweight 1
+expand 1
+#connect x y
+
+set x = 3.5, 10,0.01
+set y = -x + lg(2.7/1000.) + x
+ltype 2
+lweight 1
+expand 1 
+#connect x y
+
+set x = 4.5, 10,0.01
+set y = -x + lg(2.7/5000.) + x
+ltype 3
+lweight 1
+expand 1
+#connect x y
+
+
+
+
+expand 0.9
+lweight 2
+limits 0 10 2 12
+ltype 0 relocate 1 4  draw 2 4 relocate 2.4 3.9 label 10^{12}\le M/M_\odot<3\times 10^{12}
+ltype 1 relocate 1 3.5  draw 2 3.5 relocate 2.4 3.4 label 10^{13}\le M/M_\odot<10^{14}
+ltype 2 relocate 1 3.0  draw 2 3.0 relocate 2.4 2.9 label 10^{14}\le M/M_\odot<5\times 10^{14}
+ltype 3 relocate 1 2.5  draw 2 2.5 relocate 2.4 2.4 label 5\times 10^{14}\le M/M_\odot<5\times 10^{15}

@@ -1,0 +1,41 @@
+#
+
+
+notation -4 4 -2 2
+
+erase
+
+lweight 3
+expand 1.01
+location 5000 30000 5000 30000
+limits 1969  2014   2 12.1
+ticksize 2 10 -1 10
+box
+xlabel year
+ylabel N
+
+set x = 1950, 2020, 0.1
+set y = 50*2**((x-1970)/1.375)
+set ly = lg(y)
+connect x ly
+
+
+data rescale.dat
+read { x 1 y 2}
+
+expand 2
+ptype 30 3
+points x y
+
+
+ptype 5 2
+define m1 (lg(8589934592))
+relocate 2004 $m1 dot
+#define y1 (lg(68719476736))
+#ptype 4 0
+#relocate 2007 $y1 dot
+
+define m2 (lg(549755813888))
+relocate 2009 $m2
+ptype 4 0
+dot

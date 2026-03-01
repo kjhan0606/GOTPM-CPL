@@ -1,0 +1,2 @@
+#pgcc -o massfunc2 massfunc2.c -lm -pc 80 -mcmodel=medium -Mlarge_arrays -tp k8-64 -O3 -fastsse -Mnontemporal
+pgcc -o massfunc2 massfunc2.c -lm -g

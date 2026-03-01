@@ -1,0 +1,150 @@
+erase
+
+location 6000 27000 6000 27000
+notation -2 2 -2 2
+ctype default
+lweight 3
+ticksize -1 5 -0.2 1
+limits 0.8 3.6 3.6 4.5
+expand 1.01
+box
+xlabel NCPU(OpenMP+MPI)
+ylabel N_p /sec/NCPU
+
+#relocate 2.5 4.4 label \theta=0.5
+expand 0.9
+ctype blue
+relocate 1.2 4.4 label MPI only (AMD)
+relocate 1.2 4.2 label MPI+OpenMP(AMD threads=2) on Quest
+ctype red
+relocate 1.2 3.7 label MPI+OpenMP(alpha threads=4) on Lemieux
+
+ctype default
+relocate 1.7 4.11 draw 1.9 4.11 relocate 2.0 4.1 label 256^3 
+ltype 1
+relocate 1.7 4.06 draw 1.9 4.06 relocate 2.0 4.05 label 512^3
+ltype 2
+relocate 1.7 4.01 draw 1.9 4.01 relocate 2.0 4.0 label 1024^3
+ltype 3
+relocate 1.7 3.96 draw 1.9 3.96 relocate 2.0 3.95 label 2048^3
+ltype 0
+#relocate 3 3.9 label 1300^3
+relocate 3 3.9 label 2048^3
+
+ctype red
+ptype 30 3
+data openmp.le
+lines 2 9
+read { x 1 y 2 n 3}
+set n = n**3
+set co = n/y/x
+set lx = lg(x)
+set ly = lg(co)
+points lx ly
+connect lx ly
+
+ltype  1
+lines 10 12
+read { x 1 y 2 n 3}
+set n = n**3
+set co = n/y/x
+set lx = lg(x)
+set ly = lg(co)
+points lx ly
+connect lx ly
+
+ltype  2
+lines 13 16
+read { x 1 y 2 n 3}
+set n = n**3
+set co = n/y/x
+set lx = lg(x)
+set ly = lg(co)
+points lx ly
+connect lx ly
+
+ltype 0
+ptype 6 1
+lines 17 17
+read { x 1 y 2 n 3}
+set n = n**3
+set co = n/y/x
+set lx = lg(x)
+set ly = lg(co)
+#points lx ly
+#connect lx ly
+
+ltype 3
+ptype 6 3
+lines 18 19
+read { x 1 y 2 n 3}
+set n = n**3
+set co = n/y/x
+set lx = lg(x)
+set ly = lg(co)
+points lx ly
+connect lx ly
+
+
+ltype 0
+ctype blue
+ptype 4 3
+
+data openmp.qu
+lines 1 4
+read { x 1 y 2 n 3}
+set n = n**3
+set co = n/y/x
+set lx = lg(x)
+set ly = lg(co)
+points lx ly
+connect lx ly
+
+ltype 1
+lines 5 8
+read { x 1 y 2 n 3}
+set n = n**3
+set co = n/y/x
+set lx = lg(x)
+set ly = lg(co)
+points lx ly
+connect lx ly
+
+ltype 0
+ptype 4 0
+data mpi.qu
+lines 1 4
+read { x 1 y 2 n 3}
+set n = n**3
+set co = n/y/x
+set lx = lg(x)
+set ly = lg(co)
+points lx ly
+connect lx ly
+
+ptype 3 3
+lines 5 5
+read { x 1 y 2 n 3}
+set n = n**3
+set co = n/y/x
+set lx = lg(x)
+set ly = lg(co)
+points lx ly
+connect lx ly
+
+
+
+expand 1.2
+ctype green
+data openmp.tachyon
+ptype 5 2
+read { x 1 y 2 n 3}
+set n = n**3
+set co = n/y/x
+set lx = lg(x)
+set ly = lg(co)
+points lx ly
+connect lx ly
+expand 0.9
+relocate 2.5 4.15 label 4120^3 on tachyon
+relocate 2.9 4.11 label MPI+OpenMP

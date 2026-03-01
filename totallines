@@ -1,0 +1,10 @@
+wc -l fda4_new.F fda4_split.F tsc_c.F \
+			namu.c correl.F adkjhmigrate.c p_solver.F \
+			pm_main_sub.F Memory2.c \
+			timerutil.c fmod.f \
+			VarPM.c slicemigrate.c\
+			savexzslice.F flagwriting.c force_spline.mod2.c\
+			Treewalk.final.c  hypersort.c\
+			mydomaindecomposition.c   lightcone.final.c slicelightcone.final.c\
+			invinsibleparpmseed.F kjhrw.c sub.lynx.f invinsibleparpmseed_force.F\
+ 			kjhtpm.openmp.final.c indexing.c PMPI_Sendrecv_Replace.c  

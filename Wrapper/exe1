@@ -1,0 +1,1 @@
+icc -c c2f77.c header.c  -DINDEX -DXYZDBL

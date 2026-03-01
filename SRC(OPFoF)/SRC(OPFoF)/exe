@@ -1,0 +1,3 @@
+#xlc -O3 -q64 -qarch=pwr4 -qtune=pwr4 -o sfof sfof.c Time.c Treewalk.fof.mod2.c  read.c -lm 
+mpicc -mp -mcmodel=medium -g -o opfof opfof.c Time.c Treewalk.fof.ordered.mod2.c  read.c header.c -lm 
+#mpicc -O3 -o pfof -DONLYPOS pfof.c Time.c Treewalk.fof.parallel.c  read.c -lm 
