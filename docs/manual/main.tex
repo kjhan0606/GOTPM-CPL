@@ -961,4 +961,279 @@ The simulation starts at $z = 47$ ($a = 1$) and evolves to $z = 0$ ($a = 48$) in
 \end{itemize}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PART V: Post-Processing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Post-Processing}
+
+%======================================================
+\chapter{FoF Halo Analysis}
+\label{ch:fof}
+%======================================================
+
+At multiple time steps during the simulation run, the code dumps FoF halo data (particle positions and velocities).
+The Friends-of-Friends algorithm identifies virialized halos using a linking length of $0.2$ times the mean particle separation.
+The minimum halo mass is typically set to $m_h^c = 30 \times m_p$, where $m_p$ is the particle mass.
+
+\section{Most Bound Particle (MBP)}
+
+\begin{definition}[Most Bound Particle]
+The MBP is the particle whose total energy is the most negative in a halo at the time the halo first forms.  Once assigned, the MBP persists as long as it remains among the member particles of some halo.  It serves as a proxy for the galaxy at the center of the halo.
+
+The total energy of a particle is:
+\begin{equation}
+  E = \frac{1}{2}\,m\left(\frac{d\mathbf{r}}{dt}\right)^2 + \Phi(\mathbf{r})
+\end{equation}
+where the velocity includes both peculiar velocity and Hubble flow.  The gravitational potential is:
+\begin{equation}
+  \Phi(\mathbf{r}) = m\sum_i \frac{G\,m_i}{\sqrt{(\mathbf{r}_i - \mathbf{r})^2 + \epsilon^2}}
+\end{equation}
+where $\epsilon$ is the force resolution and $i$ runs over all member particles of the halo.
+\end{definition}
+
+At each time step, MBPs identified in the previous step are checked against the current FoF catalog:
+\begin{itemize}[leftmargin=2em]
+  \item If a halo contains no previously assigned MBP, a new MBP is selected by computing the total energy of all member particles.
+  \item If one or more MBPs are already present, no new MBP is created.
+\end{itemize}
+
+\section{Attached Quantities}
+
+The MBP is a particle with its own index, position, and peculiar velocity.  Since the MBP represents a galaxy within its halo, additional halo properties are attached:
+\begin{itemize}[leftmargin=2em]
+  \item Mean halo velocity $\mathbf{v}_h$
+  \item Velocity dispersion $\sigma_v$
+  \item Virial radius $r_\text{vir}$
+  \item Halo mass (FoF mass)
+\end{itemize}
+
+\section{Center of Mass}
+
+The center of mass (CoM) of a halo is the mean position of its member particles.  The group velocity is the average peculiar velocity.
+
+\section{Halo Shape}
+
+The shape of a halo is measured via the eigenvalues and eigenvectors of the shape tensor:
+\begin{equation}
+  T_{ij} = \sum_k r_{k,i}\,r_{k,j}
+\end{equation}
+where $\mathbf{r}_k$ is the displacement of particle $k$ from the halo CoM.  The eigenvalue ratios give the axis ratios of the halo.
+
+
+%======================================================
+\chapter{MBP Merger Tree}
+\label{ch:mergertree}
+%======================================================
+
+The MBP merger tree tracks the hierarchical assembly of halos through cosmic time.  Each MBP carries a unique Global Identification number (GID) and a history of merger events.
+
+\section{Basic Concepts}
+
+\subsection{GID and Major GID}
+
+\begin{definition}[GID]
+The GID (Global Identification) is a unique number stored as \code{size\_t} in C format.  It is assigned when a halo first forms and its MBP is created.
+\end{definition}
+
+\begin{definition}[Major GID]
+The Major GID is the GID of the most massive (central) MBP in a halo at each merger step.  It may change with time as the central MBP changes.
+\end{definition}
+
+\subsection{Merger Events}
+
+The basic concept is to record each MBP's merger history in a single line.  Merger events are marked by a change in the Major GID:
+\begin{itemize}[leftmargin=2em]
+  \item When a halo first forms, it has one MBP whose Major GID equals its own GID.
+  \item When halos merge, the MBP from the more massive progenitor becomes the \emph{central} (major) MBP; the other becomes a \emph{satellite} MBP.
+  \item The satellite MBP's Major GID changes to the central MBP's GID.
+\end{itemize}
+
+\subsection{Central and Satellite MBP}
+
+When two halos of different masses merge:
+\begin{itemize}[leftmargin=2em]
+  \item The MBP from the more massive halo is the \emph{central} MBP.
+  \item The MBP from the less massive halo is the \emph{satellite} MBP.
+  \item The satellite's mass, shape, and radius are frozen at their values just before merging.
+  \item The satellite's $\sigma_v$ is set to the merger halo's $\sigma_v$.
+  \item The satellite's position and velocity continue to be tracked via particle movement.
+\end{itemize}
+
+\subsection{MBP Mass}
+
+The mass of an MBP equals its hosting halo mass when it is the sole or central MBP.  For satellite MBPs, the mass is frozen at the hosting halo mass measured just before the merger event.
+
+\section{Data Structures}
+
+\subsection{Original Merger Tree Format}
+
+\begin{definition}[SavedHaloType]
+\begin{lstlisting}[style=ccode,numbers=none]
+typedef struct SavedHaloType {
+    INDXTYPE mbp;                    /* MBP particle index */
+    IDTYPE nowhid, majorglobalid;    /* halo ID, major GID */
+    POSTYPE x, y, z;                 /* MBP position (h^-1 Mpc, comoving) */
+    POSTYPE hx, hy, hz;              /* Halo CoM position */
+    float mass, fofhmass;            /* MBP/halo mass, FoF halo mass (M_sun/h) */
+    float vx, vy, vz;               /* MBP peculiar velocity (km/s) */
+    float hvx, hvy, hvz;            /* Halo peculiar velocity (km/s) */
+    short int statusflag, linkflag;  /* Internal flags */
+} SavedHaloType;
+\end{lstlisting}
+\code{POSTYPE} is \code{double} when compiled with \flag{XYZDBL}, otherwise \code{float}.  \code{INDXTYPE} is typically \code{long}.
+\end{definition}
+
+\begin{important}
+The field \code{majorglobalid} in \code{SavedHaloType} stores the Major GID, not a local halo index.
+\end{important}
+
+\subsection{GID-Sorted Merger Tree Format}
+
+The sorted merger tree groups all tree lines belonging to the same $z=0$ halo together, enabling efficient analysis of merger histories.
+
+\begin{definition}[GID-Sorted Data Structures]
+\begin{lstlisting}[style=ccode,numbers=none]
+typedef struct MajorGid {
+    IDTYPE gid, newgid, mgid;
+    IDTYPE majorgid[NSTEPS];
+} MajorGid;
+
+typedef struct GID {
+    IDTYPE gid, newgid;
+} GID;
+
+typedef struct SigV {
+    float sigv[NSTEPS];
+} SigV;
+
+typedef struct GidMergeHistory {
+    IDTYPE gid;
+    SavedHaloType step[NSTEPS];
+    SigV sigv;
+} GidMergeHistory;
+\end{lstlisting}
+Here \code{IDTYPE} is \code{long} and \code{NSTEPS} is the number of merger tree time steps.
+\end{definition}
+
+The output file contains:
+\begin{enumerate}[leftmargin=2em]
+  \item A header with simulation parameters (box size, $h$, $n_s$, $\Omega_m$, $\Omega_b$, $\Omega_\Lambda$, $\sigma_8^{-1}$, $\Delta a$, number of merger steps, step numbers, and redshifts).
+  \item An array of \code{GidMergeHistory} structures containing the full merger history.
+\end{enumerate}
+
+\section{Building the Merger Tree}
+
+\begin{algorithm}[Merger Tree Construction]
+\begin{enumerate}[leftmargin=2em]
+  \item \textbf{Extract halo properties}: Run the FoF halo finder to produce halo catalogs.
+\begin{lstlisting}[style=bash,numbers=none]
+mpirun -np <N> ./mpimf2.exe <step_number>
+\end{lstlisting}
+  This produces files including \file{FoFHaloQuantities.\%.5d.bin}.
+
+  \item \textbf{Link MBPs between steps}: Connect MBPs across adjacent time steps.
+\begin{lstlisting}[style=bash,numbers=none]
+mpirun -np <N> ./sim2link.mpi.mod2.exe <step_before> <step_after>
+\end{lstlisting}
+
+  \item \textbf{Build merger chains}: Assemble the linked MBPs into complete merger trees.
+\begin{lstlisting}[style=bash,numbers=none]
+mpirun -np <N> ./mkmerger.exe
+\end{lstlisting}
+
+  \item \textbf{Combine output}: Merge all partial files into a single merger tree file.
+\begin{lstlisting}[style=bash,numbers=none]
+makeone
+\end{lstlisting}
+\end{enumerate}
+\end{algorithm}
+
+\section{Sorting by Major GID}
+
+The merger tree lines are sorted by their Major GID at the final redshift (typically $z=0$), so that all tree lines belonging to the same $z=0$ halo are grouped together.
+
+\begin{algorithm}[GID Sorting]
+\begin{enumerate}[leftmargin=2em]
+  \item \textbf{Assign new GIDs}: Re-index the merger tree by major GID.
+\begin{lstlisting}[style=bash,numbers=none]
+mpirun -np <N> ./SortMajorGid.exe <redshift>
+\end{lstlisting}
+  Source files: \file{SortMajorGid.c}, \file{pqsort.SMG.c}, \file{SMG.h}.
+
+  \item \textbf{Sort and dump}: Produce the final sorted output file.
+\begin{lstlisting}[style=bash,numbers=none]
+mpirun -np <N> ./Sort_SortMajorGid.exe <input_header> <num_files>
+\end{lstlisting}
+  Source files: \file{Sort\_SortMajorGid.c}, \file{pqsort.SMG.c}, \file{SMG.h}.
+\end{enumerate}
+\end{algorithm}
+
+\begin{remark}[Internal Parameters]
+The internal structure of the sorted merger tree depends on the final redshift.  When building, check the values of \code{iredshift}, \code{NSTEPS}, and \code{MSTEPS} in the source code to match your simulation.
+\end{remark}
+
+\section{Reading the Merger Tree}
+
+\begin{example}[Reading Sorted Merger Tree Data]
+\begin{lstlisting}[style=ccode]
+/* Compile: icc -o checkSGMT checkSGMT.c -DINDEX -DXYZDBL -g */
+#include <stdio.h>
+#include <stdlib.h>
+#include "merger.h"
+#include "mkmerger.h"
+#include "SMG.h"
+#define NSTEPS 131
+
+int main(int argc, char *argv[]) {
+    GidMergeHistory *bp;
+    IDTYPE np;
+    float boxsize, hubble, npower, omep, omepb, omeplam, bias, astep;
+    int msteps, *nsteps;
+    float *reds;
+
+    FILE *fp = fopen(argv[1], "r");
+    fread(&boxsize, sizeof(float), 1, fp);
+    fread(&hubble,  sizeof(float), 1, fp);
+    fread(&npower,  sizeof(float), 1, fp);
+    fread(&omep,    sizeof(float), 1, fp);
+    fread(&omepb,   sizeof(float), 1, fp);
+    fread(&omeplam, sizeof(float), 1, fp);
+    fread(&bias,    sizeof(float), 1, fp);
+    fread(&astep,   sizeof(float), 1, fp);
+    fread(&msteps,  sizeof(float), 1, fp);
+    nsteps = (int*)malloc(sizeof(int) * msteps);
+    reds   = (float*)malloc(sizeof(float) * msteps);
+    fread(nsteps, sizeof(int),   msteps, fp);
+    fread(reds,   sizeof(float), msteps, fp);
+
+    bp = (GidMergeHistory*)malloc(sizeof(GidMergeHistory) * 10000);
+    while ((np = fread(bp, sizeof(GidMergeHistory), 10000, fp)) > 0) {
+        printf("%ld\n", bp[0].gid);
+    }
+    free(bp);
+    return 0;
+}
+\end{lstlisting}
+The input file is \file{SortByMajorGidMergingTree.NNNNN.dat}.
+\end{example}
+
+\section{Known Issues}
+
+\subsection{Disappearance of MBP}
+
+In rare cases, an MBP may be ejected from its host halo (e.g., into the intergalactic medium).  When this happens, the MBP line terminates and its variables are set to null for subsequent steps.  A new MBP is then selected in the halo.
+
+\subsection{Fluctuating Small Halos}
+
+When a halo's mass is near the critical threshold, numerical fluctuations can cause it to drop below the threshold at the next step.  This may generate multiple MBPs for a single physical halo; only one will evolve further while the others terminate.
+
+\subsection{Null Values}
+
+A null, zero, or negative value in the \code{mbp} field indicates that the MBP was not found at that epoch.
+
+\subsection{Mass Conservation}
+
+The total mass before and after a merger event may differ due to mass loss during the merger process.  Analysis should account for this discrepancy.
+
+
 \end{document}
